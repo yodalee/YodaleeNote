@@ -12,6 +12,9 @@ copyright = "Yodalee - All rights reserved."
 paginate = 10
 paginatePath = "page"
 
+[permalinks]
+posts = "/:year/:month/:filename/"
+
 [params]
   subtitle = "My Life, My Note"
   description = "My personal blogs"
