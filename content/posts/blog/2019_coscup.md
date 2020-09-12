@@ -22,12 +22,11 @@ series: null
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/JZO90DpXew5ERO" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/youtang5/use-peg-to-write-a-programming-language-parser" title="Use PEG to Write a Programming Language Parser" target="_blank">Use PEG to Write a Programming Language Parser</a> </strong> from <strong><a href="https://www.slideshare.net/youtang5" target="_blank">Yodalee</a></strong> </div>
 {{< /rawhtml >}}
 
-// TODO
 blog 的話，可見：
-1. [實作麻雀雖小五臟俱全的程式語言](https://yodalee.blogspot.com/2018/06/simple-lang.html)
-2. [剖析表達文法 PEG 簡介](https://yodalee.blogspot.com/2018/05/peg.html)
-3. [使用 rust pest 實作簡單的 PEG simple 剖析器](https://yodalee.blogspot.com/2018/05/rust-pest-peg-simple.html)
-4. [使用 procedence climbing 正確處理運算子優先順序](https://yodalee.blogspot.com/2018/05/procedence-climbing.html)  
+1. [實作麻雀雖小五臟俱全的程式語言]({{< relref "2018_rust_simple.md">}})
+2. [剖析表達文法 PEG 簡介]({{< relref "2018_PEG.md">}})
+3. [使用 rust pest 實作簡單的 PEG simple 剖析器]({{< relref "2018_rust_pest_PEG.md" >}})
+4. [使用 procedence climbing 正確處理運算子優先順序]({{< relref "2018_rust_precedence_climbing.md">}})
 
 另外一個議題則是去年 8-10 月做的 Nixie Tube Clock，COSCUP 有非常適合的硬體議程軌，
 老實說 Rust 議程軌我覺得不一定會上，硬體議程軌我就真的滿確定會上，畢竟講硬體的本來就少，Nixie Tube Clock 也滿完整的，果然最後就上了一場。  
