@@ -4,7 +4,7 @@ date: 2015-04-13
 categories:
 - simple setup
 tags:
-- embedded
+- embedded system
 series: null
 ---
 

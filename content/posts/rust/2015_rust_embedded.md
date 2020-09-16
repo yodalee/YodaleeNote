@@ -2,6 +2,7 @@
 title: "使用 rust 來寫極簡的嵌入式系統"
 date: 2015-05-06
 categories:
+- embedded system
 - rust
 tags:
 - embedded system

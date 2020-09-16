@@ -2,6 +2,7 @@
 title: "Rust 開發迷你ARM kernel 系列 0：Hello world"
 date: 2016-10-19
 categories:
+- embedded system
 - rust
 tags:
 - embedded system
