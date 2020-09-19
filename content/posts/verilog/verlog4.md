@@ -19,7 +19,7 @@ testbench是verilog另一個很好用的功能，一般來說，如果設計的�
 為了要進行 verilog code 的模擬，我們需要安裝 verilog 的模擬軟體，有不少公司都有相關的軟體，如學校工作站安裝 Cadence 公司的 NCverilog ，但這是需要付費的，也要連結到工作站才能使用。
 這裡我推薦使用另一套免費提供的開源模擬軟體：iverilog，可以裝在Linux或Windows上使用，如果是在 Ubuntu 或 Debian 系列可以使用apt來安裝：  
 ```shell
-apt-get install iverilog  
+apt-get install iverilog
 ```
 個人使用 Archlinux，也可以用 pacman 安裝。  
 ```shell
@@ -28,8 +28,8 @@ pacman -S iverilog
 
 另外還要安裝gtkwave，才能看到電路輸出訊號的波型檔。  
 ```shell
-apt-get install gtkwave  
-pacman –S gtkwave  
+apt-get install gtkwave
+pacman –S gtkwave
 ```
 
 ## testbench 譔寫

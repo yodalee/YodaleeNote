@@ -100,8 +100,8 @@ Arg 要哪些功能一樣一一往後串接，以下介紹幾種Argument 的設�
 ```
 利用 matches.value\_of("debug") 取得其值，參數值可接受下列方式設定：  
 ```bash
--d value, --debug value  
--d=value, --debug=value  
+-d value, --debug value
+-d=value, --debug=value
 -dvalue
 ```
 

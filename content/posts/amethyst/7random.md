@@ -31,10 +31,10 @@ impl RandomGen {
 AsteroidRes 請仿造 ShipRes 跟 BulletRes 寫一份，這裡應該可以再把三個資源共用的部分抽出來，不過因為是範例 project 我就沒這麼做：  
 
 ```rust
-ShipRes::initialize(world);  
-BulletRes::initialize(world);  
-AsteroidRes::initialize(world);  
-world.insert(RandomGen);  
+ShipRes::initialize(world);
+BulletRes::initialize(world);
+AsteroidRes::initialize(world);
+world.insert(RandomGen);
 ```
 
 ECS 的道理，要加上新的行為就是寫一個新的系統，我們把和生成小行星有關的設定都放在這個系統裡面（雷射槍的冷卻時間和太空船是綁在一起的，因此放在 Ship component 裡面）：  

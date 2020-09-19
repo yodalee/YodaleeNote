@@ -42,7 +42,7 @@ ReactDOM.render(
 
 使用npm 安裝webpack ：  
 ```bash
-npm install --save-dev webpack   
+npm install --save-dev webpack
 ```
 
 編輯webpack 的設定檔webpack.config.js：   
@@ -62,9 +62,9 @@ module.exports = config;
 
 這時候使用webpack 來打包，會出現錯誤訊息：  
 ```txt
-ERROR in ./front-end/main.jsx  
-Module parse failed: /home/yodalee/website/message-downloader/front-end/main.jsx Unexpected token (8:12)  
-You may need an appropriate loader to handle this file type.   
+ERROR in ./front-end/main.jsx
+Module parse failed: /home/yodalee/website/message-downloader/front-end/main.jsx Unexpected token (8:12)
+You may need an appropriate loader to handle this file type.
 ```
 明顯它看不懂react 的jsx 語法，我們需要設定webpack.config.js 遇到 jsx 檔案就使用babel-loader，
 還要排除本地的node\_modules 裡面的檔案，與output 同層加上 module 設定：  
@@ -91,7 +91,7 @@ var config = {
 
 並且使用npm 安裝babel-loader和preset react：  
 ```bash
-npm install --save-dev babel-loader babel-core babel-preset-react react react-dom   
+npm install --save-dev babel-loader babel-core babel-preset-react react react-dom
 ```
 這樣就能用webpack 幫忙打包所有檔案了，有了這個我們就能…嗯…把bower 給刪掉啦(・∀・)。  
 
@@ -115,18 +115,18 @@ npm install --save-dev babel-loader babel-core babel-preset-react react react-do
 
 下面整理一些相關的錯誤訊息：  
 ```txt
-Unexpected token  
+Unexpected token
 ```
 well 它看不懂 jsx 的檔案，所以需要用babel-loader 來處理 jsx 檔  
 
 ```txt
-Module not found: Error: Cannot resolve module 'react'  
+Module not found: Error: Cannot resolve module 'react'
 ```
 表示它在node\_modules 裡面找不到require 的module，使用npm 安裝即可  
 
 ```txt
-ERROR in ./front-end/main.jsx  
-Module build failed: Error: Couldn't find preset "react" relative to directory "/home/yodalee/website/message-downloader"  
+ERROR in ./front-end/main.jsx
+Module build failed: Error: Couldn't find preset "react" relative to directory "/home/yodalee/website/message-downloader"
 ```
 這個是指 babel-loader 沒有相關的……套件？像上面裝了babel-preset-react 就解掉了。  
 

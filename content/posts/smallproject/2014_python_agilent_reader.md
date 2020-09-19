@@ -24,23 +24,23 @@ What The F.. Emmm, Ahhh, Ahhh, 沒事
 這次我再加上用namedtuple來處理，整體會變得很乾淨；例如它一個波型的header格式是這樣：  
 
 ```c
-int32 headerSize  
-int16 bufferType  
-int16 bytesPerPoint  
-int32 bufferSize   
+int32 headerSize
+int16 bufferType
+int16 bytesPerPoint
+int32 bufferSize
 ```
 那我就先定義好namedtuple跟struct的format string:  
 ```python
-from collections import namedtuple  
-bufHeaderfmt = "ihhi"  
-bufHeaderSiz = struct.calcsize(bufHeaderfmt)  
-bufHeader = namedtuple("bufHeader", "headerSize bufferType bytesPerPoint bufferSize")  
+from collections import namedtuple
+bufHeaderfmt = "ihhi"
+bufHeaderSiz = struct.calcsize(bufHeaderfmt)
+bufHeader = namedtuple("bufHeader", "headerSize bufferType bytesPerPoint bufferSize")
 ```
 
 再來我們讀入檔案，直接寫到tuple裡，就可以用名字直接存取值，例如我們要跳過header：  
 ```python
-bufHdr = bufHeader._make(struct.unpack(bufHeaderFmt, fd.read(bufHeaderSiz)))  
-fd.seek(bufHdr.bufferSize, 1)  
+bufHdr = bufHeader._make(struct.unpack(bufHeaderFmt, fd.read(bufHeaderSiz)))
+fd.seek(bufHdr.bufferSize, 1)
 ```
 
 是不是超簡潔的？一個晚上就寫完了=w=  

@@ -37,8 +37,8 @@ series: null
 
 rust 的編譯是由 cargo.toml 所驅動，一個 rust 模組只能編出一個 rlib，由 cargo.toml 的 [lib] 所指定，例如我這個專案指定 library 名稱跟路徑如下：  
 ```toml
-[lib]  
-name = "computationbook"  
+[lib]
+name = "computationbook"
 path = "src/lib.rs"
 ```
 如果不設定的話，cargo 會預設編譯 src/lib.rs，並自動從資料夾名稱產生 library 名稱；這個 library 名稱非常重要，先把它記著。  
@@ -68,10 +68,10 @@ module 大致的規則就是這樣
 注意第二、三個方法互相衝突的，不能有 mymodule.rs 跟 mymodule/mod.rs 同時存在，rust 會跳出編譯錯誤。  
 另外有一個特例是在 src 下，只有 lib.rs 有權限宣告 submodule，例如 lib.rs 宣告一個叫 network 的 module 並把內容放在 src/network.rs，network.rs 就不能再宣告它有一個 module server。  
 ```rust
-// src/lib.rs  
-mod network;  
+// src/lib.rs
+mod network;
 
-// src/network.rs  
+// src/network.rs
 mod server; // compile error
 ```
 這裡的 error 訊息很詭異，是 

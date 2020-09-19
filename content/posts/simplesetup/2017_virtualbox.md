@@ -18,7 +18,7 @@ series: null
 開頭就有說了，一定要是 vdi 的虛擬硬碟檔案，首先要先備份一下 vdi 檔，以免調整用量的時候出錯，把整個虛擬磁碟毀了，
 備份完之後，使用下面的指令，vdi 檔的路徑建議用絕對路徑，size 的單位是 MB，我多劃 5 GB 的空間給它，總共是 40 GB。  
 ```bash
-vboxmanage modifyhd /media/datadisk/win7.vdi --resize 40960  
+vboxmanage modifyhd /media/datadisk/win7.vdi --resize 40960
 ```
 要注意這個指令似乎只能調大不能調小，所以不要不小心劃太多。  
 

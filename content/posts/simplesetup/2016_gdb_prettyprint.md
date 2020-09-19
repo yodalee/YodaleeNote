@@ -21,15 +21,15 @@ series: null
 
 假設我們有一個客製的struct 或是class，例如Qt4 的QString，如果我們用原本gdb 的print 去印出QString的話：  
 ```cpp
-QString s("Hello World");  
+QString s("Hello World");
 ```
 ```txt
 (gdb) p s
-$2 = {static null = {<No data fields>}, static shared_null = {ref = {_q_value = 2}, alloc = 0, size = 0, 
-data = 0x7ffff7dd70fa <QString::shared_null+26>, clean = 0, simpletext = 0, righttoleft = 0, 
-asciiCache = 0, capacity = 0, reserved = 0, array = {0}}, 
-static shared_empty = {ref = {_q_value = 1}, alloc = 0, size = 0, data = 0x7ffff7dd70da 
-<QString::shared_empty+26>, clean = 0, simpletext = 0, righttoleft = 0, asciiCache = 0, capacity = 0, 
+$2 = {static null = {<No data fields>}, static shared_null = {ref = {_q_value = 2}, alloc = 0, size = 0,
+data = 0x7ffff7dd70fa <QString::shared_null+26>, clean = 0, simpletext = 0, righttoleft = 0,
+asciiCache = 0, capacity = 0, reserved = 0, array = {0}},
+static shared_empty = {ref = {_q_value = 1}, alloc = 0, size = 0, data = 0x7ffff7dd70da
+<QString::shared_empty+26>, clean = 0, simpletext = 0, righttoleft = 0, asciiCache = 0, capacity = 0,
 reserved = 0, array = {0}}, d = 0x603dc0, static codecForCStrings = 0x0}
 ```
 因為QString 是個結構的關係，我們無法單純印個char array ，反而會印出裡面所有的資訊，它真的資訊是存在那個 d 裡面，要真的印字串就要從那個d 裡面去印。  
@@ -40,19 +40,19 @@ define printqstring
   set $i=0
   while $i < $arg0.d->size
     set $c=$arg0.d->data[$i++]
-    if $c < 32 || $c > 127 
+    if $c < 32 || $c > 127
       printf "\\u0x%04x", $c
     else
       printf "%c", (char)$c
-    end 
+    end
   end
   printf "\"\n"
 end
 ```
 就可以在debug 時使用printqstring來印出QString  
 ```txt
-(gdb) printqstring s  
-(QString)0xffffe650 (length=12): "Hello World!"   
+(gdb) printqstring s
+(QString)0xffffe650 (length=12): "Hello World!"
 ```
 
 當然我們可以用gdb 的pretty printer 來做到類似的事，而且不需要自訂函式，單純用p s 也能做到一樣的效果。  
@@ -91,7 +91,7 @@ python 的integer, float, boolean, string 都是gdb 可處理的(可轉換為gdb
 ```python
 addr = self.val.address
 size = self.val['d']['size']
-i = 0 
+i = 0
 content = []
 while i < length:
   c = self.val['d']['data'][i]
@@ -99,7 +99,7 @@ while i < length:
     content.append("\\u%x" % (int(c)))
   else:
     content.append(chr(c))
-  i = i + 1 
+  i = i + 1
 return '(QString)%s (length=%d): "%s"' % (addr, size, "".join(content))
 ```
 
@@ -115,7 +115,7 @@ content = dataAsCharPointer.string(encoding='utf-16', length=size*2)
 不過，這樣的pretty printer 其實有個問題的，因為它寫死了一定會去讀取self.val['d']裡面的值，
 但這個值未必是有初始化的，這時使用pretty printer 就會出錯：  
 ```txt
-<error reading variable: Cannot access memory at address 0xa>   
+<error reading variable: Cannot access memory at address 0xa>
 ```
 
 其實要用pretty printer 的話，在.gdbinit 裡面加上 set print pretty on 就是個不錯的開始，光這樣就能讓一些輸出漂亮很多

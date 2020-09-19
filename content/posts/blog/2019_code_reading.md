@@ -86,8 +86,8 @@ syntax sugar 的本意就是：更易讀或表達更簡單的文法，本質上�
 
 大型的專案通常都橫跨十幾年，會有老舊語法跟 legacy code 是很正常的事情，我現在做的專案裡面還有 K&R C 的 parameter style 勒，就像下面這種：  
 ```c
-int foo(bar, qux)   
-int bar,  
+int foo(bar, qux)
+int bar,
 stNode qux { … }
 ```
 反正編譯器還支援的狀況下留著也沒差，我敢打賭這種 code 還會在公司的程式裡留 10 年以上；

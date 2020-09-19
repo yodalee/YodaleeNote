@@ -66,11 +66,11 @@ Assert 跟 Expect 完整的列表可以在 Github 上 Google test 的[文件](ht
 如果是用 CMake 的話我，請參考[這個連結](https://stackoverflow.com/questions/8507723/how-to-start-working-with-gtest-and-cmake)：  
 
 ```cmake
-# Google Test  
-add_executable(unittest unittest.cpp)  
-enable_testing()  
-target_link_libraries(unittest gtest gtest_main)  
-add_test(unittestSuite unittest)   
+# Google Test
+add_executable(unittest unittest.cpp)
+enable_testing()
+target_link_libraries(unittest gtest gtest_main)
+add_test(unittestSuite unittest)
 ```
 
 我們要產生一個新的執行檔 unittest，在 link library 加上 gtest 跟 gtest\_main，

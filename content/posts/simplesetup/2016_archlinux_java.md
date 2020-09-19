@@ -12,7 +12,7 @@ series: null
 Java 2014 年就推出java 8 了，從java 6 到java 8 共有三個版本的 java，各版本間無法相容，例如要開發Android 的話就要使用java 6，
 而目前電腦上安裝的Eclipse Mars 2.0，看到java 6 就會作嘔回報：  
 ```txt
-Version 1.6.0\_45 of the JVM is not suitable for this product. Version: 1.7 or greater is required.   
+Version 1.6.0_45 of the JVM is not suitable for this product. Version: 1.7 or greater is required.
 ```
 在Ubuntu 上開發時，可以使用[alternatives](http://lj4newbies.blogspot.tw/2007/04/2-jvm-on-one-linux-box.html)來切換不同的java 版本  
 <!--more-->
@@ -24,15 +24,15 @@ Version 1.6.0\_45 of the JVM is not suitable for this product. Version: 1.7 or g
 使用上很直覺，透過status 檢視目前安裝哪些java 版本：  
 ```bash
 $ archlinux status
-Available Java environments:  
-java-6-jdk  
-java-6-jre/jre  
-java-7-openjdk (default)  
+Available Java environments:
+java-6-jdk
+java-6-jre/jre
+java-7-openjdk (default)
 ```
 
 透過set 選擇要改用哪個版本：  
 ```bash
-archlinux-java set java-6-jre/jre  
+archlinux-java set java-6-jre/jre
 ```
 
 因為這些動作都會改動 /usr 的內容，所以都需要super user 權限。  

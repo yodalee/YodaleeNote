@@ -21,16 +21,16 @@ series: null
 使用方法很簡單，產生一個goslate的物件後，叫個function 即可：  
 ```python
 import goslate
-go=goslate.Goslate()  
-go.translate("worship", "zh_tw")   
-'崇拜'   
+go=goslate.Goslate()
+go.translate("worship", "zh_tw")
+'崇拜'
 ```
 同樣的，qt的翻譯檔就是一個xml 檔，python要對付xml也是小菜一碟，用xml.etree.Element即可，每個要翻譯的文字會以這樣的格式記錄：  
 ```xml
-<message>  
-<source>Hu&amp;e:</source>  
-<translation type="unfinished"></translation>  
-</message> 
+<message>
+<source>Hu&amp;e:</source>
+<translation type="unfinished"></translation>
+</message>
 ```
 
 Source是原始文字，Translation則是翻譯文，如果還沒翻譯，就會在translation tag加上type="unfinished"的屬性。  
@@ -40,8 +40,8 @@ Source是原始文字，Translation則是翻譯文，如果還沒翻譯，就會
 把整個xml 讀到一個xml tree 物件裡，用的是 python xml 的 [ElementTree](https://docs.python.org/2/library/xml.etree.elementtree.html)：  
 ```python
 import xml.etree.ElementTree as ET
-self.tree = ET.parse(XXX.ts)  
-root = self.tree.getroot()    
+self.tree = ET.parse(XXX.ts)
+root = self.tree.getroot()
 ```
 開始翻譯，這裡我設定self.maplist這個dict物件，記錄所有翻過的內容，這樣只要以後再次出現就取用之前的結果，省下網路回應的時間；
 之所以要在translate的外面加上try, except，是我發現goslate在翻譯OK這個字時，不知為何會出現錯誤，為了讓程式跑下去只好出此下策；
@@ -66,7 +66,7 @@ for msg in root.iter('message'):
 最後把程式寫出去即可，也是一行搞定：  
 
 ```python
-self.tree.write(filename, xml\_declaration=True, encoding="UTF-8", method="html")   
+self.tree.write(filename, xml_declaration=True, encoding="UTF-8", method="html")
 ```
 ## 結果：
 

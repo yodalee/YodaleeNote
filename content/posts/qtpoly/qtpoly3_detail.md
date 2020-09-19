@@ -17,7 +17,7 @@ series:
 這算是一個附加功能，一般的顯示工具只要設定 Scene 的 [background brush](https://doc.qt.io/qt-5/qgraphicsscene.html#backgroundBrush-prop)，設定一個黑色的 brush，就能畫出黑色背景了。  
 但如果我們要更精細的話，就要去實作 scene 或是 view 的 [drawBackground](https://doc.qt.io/qt-5/qgraphicsscene.html#drawBackground) 函式：  
 ```cpp
-void drawBackground(QPainter *painter, const QRectF &rect)    
+void drawBackground(QPainter *painter, const QRectF &rect)
 ```
 下面是我實作的程式碼節錄，有幾個可以注意的地方：  
 
@@ -42,7 +42,7 @@ MyViewer::drawBackground(QPainter *painter, const QRectF &rect) {
   qreal snap_l = qFloor(left / step) * step;
   qreal snap_r = qFloor(right / step) * step;
   qreal snap_b = qFloor(bottom / step) * step;
-  qreal snap_t = qFloor(top / step) * step; 
+  qreal snap_t = qFloor(top / step) * step;
 
   // print coordinate point
   for (qreal x = snap_l; x <= snap_r; x += step) {
@@ -64,7 +64,7 @@ MyViewer::drawBackground(QPainter *painter, const QRectF &rect) {
 使用情境也很單純，像是在畫面上打個 marker 或是寫上文字，如果視窗縮小就看不到就奇怪了，所以這個 marker 就要設定這個 flag，放大縮小都會顯示一樣。  
 改變就是呼叫：
 ```cpp
-setFlag(QGraphicsItem::ItemIgnoresTransformations, true);  就可以了。  
+setFlag(QGraphicsItem::ItemIgnoresTransformations, true);  就可以了。
 ```
 
 要注意的是在設定了這個 flag 之後，在這個 item 裡面的位移似乎會失去效果（還是行為會變很怪，我有點忘了），一般要在一個位置例如 100, 100 畫一個正方形，我們可以用 QGraphicsRectItem，在 100, 100 的地方畫正方形；如果是 ignore transformation 的物件，我是變成在 0,0 的位置畫一個正方形，然後把物件的位置用 setPos 設定在 100, 100。  

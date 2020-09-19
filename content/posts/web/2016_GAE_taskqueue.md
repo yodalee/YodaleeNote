@@ -98,12 +98,12 @@ app = webapp2.WSGIApplication([
 執行是最關鍵的一步了，平常是要測試的話只要  dev\_appserver.py . 就好，因為我們多了一個 worker.yaml ，
 所以要指定它把 worker.yaml 也考慮進來，又因為兩個yaml 在application ID上會衝突，會出現  
 ```
-More than one application ID found: dev~None, dev~application\_id
+More than one application ID found: dev~None, dev~application_id
 ```
 
 所以要明確指定ID：  
 ```bash
-dev\_appserver.py -A application\_id app.yaml worker.yaml
+dev_appserver.py -A application_id app.yaml worker.yaml
 ```
 這樣才能正常的執行，這花了我超多時間，最後是看了[google 範例code](https://github.com/GoogleCloudPlatform/python-docs-samples) 裡，
 standard/taskqueue/counter 的readme 才知道要這樣執行…  

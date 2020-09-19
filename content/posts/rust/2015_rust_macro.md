@@ -75,14 +75,14 @@ temp_vec.push(3);
 
 Rust 這樣的Macro 設計是基於syntax parser 的，所以不必擔心像C macro 會遇到的問題，例如：  
 ```c
-#define FIVE(x) 5*x  
+#define FIVE(x) 5*x
 FIVE(2+3)
 ```
 如果是Rust 的Macro ，後面的2+3 是會直接parse 成一個expr，因此仍會正常運作，內部的$x 名稱和展開的名稱也不會有任何衝突，不用擔心C Macro字串展開後可能取用到其他變數的問題。  
 ```rust
-macro_rule! FIVE {  
-    ($x: expr) => (5*x)  
-}   
+macro_rule! FIVE {
+    ($x: expr) => (5*x)
+}
 ```
 
 在Rust 裡可以進行Macro matcher 的東西非常多，上面的expression 只是當例子，其實這些都可以寫到matcher 裡面，並有對應的要求，

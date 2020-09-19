@@ -13,13 +13,13 @@ series: null
 
 以我隔壁超強的同學「瓦哥」為例，過去的電磁模擬記錄會這樣寫   
 ```txt
-D:\Program Files (x86)\Sonnet\0.18um\_m\transformer\PA\sonnet\Stack\_PA\XXX.snp  
+D:\Program Files (x86)\Sonnet\0.18um_m\transformer\PA\sonnet\Stack_PA\XXX.snp
 ```
 移到別的電腦就找不到這些電磁模擬檔。   
 
 比較好的做法是把電磁模擬放到ADS的project資料夾內，例如新建一個EM的資料夾，然後用相對路徑去存取：   
 ```txt
-EM\Stack\_PA\XXX.snp  
+EM\Stack_PA\XXX.snp
 ```
 就能確保模擬檔的可移動性。   
 
@@ -31,7 +31,7 @@ ADS的設計是記錄在dsn文字檔裡面，這類文字檔的操作其實也�
 for i in *.dsn;
 do
    sed -i 's/XXX/yyy/g' $i;
-done   
+done
 ```
 
 缺點：Unix 限定……，windows我還真想不出解法，可能要用python, mingw，不然powershell可能有類似的功能？   

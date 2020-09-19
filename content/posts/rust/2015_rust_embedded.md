@@ -59,13 +59,13 @@ pub struct RCCType {
 #[inline(always)]
 pub fn RCC() -> &'static mut RCCType {
     unsafe {
-        &mut *(RCC\_BASE!() as *mut RCCType)
+        &mut *(RCC_BASE!() as *mut RCCType)
     }
 }
 ```
 而 `RCC_BASE!()` 這個Macro，又會照[上一篇]({{< relref "2015_rust_macro.md">}})提到的 `Macro_rule` 展開為：  
 ```rust
-AHB1PERIPH\_BASE!() + 0x3000u32   
+AHB1PERIPH_BASE!() + 0x3000u32
 ```
 一路展開，最後得到一個32 bits integer，再轉型成RCCType 的mutable pointer，我做的修改就是把RCC, USART2, GPIO的位址換成STM32f1的。   
 在main 裡面就可以使用 `let rcc = RCC()` 的方式，取得RCC的pointer，並用像C一樣的操作手法來操作對應的register位址。   
@@ -79,7 +79,7 @@ rcc.APB1ENR |= 0x00020000u32;
 let usart2 = USART2();
 while(true) {
     while(usart2.SR & 0x0080u16 == 0) {}
-    usart2.DR = 'x' as uint16\_t;
+    usart2.DR = 'x' as uint16_t;
 }
 ```
 這裡我們只輸出'x'，這是因為要把text 印出來，我們需要對str 作iterate，而這個東西是定義在rust 的core lib 裡面，
@@ -90,31 +90,31 @@ while(true) {
 另一個要解決的問題則是 isr\_vector，這裡可以看到一種很謎樣的寫法，用 link\_section 這個attribute，定義區段名為 .isr\_vector，
 並設定為一個array，內含一個extern "c" fn()，如果要需要其他的ISR，則可以在後面寫更多的function，並把1改為需要的數量。   
 ```rust
-#[link\_section=".isr\_vector"]
+#[link_section=".isr_vector"]
 pub static ISRVECTORS: [unsafe extern "C" fn(); 1] = [
     main,
 ];
 ```
 linker script裡面，先保留一個LONG 的寬度指向初始化stack pointer，接著放isr\_vector的reset handler，再放其他的.text，這樣裝置一上電就會執行main裡的內容。   
 ```txt
-.text :   
-{   
-    LONG(\_stackStart); /* Initial stack pointer */   
-    KEEP(*(.isr\_vector)) /* ISR vector entry point to main */   
-    *(.text)   
-    *(.text*)   
-} > FLASH    
+.text :
+{
+    LONG(_stackStart); /* Initial stack pointer */
+    KEEP(*(.isr_vector)) /* ISR vector entry point to main */
+    *(.text)
+    *(.text*)
+} > FLASH
 ```
 如果我們把最終執行檔反組譯，會看到其中的位址配置，0x0指向stack start，0x4 reset\_handler指向位在0x08 的main。：   
 ```txt
-Disassembly of section .text:   
-00000000 <\_ZN10ISRVECTORS20h538ad2a8e3805addk6aE-0x4>:   
-0: 10010000 .word 0x10010000   
+Disassembly of section .text:
+00000000 <_ZN10ISRVECTORS20h538ad2a8e3805addk6aE-0x4>:
+0: 10010000 .word 0x10010000
 
-00000004 <\_ZN10ISRVECTORS20h538ad2a8e3805addk6aE>:   
-4: 00000009 ....   
+00000004 <_ZN10ISRVECTORS20h538ad2a8e3805addk6aE>:
+4: 00000009 ....
 
-00000008 <main>:    
+00000008 <main>:
 ```
 執行結果，會印出滿坑滿谷的 'x'，我加一個條件讓它只print 100個：  
 ![xxx](/images/posts/rust_embedded.jpg)

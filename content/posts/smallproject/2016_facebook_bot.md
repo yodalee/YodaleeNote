@@ -31,9 +31,9 @@ series: null
 ## webhook
 第一步就是把webhook 裝上去，首先連接webhook 的route：  
 ```python
-app = webapp2.WSGIApplication([  
-    ('/webhook', FBwebhook),  
-], debug=True)    
+app = webapp2.WSGIApplication([
+    ('/webhook', FBwebhook),
+], debug=True)
 ```
 並實作 get handler，所謂 verificaion token就是上面寫驗證權杖，寫到這裡可以用Postman去檢驗是否有問題：  
 ```python
@@ -58,7 +58,7 @@ class FBwebhook(webapp2.RequestHandler):
 ## 註冊應用程式
 連接了webhook 就能向Facebook 註冊你的應用程式了，依照getting started 的頁面指示發送要求，token請換成你粉絲專頁的token：  
 ```bash
-curl -ik -X POST "https://graph.facebook.com/v2.6/me/subscribed\_apps?access\_token=<token>   
+curl -ik -X POST "https://graph.facebook.com/v2.6/me/subscribed_apps?access_token=<token>
 ```
 理應會收到  
 ```json

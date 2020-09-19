@@ -14,40 +14,40 @@ series: null
 <!--more-->
 首先在archlinux 上面，跟 [之前這篇 LLVM 編譯]({{< relref "2015_llvm_embedded.md">}})不同，現在只剩下gcc49, gcc53跟gdb 還在  
 ```txt
-arm-none-eabi-gcc53-linaro  
-arm-none-eabi-gdb-linaro   
+arm-none-eabi-gcc53-linaro
+arm-none-eabi-gdb-linaro
 ```
 替代品是AUR中下面這些套件（順帶一提，安裝這幾個套件之前，請先去/etc/makepkg.conf 把 MAKEFLAGS 改成 -jn，不然用單核心編譯這幾個近100 MB的程式會編譯到想翻桌）：  
 ```txt
-arm-linux-gnueabihf-binutils  
-arm-linux-gnueabihf-gcc  
-arm-linux-gnueabihf-glibc  
-arm-linux-gnueabihf-linux-api-headers  
-arm-linux-gnueabihf-gdb   
+arm-linux-gnueabihf-binutils
+arm-linux-gnueabihf-gcc
+arm-linux-gnueabihf-glibc
+arm-linux-gnueabihf-linux-api-headers
+arm-linux-gnueabihf-gdb
 ```
 安裝完之後當然就來用一下了，測試當然就用最簡單的helloworld.c 去測：  
 ```txt
-$ arm-linux-gnueabihf-gcc helloworld.c -o hello  
+$ arm-linux-gnueabihf-gcc helloworld.c -o hello
 exec format error: ./hello
 ```
 這是當然的囉，因為我的機器是x86\_64，而arm-gcc 編出來的執行檔要在arm 架構上執行，幸好這年頭我們有qemu-arm 可以用（老實說，悲劇就是從這裡開始的= =）：  
 ```bash
-qemu-arm hello  
+qemu-arm hello
 /lib/ld-linux-armhf.so.3: No such file or directory
 ```
 這又是為什麼呢？我們可以file 它一下，可以看到它的interpreter 是/lib/ld-linux-armhf.so.3，而這個檔案是不存在的。  
 ```txt
-file hello  
-hello: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked, 
-interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 2.6.32, 
-BuildID[sha1]=716a92a4985090baa83f8b762c5f9844e197ed83, not stripped   
+file hello
+hello: ELF 32-bit LSB executable, ARM, EABI5 version 1 (SYSV), dynamically linked,
+interpreter /lib/ld-linux-armhf.so.3, for GNU/Linux 2.6.32,
+BuildID[sha1]=716a92a4985090baa83f8b762c5f9844e197ed83, not stripped
 ```
 它真正的位置在arm-gcc 的安裝位置：/usr/arm-linux-gnueabihf/lib，創個symbolic link過去  
 ```txt
-ln -s /usr/arm-linux-gnueabihf/lib/ld-linux-armhf.so.3 /lib/ld-linux-armhf.so.3  
-ll ld-linux-armhf.so.3  
+ln -s /usr/arm-linux-gnueabihf/lib/ld-linux-armhf.so.3 /lib/ld-linux-armhf.so.3
+ll ld-linux-armhf.so.3
 lrwxrwxrwx 1 root root 48 Oct 5 19:10 ld-linux-armhf.so.3 ->
-   /usr/arm-linux-gnueabihf/lib/ld-linux-armhf.so.3   
+   /usr/arm-linux-gnueabihf/lib/ld-linux-armhf.so.3
 ```
 這時候就不會有No such file or directory，雖然會換成另一個錯誤  
 ```txt
@@ -61,18 +61,18 @@ cannot open shared object file: No such file or directory
 
 這就是電腦上沒有安裝相對應的函式庫，可以用ldd 來確認這件事，沒有就要安裝該函式庫；或者函式庫安裝在/usr/lib 以外的特殊路徑，就要利用ld.so.conf去設定，像我的/etc/ld.so.conf.d裡面就有：  
 ```txt
-android-sdk.conf  
-cuda.conf  
-fakeroot.conf  
-ffmpeg2.8.conf  
-lib32-glibc.conf  
-octave.conf  
-openmpi.conf   
+android-sdk.conf
+cuda.conf
+fakeroot.conf
+ffmpeg2.8.conf
+lib32-glibc.conf
+octave.conf
+openmpi.conf
 ```
 
 不過我們的狀況比較複雜一點，在這之前試著把 /usr/arm-linux-gnueabihf/lib 加到ld.so.conf 裡面，執行ldconfig 時就出問題了  
 ```txt
-$ ldconfig  
+$ ldconfig
 ldconfig: /usr/lib/ld-linux-armhf.so.3 is for unknown machine 40.
 ```
 我們x86\_64 的ldconfig 壓根不認arm 的函式庫，這些函式庫也沒加到ld.conf.cache，自然也不會在執行時被 ld-linux-armhf.so.3 連結，所以上面的執行還是失敗了。  
@@ -91,14 +91,14 @@ arm-linux-gnueabihf-gcc -Xlinker -rpath=/usr/arm-linux-gnueabihf/lib hello.c
 
 LD\_LIBRARY\_PATH 的優先順序高過 ldconfig 設定的路徑，也能讓qemu-arm 跑起來：  
 ```txt
-export LD\_LIBRARY\_PATH=/usr/arm-linux-gnueabihf/lib/
+export LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib/
 ```
 當然這不是一個好方法，也是[老話題](http://xahlee.info/UnixResource_dir/_/ldpath.html)了，請見：  
 
 ## 設定 qemu -L flag
 或者是利用qemu-arm 的-L flag，這個的位階低於LD\_LIBRARY\_PATH，因此用這個要確定LD\_LIBRARY\_PATH沒有設值。  
 ```txt
-qemu-arm -L /usr/arm-linux-gnueabihf hello   
+qemu-arm -L /usr/arm-linux-gnueabihf hello
 ```
 試了這麼多方法，最後一種其實才是最有效的做法，也是我忘掉的方法(yay  
 
@@ -111,28 +111,28 @@ qemu-arm -L /usr/arm-linux-gnueabihf hello
 
 1. 是上面寫的，用 rpath 設定搜尋路徑：  
 ```txt
-arm-linux-gnueabihf-gcc -Xlinker -rpath=/usr/arm-linux-gnueabihf/lib hello.c  
-arm-linux-gnueabihf-gcc -Wl,-rpath=/usr/arm-linux-gnueabihf/lib hello.c   
+arm-linux-gnueabihf-gcc -Xlinker -rpath=/usr/arm-linux-gnueabihf/lib hello.c
+arm-linux-gnueabihf-gcc -Wl,-rpath=/usr/arm-linux-gnueabihf/lib hello.c
 ```
 2. 是直接編譯，但先設定LD\_RUN\_PATH的值：  
 ```txt
-export LD\_RUN\_PATH=/usr/arm-linux/gnueabihf/lib  
-arm-linux-gnueabihf-gcc hello.c    
+export LD_RUN_PATH=/usr/arm-linux/gnueabihf/lib
+arm-linux-gnueabihf-gcc hello.c
 ```
 我們可以用readelf -d 把dynamic sections 給讀出來，就能看到我們設定的rpath 了：  
 ```txt
-readelf -d hello  
-0x0000000f (RPATH) 函式庫路徑：[/usr/arm-linux-gnueabihf/lib]   
+readelf -d hello
+0x0000000f (RPATH) 函式庫路徑：[/usr/arm-linux-gnueabihf/lib]
 ```
 
 另外還有一種是 -L，它會設定連接時搜尋共享函式庫的目錄，這裡只給一個最粗淺的例子：  
 ```txt
-arm-linux-gnueabihf-gcc -c hello.c -o hello.o  
+arm-linux-gnueabihf-gcc -c hello.c -o hello.o
 arm-linux-gnueabihf-ld hell.o -o hello
 ```
 會發生undefined reference to puts 的錯誤，因為我們沒有連接所需要的 c library，另外我們也沒有指定程式的進入點為何，要能連結通過至少要：  
 ```txt
-arm-linux-gnueabihf-ld hell.o -o -lc -L/usr/arm-linux-gnueabihf/lib hello –entry main   
+arm-linux-gnueabihf-ld hell.o -o -lc -L/usr/arm-linux-gnueabihf/lib hello –entry main
 ```
 當然這樣不代表可以執行，試著執行會發現dynamic linker 並沒有正確設定，除此之外還有各種runtime 的library 需要連結進去才會動；
 要看到可運作的呼叫方式，可以用gcc -v (-verbose) 來觀察。  

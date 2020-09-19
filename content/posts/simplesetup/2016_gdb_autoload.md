@@ -91,8 +91,8 @@ hello-gdb.py會在gdb 開啟時自動載入，其他有用到的dynamic library 
 
 因此我們必須在gdb 開始自動載入script 前，把這個script 加到安全名單之中；因此，我們的gdb 呼叫會變成下列兩者擇一，也就跟rust-gdb 相差無幾了：  
 ```bash
-PYTHONPATH="$PYTHONPATH:/tmp" gdb -iex "set auto-load safe-path /tmp" hello  
-PYTHONPATH="$PYTHONPATH:/tmp" gdb -iex "add-auto-load-safe-path /tmp/hello-gdb.py" hello  
+PYTHONPATH="$PYTHONPATH:/tmp" gdb -iex "set auto-load safe-path /tmp" hello
+PYTHONPATH="$PYTHONPATH:/tmp" gdb -iex "add-auto-load-safe-path /tmp/hello-gdb.py" hello
 ```
 
 大概的故事就是這樣了，rust-gdb 當然是lookup function 那邊搞了很多，把型別什麼共同的部分獨立出來，以便支援gdb 跟lldb。  

@@ -44,7 +44,7 @@ CPU：i7-3610QM，記憶體加到8G，整體而言不重，加上電池2.2kg，�
 我選的linux是Archlinux x86\_64  
 只看CPU的話，效能超讚，在archlinux下跑linux的pi指令，算到小數點下1000000位，用time來記時，用real來比較：  
 ```shell
-$time pi 1000000 > /dev/null  
+$time pi 1000000 > /dev/null
 ```
 這台i7只需要１秒啊！  
 

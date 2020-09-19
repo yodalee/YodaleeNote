@@ -26,17 +26,17 @@ series: null
 
 安裝 pest，在 Cargo.toml 中加上：  
 ```toml
-[dependencies]  
-pest = "^1.0"  
-pest\_derive = "^1.0"
+[dependencies]
+pest = "^1.0"
+pest_derive = "^1.0"
 ```
 pest\_derive 為 pest 剖析器產生器，他會分析你指定的 PEG 文法，生成對應的剖析規則跟剖析器；pest 則是引入剖析後生成的資料結構，兩個都要引入。  
 在原始碼中加入：  
 ```rust
-#[cfg(debug_assertions)]  
-const _GRAMMAR: &'static str = include\_str!("simple.pest");  
-#[derive(Parser)]  
-#[grammar = "the_meaning_of_programs/simple.pest"]  
+#[cfg(debug_assertions)]
+const _GRAMMAR: &'static str = include_str!("simple.pest");
+#[derive(Parser)]
+#[grammar = "the_meaning_of_programs/simple.pest"]
 struct SimlpeParser;
 ```
 \_GRAMMAR 是用來提醒編譯器，在 simple.pest 檔案更新的時候，也要觸發重新編譯（不然就會發現改了文法，cargo build 不會重新編譯），

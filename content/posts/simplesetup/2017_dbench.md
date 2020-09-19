@@ -13,24 +13,24 @@ series: null
 
 本測試需安裝 dbench 進行測試，在Linux 主機上使用下列指令取得dbench。  
 ```bash
-git clone https://github.com/sahlberg/dbench   
+git clone https://github.com/sahlberg/dbench
 ```
 先安裝要測試網路硬碟所需的library：  
 ```bash
-sudo apt-get install libiscsi-dev  
-sudo apt-get install smbclient  
-sudo apt-get install libsmbclient-dev  
-sudo apt-get install samba-dev  
+sudo apt-get install libiscsi-dev
+sudo apt-get install smbclient
+sudo apt-get install libsmbclient-dev
+sudo apt-get install samba-dev
 sudo apt-get install libnfs-dev
 ```
 
 在dbench 中使用下列指令編譯，configure 要加的參數來自[這個gist](https://gist.github.com//6d94b7db13b08be586ce)，才能找到samba client library：  
 
 ```bash
-./autogen.sh  
-./configure CFLAGS="-I/usr/include/samba-4.0/"  
-make  
-make install   
+./autogen.sh
+./configure CFLAGS="-I/usr/include/samba-4.0/"
+make
+make install
 ```
 完成編譯dbench，在測試機上，可以使用dbench來進行測試，簡單的如：  
 ```bash
@@ -39,7 +39,7 @@ make install
 
 或是想要測試遠端的samba server：  
 ```bash
-./dbench -B smb --smb-share=//<IP>/<DIR> --smb-user=<USER>%<PASS> --loadfile=loadfiles/smb_1.txt -t <TIME> <THREAD>   
+./dbench -B smb --smb-share=//<IP>/<DIR> --smb-user=<USER>%<PASS> --loadfile=loadfiles/smb_1.txt -t <TIME> <THREAD>
 ```
 
 各欄位說明如下：  

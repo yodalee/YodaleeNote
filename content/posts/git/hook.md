@@ -32,7 +32,7 @@ Hook 可分為 client side 和server side，又有 pre-hook 跟 post-hook 的分
 這裡我想做的是用 Client-side + Pre-hook ，在每次commit 前都先跑過一次測試，如果測試不過就拒絕此次commit，所以我們用到的是 pre-commit。  
 首先先在project 裡面加上一個test.py，用來統整所有的test script，這樣就可以用 python test.py 跑過所有測試，可以先在command line 測一下：  
 ```shell
-python test.py || echo $?   
+python test.py || echo $?
 ```
 pre-commit script 就很簡單：  
 ```shell
@@ -47,7 +47,7 @@ python test.py || exit 1
 #!/bin/sh
 
 python test.py 2>/dev/null
-if [[ $? -ne 0 ]]; 
+if [[ $? -ne 0 ]];
 then
   echo "> Unit tests DID NOT pass !" exit 1
 fi
@@ -55,20 +55,20 @@ fi
 
 注意後面的判斷跟echo 是必要的，否則python 輸出導向null之後，使用者打git commit 會變成完全沒有反應，這顯然不是個好狀況；完成之後，試著下git commit，就會發現test 不過，而不像正常流程一樣跳出commit message編輯器：  
 ```txt
-Garbage@GarbageLaptop $ git commit  
-.F  
-======================================================================  
-FAIL: test\_zh\_tw (\_\_main\_\_.REdictParseTest)  
-----------------------------------------------------------------------  
-Traceback (most recent call last):  
-File "test.py", line 17, in test  
-assert(ans == parse)  
-AssertionError  
+Garbage@GarbageLaptop $ git commit
+.F
+======================================================================
+FAIL: test_zh_tw (__main__.REdictParseTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+File "test.py", line 17, in test
+assert(ans == parse)
+AssertionError
 
-----------------------------------------------------------------------  
-Ran 2 tests in 0.007s  
+----------------------------------------------------------------------
+Ran 2 tests in 0.007s
 
-FAILED (failures=1)    
+FAILED (failures=1)
 ```
 
 我的建議是在 test case 有一定規摸的時候，足以進行TDD 的時候才引入此流程，或者要先把test 裡都加上expected failure ，否則有test 不過就會讓git 根本commit 進不去，如果又因為過不了就每次都下git commit --no-verify，就失去TDD 的意義了  

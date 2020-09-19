@@ -62,23 +62,23 @@ def MessageViewHandler():
 因為我是用archlinux ，本身就提供了bower 套件，所以可以用 pacman 裝bower；非archlinux 的發行版就要用npm 裝bower：  
 ```bash
 $ npm install -g bower
-$ npm init  
-$ npm install --save-dev bower   
+$ npm init
+$ npm install --save-dev bower
 ```
 有了bower之後，在project 中初始一個bower：  
 ```bash
-$ bower init   
+$ bower init
 ```
 
 設定直接接受預設設定即可，它會產生一個 bower.json 檔案，我們另外要指定bower 安裝檔案的路徑為static，這要編輯 .bowerrc 並加入下列內容：  
 ```json
-{  
-    "directory": "./static/bower\_components"  
+{
+    "directory": "./static/bower_components"
 }
 ```
 並使用bower 安裝套件，可以用
 ```bash
-bower install <package\_name> --save
+bower install <package_name> --save
 ```
 或是在bower.json 中加入套件名之後，再呼叫 bower install
 
@@ -93,18 +93,18 @@ bower install <package\_name> --save
 並執行 bower install，就能安裝好所需的套件，這時project 中的檔案應該差不多是這樣：  
 
 ```txt
-.bowerrc  
-.gitignore  
-bower.json  
-package.json  
-static/bower\_components  
-template/   
+.bowerrc
+.gitignore
+bower.json
+package.json
+static/bower_components
+template/
 ```
 現在可以把上面的cdnjs 換成本地資料夾的static link:  
 ```html
-<script src="/static/bower\_components/react/react.min.js"></script>  
-<script src="/static/bower\_components/react/react-dom.min.js"></script>  
-<script src="/static/bower\_components/babel/browser.min.js"></script>
+<script src="/static/bower_components/react/react.min.js"></script>
+<script src="/static/bower_components/react/react-dom.min.js"></script>
+<script src="/static/bower_components/babel/browser.min.js"></script>
 ```
 
 同時在server 要加上static handler來處理所有對static 的連結：  

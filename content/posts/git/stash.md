@@ -17,14 +17,14 @@ series: null
 
 下面是git stash的相關操作環境範例： 我們有個master branch跟開發中的feature branch，現在在feature branch中開發一個新的feature，加入並commit "featurefile"這個檔案  
 ```shell
-$ git checkout feature  
-$ git commit featurefile # 注意一般是不這麼寫的，這裡是為了說明方便。  
-some modification on featurefile  
-$ git checkout master  
+$ git checkout feature
+$ git commit featurefile # 注意一般是不這麼寫的，這裡是為了說明方便。
+some modification on featurefile
+$ git checkout master
 ```
 這時候我們會得到一個：  
 ```txt
-error:  
+error:
 Your local changes to the following files would be overwritten by checkout: featurefile
 Please, commit your changes or stash them before you can switch branches.
 Aborting
@@ -55,7 +55,7 @@ git stash save "this is temporary stash of master commit"
 現在我們已經可以切回master的branch了。  
 在master進行修改後，同樣不想commit的內容也可以用stash進行暫存，這時候git stash list會變成  
 ```txt
-stash@{0}: WIP on master: e194f69 master initial commit  
+stash@{0}: WIP on master: e194f69 master initial commit
 stash@{1}: WIP on feature: ef9d050 feature initial commit
 ```
 分別標示了從 master 和 feature commit中暫存的內容。  

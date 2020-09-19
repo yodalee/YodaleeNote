@@ -40,21 +40,21 @@ series: null
 首先設定Vundle，照著Vundle 的設定打就行了，先用git 把Vundle.vim 載到~/.vim/bundle 資料  
 夾裡：  
 ```shell
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim  
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
 然後在設定檔加入   
 ```vimrc
-filetype off  
-set runtimepath+=~/.vim/bundle/Vundle.vim   
-call vundle#begin()   
-Plugin 'gmarik/Vundle.vim'   
-Plugin 'SirVer/ultisnips'   
-Plugin 'honza/vim-snippets'   
-Plugin 'Valloric/YouCompleteMe'   
-Plugin 'steffanc/cscopemaps'  
-Plugin 'wting/rust.vim'   
-Plugin 'ntpeters/vim-better-whitespace'  
+filetype off
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'steffanc/cscopemaps'
+Plugin 'wting/rust.vim'
+Plugin 'ntpeters/vim-better-whitespace'
 call vundle#end()
 ```
 
@@ -65,15 +65,15 @@ call vundle#end()
 
 這個比較簡單，因為我們vim-snippets 裡的檔案會存在  
 ```txt
-.vim/bundle/vim-snippets  
+.vim/bundle/vim-snippets
 ```
 
 裡面；另外是觸發snippet 的按鍵，設定Ultisnips的參數，xxxxxxx請改自己的家目錄：  
 ```vimrc
-let g:UltiSnipsSnippetsDir=["/home/xxxxxxx/.vim/bundle/vim-snippets/UltiSnips"]  
-let g:UltiSnipsExpandTrigger="<c-j>"   
-let g:UltiSnipsJumpForwardTrigger="<tab>"   
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"    
+let g:UltiSnipsSnippetsDir=["/home/xxxxxxx/.vim/bundle/vim-snippets/UltiSnips"]
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 ```
 ## youcompleteme
 
@@ -81,7 +81,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 ```vimrc
 let g:ycm_global_ycm_extra_conf = '/home/xxxxxxx/.vim/plugin/.ycm_extra_conf.py'
-let g:ycm_extra_conf_vim_data = ['&filetype'] 
+let g:ycm_extra_conf_vim_data = ['&filetype']
 ```
 
 上面這個 `.ycm_extra_conf.py` 可以在 `.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/`  
@@ -91,8 +91,8 @@ let g:ycm_extra_conf_vim_data = ['&filetype']
 然後YouCompleteMe需要編譯，需要安裝編譯工具、Cmake跟python-dev，然後：  
 
 ```shell
-cd ~/.vim/bundle/YouCompleteMe  
-./install.sh --clang-completer   
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh --clang-completer
 ```
 
 ## Cscope

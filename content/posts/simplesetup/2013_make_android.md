@@ -16,36 +16,36 @@ series: null
 
 以下就是自己寫個簡單的makefile，在projectname和packagename裡面分別填入build.xml裡的`<project name=""/>`，跟AndroidManifest.xml裡面的`<manifest package=""/>`，這樣就可以用：  
 ```bash
-make debug  
-make install  
-make uninstall  
+make debug
+make install
+make uninstall
 ```
 來完成編譯、安裝和解除安裝的工作。  
 ```makefile
-.PHONY : clean install uninstall   
-#=========================================  
-# MACRO DEFINE  
-#=========================================  
+.PHONY : clean install uninstall
+#=========================================
+# MACRO DEFINE
+#=========================================
 
-ADB = adb  
-DEL_FILE = rm -f  
-DEL_DIR = rm -rf  
-MKDIR = mkdir -p  
-MOVE = mv -u  
-BIN_DIR = bin  
-projectname = MyFirstApp  
-packagename = example.opengles.hellotriangle  
+ADB = adb
+DEL_FILE = rm -f
+DEL_DIR = rm -rf
+MKDIR = mkdir -p
+MOVE = mv -u
+BIN_DIR = bin
+projectname = MyFirstApp
+packagename = example.opengles.hellotriangle
 
-#================================   
-# Build function  
-#================================  
-debug:  
-    ant debug  
-install:  
-    adb install ${BIN\_DIR}/${projectname}-debug.apk  
-uninstall:  
-    adb uninstall ${packagename}  
-clean:  
-    adb uninstall ${packagename}  
-    ${DEL\_DIR} ${BIN\_DIR}   
+#================================
+# Build function
+#================================
+debug:
+    ant debug
+install:
+    adb install ${BIN_DIR}/${projectname}-debug.apk
+uninstall:
+    adb uninstall ${packagename}
+clean:
+    adb uninstall ${packagename}
+    ${DEL_DIR} ${BIN_DIR}
 ```

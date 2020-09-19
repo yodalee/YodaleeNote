@@ -27,7 +27,7 @@ series: null
 
 一般Makefile裡面會有這些東西，用來把所有的source轉換成object file。  
 ```makefile
-SOURCE_FILE = main.cpp 
+SOURCE_FILE = main.cpp
 OBJECT_FILE += $(addsuffix .o, $(basename $(SOURCE_FILE)))
 ```
 為了Qt，我們加上下列的變數定義：  
@@ -74,7 +74,7 @@ OBJECT_FILE += $(addsuffix .o, $(basename $(SOURCE_FILE)))
   $(CXX) -c lt; -o $@ $(CXXFLAGS) $(INCLUDE)
   @$(MOVE) $@ $(LIBRARY_DIR)
 
-moc_%.cpp: %.h 
+moc_%.cpp: %.h
   $(QT_PATH)moc $(DEFINES) $(INCLUDE) lt; -o $@
 
 qrc_%.cpp: %.qrc

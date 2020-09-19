@@ -40,9 +40,9 @@ series: null
 ## GDSII to Virtuoso：  
 有了上面的資料之後，再來就是編寫map file: 一個map file 的格式如下：  
 ```txt
-#Cadence layer name Cadence layer purpose Stream layer number Stream data type  
-#  
-TopMetal2 drawing 0-63 0-63  
+#Cadence layer name Cadence layer purpose Stream layer number Stream data type
+#
+TopMetal2 drawing 0-63 0-63
 ```
 
 每一行分為四個子資料，分別是：
@@ -57,12 +57,12 @@ purpose的部分，大概有drawing, pin, net三種可以選擇，但從sonnet�
 stream layer number就是方才用klayout看到的layer編號；stream data type這部分則不是很清楚，但sonnet轉出來好像也不會特別去設定。  
 根據上面的轉出來的資料，可以自行編寫對應的map，data type不清楚就用0-63全部截下來：  
 ```txt
-#Cadence layer name Cadence layer purpose Stream layer number Stream data type  
-#  
-TopMetal2 drawing 2 0-63  
-TopMetal1 drawing 3 0-63  
-MIM drawing 4 0-63  
-Metal5 drawing 6 0-63  
+#Cadence layer name Cadence layer purpose Stream layer number Stream data type
+#
+TopMetal2 drawing 2 0-63
+TopMetal1 drawing 3 0-63
+MIM drawing 4 0-63
+Metal5 drawing 6 0-63
 Metal1 drawing 10 0-63
 ```
 這樣各層就能夠轉換成功了：  

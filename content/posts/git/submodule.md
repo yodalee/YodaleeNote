@@ -19,8 +19,8 @@ series: null
 遇到 submodule 的時候通常有兩種狀況：  
 第一種比較常見的，是載了一個別人的project，發現裡面有用到 submodule，例如知名的補齊工具 YouCompleteMe ，裡面針對各種語言的剖析工具都是 submodule，這些專案載下來的時候， submodule 裡面都還是空的，要先用下列指令把 submodule 載下來：  
 ```shell
-git submodule init  
-git submodule update  
+git submodule init
+git submodule update
 ```
 或者可以用一行指令解決：  
 ```shell
@@ -29,7 +29,7 @@ git submodule update --init --recursive --recursive
 會在 submodule 裡面還有 submodule 的時候，一口氣都設定好。  
 又或者可以在 clone 專案的時候就指定要一齊複製 submodule（不過通常在 clone project 的時候還不知道裡面有 submodule，所以…通常不會這樣下）：  
 ```shell
-git clone --recurse-submodules <url>  
+git clone --recurse-submodules <url>
 ```
 
 第二種狀況如我上面所述，我們自己新增一個 submodule，我要做的就是新增 cnpy 為我的 submodule：  
@@ -38,7 +38,7 @@ git submodule add git@github.com:rogersce/cnpy.git cnpy
 ```
 後面的 cnpy 是指定 submodule 要放在哪個資料夾裡面，通常名稱都跟 project 本來的名稱相同，才不會搞混；這時候 git 會把這個 project 下載下來，檢視 status 的話會看到下面的內容：  
 ```txt
-new file: .gitmodules  
+new file: .gitmodules
 new file: cnpy .gitmodules
 ```
 檔案裡面記錄了 submodule 的名字，現在的路徑以及遠端 url，這時用 add 及 commit 將這個 submodule 保存下來。  
@@ -47,27 +47,27 @@ new file: cnpy .gitmodules
 比較讓人疑惑的通常是在外面的 project，當內部的內容有修改的時候，外面會出現一些讓人很疑惑的訊息，例如當我們對 cnpy 這個 project 新增一個 commit，從外面會看到這樣的訊息：  
 
 ```shell
-$ git status  
+$ git status
 modified: cnpy (new commits)
 ```
 
 這則訊息的意思是，cnpy 這個 submodule 有了修改，修改的內容是新增了 commits；可以把git submodule 想成一個快照，現在 submodule 的狀態已經脫離這個快照，從 git diff 就會看出差別，最下面是 commit 的修改訊息：  
 ```txt
-git diff  
-diff --git a/cnpy b/cnpy  
-index f19917f..8f997be 160000  
---- a/cnpy  
-+++ b/cnpy  
-@@ -1 +1 @@  
--Subproject commit f19917f6c442885dcf171de485ba8b17bd178da6  
-+Subproject commit 8f997be1f87279f09054acbdb896162b1e9d3963   
+git diff
+diff --git a/cnpy b/cnpy
+index f19917f..8f997be 160000
+--- a/cnpy
++++ b/cnpy
+@@ -1 +1 @@
+-Subproject commit f19917f6c442885dcf171de485ba8b17bd178da6
++Subproject commit 8f997be1f87279f09054acbdb896162b1e9d3963
 ```
 
 這時對這個 submodule 做 add, commit，就會更新這個 submodule 的快照值；另外如果我們想要 submodule 維持在之前的快照上，用 git submodule update ，git 即會將 submodule 簽回到當初記錄的版本：  
 
 ```txt
-git submodule update  
-Submodule path 'cnpy': checked out 'f19917f6c442885dcf171de485ba8b17bd178da6'   
+git submodule update
+Submodule path 'cnpy': checked out 'f19917f6c442885dcf171de485ba8b17bd178da6'
 ```
 
 不過 update 之後會有一些不好的效果，因為這時 submodule 被強制簽出 `f19917` 這個 commit ，裡面就出現了一些沒有 commit 的修改，在這裡有內容未被 commit，所以它會顯示：  

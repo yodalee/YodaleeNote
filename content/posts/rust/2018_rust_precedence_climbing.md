@@ -11,9 +11,9 @@ series: null
 [上一篇]({{< relref "2018_rust_pest_PEG.md">}})我們說完如何用 Rust 的 PEG 套件 pest 生成簡單的程式碼分析器，但其實還有一些沒有解決的問題，像是 1 * 2 + 3 * 4 = 20，這是因為我們在處理 expression 時沒有處理運算子優先次序，只是從左到右掃過一遍。  
 真正的 parsing 要考慮運算子優先權跟括號等等，例如：  
 ```
-1 + 2 + 3 -> ((1 + 2) + 3) : Left associative（左相依）  
-1 + 2 * 3 -> (1 + (2 * 3)) : * 優先權高於 +  
-2 ^ 3 ^ 4 -> (2 ^ (3 ^ 4)) : Right associative（右相依）  
+1 + 2 + 3 -> ((1 + 2) + 3) : Left associative（左相依）
+1 + 2 * 3 -> (1 + (2 * 3)) : * 優先權高於 +
+2 ^ 3 ^ 4 -> (2 ^ (3 ^ 4)) : Right associative（右相依）
 ```
 
 在這裡我們要介紹 precedence climbing 這套演算法，假設我們已經有了 Term (op Term)* 這樣的序列，現在要將它 parse 成 syntax tree，

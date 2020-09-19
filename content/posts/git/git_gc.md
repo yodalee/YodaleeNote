@@ -40,14 +40,14 @@ git log --pretty=oneline --branches --abbrev-commit -- dist
 這個的會列出所有head下，match到dist 這個路徑裡的log，使用縮短的sha來顯示，結果如下：  
 
 ```txt
-5f9f3dc output in csv format, allow various length data   
-23f8633 windows executable file of 0.3.1 version   
-bb1107f Merge branch 'master' of github.com:lc85301/ADSToOrigin   
-e891091 update ADSToOrigin.exe version   
-acbeb1d fix duplicate tital bug   
-5343e5c add data length different detect, multifile sup   
-9ff12b9 multi variable parser support add   
-c989cc4 allow drag in windows   
+5f9f3dc output in csv format, allow various length data
+23f8633 windows executable file of 0.3.1 version
+bb1107f Merge branch 'master' of github.com:lc85301/ADSToOrigin
+e891091 update ADSToOrigin.exe version
+acbeb1d fix duplicate tital bug
+5343e5c add data length different detect, multifile sup
+9ff12b9 multi variable parser support add
+c989cc4 allow drag in windows
 b21d5c1 windows distribution
 ```
 
@@ -59,16 +59,16 @@ Filter-branch可以傳入一個filter，然後基於這個filter上，把所有�
 
 每一個filter後面要接一個command，用來操作你的git倉庫，拿最簡單的來說，msg-filter會把目前的commit message送到你的command的stdin，然後以command stdout的內容當作新的commit message，例如我有一個倉庫依序加入abc三個檔案，現在長這樣：  
 ```txt
-b0b79d5 add c   
-f09a9d6 add b   
+b0b79d5 add c
+f09a9d6 add b
 2eee4d4 add a
 ```
 
 如果我下：git filter-branch --msg-filter 'echo XDD' -- master  
 結果就會變成這樣：  
 ```txt
-075cdd6 XDD   
-44fe70f XDD   
+075cdd6 XDD
+44fe70f XDD
 ec1e435 XDD
 ```
 所有的commit message都被改寫成XDD，這簡直比改歷史教科書還要簡單。  
@@ -92,34 +92,34 @@ git rev-list會把從某個branch往前回溯(嚴格來說是reachable)的每個
 
 output大概會像這樣：  
 ```txt
-Rewrite b21d5c1abbaf39e02b817b0ccb7efdc54dbf6090 (1/14)rm 'dist/ADSToOrigin\_win.exe'   
-rm 'dist/\_hashlib.pyd'   
-rm 'dist/bz2.pyd'   
-rm 'dist/library.zip'   
-rm 'dist/python27.dll'   
-rm 'dist/select.pyd'   
-rm 'dist/unicodedata.pyd'   
-rm 'dist/w9xpopen.exe'    
+Rewrite b21d5c1abbaf39e02b817b0ccb7efdc54dbf6090 (1/14)rm 'dist/ADSToOrigin_win.exe'
+rm 'dist/_hashlib.pyd'
+rm 'dist/bz2.pyd'
+rm 'dist/library.zip'
+rm 'dist/python27.dll'
+rm 'dist/select.pyd'
+rm 'dist/unicodedata.pyd'
+rm 'dist/w9xpopen.exe'
 ```
 以下類似的東西重複14次，無非就是刪掉exe, pyd 巴啦巴啦，可以看見我到底存了多少exe垃圾在我的project裡面lol。  
 
 另外，我有些commit是針對windows distribution去commit的，這個指令一下這個commit就變成empty commits，因此我們再來：  
 ```shell
 git filter-branch --prune-empty -- b21d5c1^..
-# 這裡的SHA應該要換掉，只是我忘了是多少了。  
+# 這裡的SHA應該要換掉，只是我忘了是多少了。
 ```
 這個參數可以在上面就下，一次做完比較痛快，這時候像windows distribution這個commit就不見了。  
 
 這樣我們已經讓記錄中不再記錄這個檔案，最後把它從.git裡面記錄刪掉，因為git reflog跟branch-filter本身都有對它的引用（你看看從git裡面刪東西是有多機車……）。  
 ```shell
-rm -Rf .git/refs/original # 刪除branch-filter的引用  
-rm -Rf .git/logs/ # 刪除reflog  
-git gc   
+rm -Rf .git/refs/original # 刪除branch-filter的引用
+rm -Rf .git/logs/ # 刪除reflog
+git gc
 ```
 
 最後，強制把你修改的分枝樹，把遠端的東西蓋掉。  
 ```shell
-git push origin master -f   
+git push origin master -f
 ```
 
 這樣應該就差不多了，雖然說我弄完之後好像沒變小很多，不過我不是很清楚問題在哪...  

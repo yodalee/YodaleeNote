@@ -48,17 +48,17 @@ series: null
 像是它對Bus signal 取值不能在input ，而是在output；同個output 訊號也不能多次使用，這兩個跟verilog 不同。  
 例如某個mux output 的 MSB (15)為sign bit，我們需要輸出sign bit；同時要產生zr 訊號，表示output 是否全為零，在verilog 裡會是類似這樣：  
 ```verilog
-Mux16(out=out, a=result, b=notResult, sel=no);  
-Or16Way(out=nez, in=out);  
-Not(out=zr, in=nez);  
-And(out=ng, a=out[15], b=true);   
+Mux16(out=out, a=result, b=notResult, sel=no);
+Or16Way(out=nez, in=out);
+Not(out=zr, in=nez);
+And(out=ng, a=out[15], b=true);
 ```
 課程的 HDL 不行，因為out這個訊號已經當成輸出，不能再接給 Or16Way，同時不能在input 的時候對 out 這個 bus 取它 15 的值  
 正確的寫法會是這樣：  
 ```verilog
-Mux16(out=out, out=out2, out[15]=sign, a=result, b=notResult, sel=no);  
-Or16Way(out=nez, in=out2);  
-Not(out=zr, in=nez);  
+Mux16(out=out, out=out2, out[15]=sign, a=result, b=notResult, sel=no);
+Or16Way(out=nez, in=out2);
+Not(out=zr, in=nez);
 And(out=ng, a=sign, b=true);
 ```
 知道這個差別，作業同樣不算太難。  
@@ -75,7 +75,7 @@ RAM 的架構基本上都一樣，寫好最底層的RAM8之後，一路上去的
 
 Sub bus 用double dot .. 而非Verilog 裡的 comma，同時接線時是接在被 assign 那端，例如要把 15 pins 的 wire 接到元件 16 pins 的input上。  
 ```verilog
-Element(input[0..14] = wire, input[15] = xxx);   
+Element(input[0..14] = wire, input[15] = xxx);
 ```
 對應課程：交換電路與邏輯設計。  
 

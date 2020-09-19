@@ -23,13 +23,13 @@ series: null
 
 這次決定全用cargo 的方式來維護我的project，第一步當然是先用cargo 產生project  
 ```bash
-cargo new raytracing-rust –bin   
+cargo new raytracing-rust –bin
 ```
 它會建好一個Hello world 的小程式，我們就從這個小程式一步一步往上加。  
 用了cargo 的好處就是想要什麼，[crates.io](https://crates.io/) 上可能都有，例如我們要測量程式執行時間，只要在Cargo.toml 裡加上  
 ```toml
-[dependencies]  
-time = "0.1"   
+[dependencies]
+time = "0.1"
 ```
 主程式就可以加上：  
 ```rust

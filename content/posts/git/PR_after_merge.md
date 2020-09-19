@@ -29,18 +29,18 @@ series: null
 一個是從開始的master branch開一個新的branch newDev，然後用cherry-pick 把develop 上面的 commit 都搬到這個branch 上，再重送 Pull Request；就如[這篇文](http://stackoverflow.com/questions/25484945/pull-request-merged-closed-then-reverted-now-cant-pull-the-branch-again)中所示：  
 
 ```shell
-$ git checkout master  
-$ git checkout -b newDev  
-For every commit in develop branch do  
-$ git cherry-pick commit-hash   
+$ git checkout master
+$ git checkout -b newDev
+For every commit in develop branch do
+$ git cherry-pick commit-hash
 ```
 
 另外一個方法比較方便，直接在 develop branch 上面切換到 newDev branch，然後使用 interactive rebase ，然後把所有的commit 都重新commit 一篇，newDev 就會變成一個全新的分枝了：  
 ```shell
-$ git checkout develop  
-$ git checkout -b newDev  
-$ git rebase -i master  
-Mark every commits as reword (r) in interactive setting   
+$ git checkout develop
+$ git checkout -b newDev
+$ git rebase -i master
+Mark every commits as reword (r) in interactive setting
 ```
 
 修正完之後的 repository 大概會長這樣：  

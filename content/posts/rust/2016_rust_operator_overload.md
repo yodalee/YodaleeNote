@@ -22,17 +22,17 @@ series: null
 
 我們要實作他的乘法和加法：  
 ```rust
-enum Sign { POSITIVE, NEGATIVE, ZERO, UNKNOWN, }    
+enum Sign { POSITIVE, NEGATIVE, ZERO, UNKNOWN, }
 ```
 Rust可重載的運算子請參考 [ops 的文件](https://doc.rust-lang.org/std/ops/index.html)。  
 另外是比較運算子 [cmp](https://doc.rust-lang.org/std/cmp)，包括 PartialEq 跟 PartialOrd：  
 
 例如我們要重載乘法運算子，以下是網站上的定義：  
 ```rust
-pub trait Mul<RHS = Self> {  
-    type Output;  
-    fn mul(self, rhs: RHS) -> Self::Output;  
-}   
+pub trait Mul<RHS = Self> {
+    type Output;
+    fn mul(self, rhs: RHS) -> Self::Output;
+}
 ```
 實作時當然就是先以use這個trait，然後實作這trait並加入相關的函式：
 ```rust

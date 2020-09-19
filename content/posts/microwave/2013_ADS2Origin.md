@@ -25,25 +25,25 @@ series: null
 這裡遇到一個有點機車的問題：  
 平常我們在ADS這套軟體畫好圖之後，如果用ADS再export成txt file，就會變成類似下面的格式：  
 ```txt
-freq S(1,1)  
-1e9 -1E1  
-2e9 -1E1  
-3e9 -1E1  
-4e9 -1E1  
+freq S(1,1)
+1e9 -1E1
+2e9 -1E1
+3e9 -1E1
+4e9 -1E1
 
-freq S(2,1)  
-1e9 1E1  
-2e9 1E1  
-3e9 1E1  
+freq S(2,1)
+1e9 1E1
+2e9 1E1
+3e9 1E1
 4e9 1E1
 ```
 
 註：隨便選個數字表示一下。 但如果要用Origin匯入文字檔的話，理當是這個格式比較好：   
 ```txt
-freq S(1,1) S(2,1)  
-1e9 -1E1 1E1  
-2e9 -1E1 1E1  
-3e9 -1E1 1E1  
+freq S(1,1) S(2,1)
+1e9 -1E1 1E1
+2e9 -1E1 1E1
+3e9 -1E1 1E1
 4e9 -1E1 1E1
 ```
 俗話說得好：科技始終始於惰性，與其用Excel打開檔案然後一欄一欄複製貼上，不如寫個script來解決 =b。  
@@ -69,35 +69,35 @@ for line in zip(*data):
 ## 多變數處理
 之前的版本只支援單變數的狀況，這次則加入多變數的狀況，ADS記錄多變數的狀況如下：  
 ```txt
-sweepvar1 ... sweepvar_n-1 sweepvarn ... data  
-var1_1 ... varn-1_1 varn_1 ... data_1_1  
-var1_1 ... varn-1_1 varn_2 ... data_1_2  
-var1_1 ... varn-1_1 varn_3 ... data_1_3  
-...  
-var1_1 ... varn-1_1 varn_m ... data_1_m  
+sweepvar1 ... sweepvar_n-1 sweepvarn ... data
+var1_1 ... varn-1_1 varn_1 ... data_1_1
+var1_1 ... varn-1_1 varn_2 ... data_1_2
+var1_1 ... varn-1_1 varn_3 ... data_1_3
+...
+var1_1 ... varn-1_1 varn_m ... data_1_m
 
-sweepvar1 ... sweepvar_n-1 sweepvarn ... data  
-var1_1 ... varn-1_2 varn_1 ... data_2_1  
-var1_1 ... varn-1_2 varn_2 ... data_2_2  
-var1_1 ... varn-1_2 varn_3 ... data_2_3  
-...  
-var1_1 ... varn-1_2 varn_m ... data_2_m  
+sweepvar1 ... sweepvar_n-1 sweepvarn ... data
+var1_1 ... varn-1_2 varn_1 ... data_2_1
+var1_1 ... varn-1_2 varn_2 ... data_2_2
+var1_1 ... varn-1_2 varn_3 ... data_2_3
+...
+var1_1 ... varn-1_2 varn_m ... data_2_m
 ```
 
 新版的會以前幾個變數產生title name，例如在上述狀況，最主要的index是sweepvarn，不斷重複的則是data，上述的狀況會產生為：  
 ```txt
-sweepvarn title1 title2 …  
-varn_1 data_1_1 data_2_1 …  
-varn_2 data_1_2 data_2_2 …  
-varn_3 data_1_3 data_2_3 …  
-...  
-varn_m data_1_m data_2_m ...  
+sweepvarn title1 title2 …
+varn_1 data_1_1 data_2_1 …
+varn_2 data_1_2 data_2_2 …
+varn_3 data_1_3 data_2_3 …
+...
+varn_m data_1_m data_2_m ...
 ```
 
 產生的第一個title會是：  
 sweepvarn 之後則是  
 ```txt
-sweepvar1=var1_1,sweepvar2=var2_1, …sweepvar_n-1=varn-1_1  
+sweepvar1=var1_1,sweepvar2=var2_1, …sweepvar_n-1=varn-1_1
 ```
 好像不好看懂，總之就是 title 會是第二到第 n 個變數的數值。  
 

@@ -126,7 +126,7 @@ comment 也是這次的修改之一，同樣利用了 ! 的特性，上面兩條
 
 所以可以寫像是：  
 ```c
-int const volatile const volatile const volatile const volatile const volatile const;  
+int const volatile const volatile const volatile const volatile const volatile const;
 const * restrict restrict restrict a;
 ```
 說真的，看到這樣寫 code 我也會把人電到天上飛，其實我也不知道為什麼 C grammar 要允許這樣的文法就是，看到 gcc 編譯過我差點笑死。  

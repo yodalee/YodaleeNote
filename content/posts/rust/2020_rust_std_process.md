@@ -68,10 +68,10 @@ let p = Command::new("ls")
     .expect("ls command failed to start");
 ```
 ```bash
-drwxr-xr-x 5 yodalee yodalee 4096 2月 29 09:45 .  
-drwxr-xr-x 16 yodalee yodalee 4096 2月 28 20:10 ..  
--rw-r--r-- 1 yodalee yodalee 62279 2月 29 00:07 Cargo.lock  
--rw-r--r-- 1 yodalee yodalee 312 2月 29 00:07 Cargo.toml    
+drwxr-xr-x 5 yodalee yodalee 4096 2月 29 09:45 .
+drwxr-xr-x 16 yodalee yodalee 4096 2月 28 20:10 ..
+-rw-r--r-- 1 yodalee yodalee 62279 2月 29 00:07 Cargo.lock
+-rw-r--r-- 1 yodalee yodalee 312 2月 29 00:07 Cargo.toml
 ```
 如果想要把 ls 的內容截下來的話，就要改用 output：  
 ```rust
@@ -79,16 +79,16 @@ let p = Command::new("ls")
   .arg("-al")
   .output()
   .expect("ls command failed to start");
-let s = from\_utf8\_lossy(&p.stdout);
+let s = from_utf8_lossy(&p.stdout);
 println!("{}", s);
 ```
 可以從 p.stdout 裡面拿到 Vec<u8>，要轉成字串就要用 [String](https://doc.rust-lang.org/std/string/struct.String.html)
 的 `from_utf8`/`from_utf8_lossy`/`from_utf8_unchecked` 函式轉。  
 ```txt
-drwxr-xr-x 5 yodalee yodalee 4096 2月 29 09:45 .  
-drwxr-xr-x 16 yodalee yodalee 4096 2月 28 20:10 ..  
--rw-r--r-- 1 yodalee yodalee 62279 2月 29 00:07 Cargo.lock  
--rw-r--r-- 1 yodalee yodalee 312 2月 29 00:07 Cargo.toml   
+drwxr-xr-x 5 yodalee yodalee 4096 2月 29 09:45 .
+drwxr-xr-x 16 yodalee yodalee 4096 2月 28 20:10 ..
+-rw-r--r-- 1 yodalee yodalee 62279 2月 29 00:07 Cargo.lock
+-rw-r--r-- 1 yodalee yodalee 312 2月 29 00:07 Cargo.toml
 ```
 
 如果要對子行程上下其手有完全的操控，就要使用 spawn 了，不過相對來說也要小心，因為 spawn 不會自動幫你 wait，不小心就會把子行程變殭屍行程。  

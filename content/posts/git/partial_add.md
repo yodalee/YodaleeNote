@@ -48,6 +48,6 @@ commit 時，直接 git commit 就可以把 add 過（正式名字應該是 stag
 
 注意到fun2是unstaged，如果你亂改到什麼想要回復，而下：  
 ```shell
-git checkout main.c  
+git checkout main.c
 ```
 回復到上一個狀態，fun2 的原始碼（該說它從來沒被記錄下來）也會整個被消掉。

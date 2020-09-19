@@ -28,23 +28,23 @@ git-flow會有五個主要的 branch:
 ## master
 有master branch是當然的，master branch是要讓使用者使用的，使用者checkout project時就要看到的內容，master branch上的commit 應該加上tag表示軟體的版本。  
 ```shell
-git tag -a v0.1 -m 'message here'    
+git tag -a v0.1 -m 'message here'
 ```
 
 ## develop
 因為是要讓使用者用的，所以平時自然不能隨便在master 上面修修改改，開發者要先換個 develop branch上面進行開發。  
 ```shell
-$ git checkout -b develop   
+$ git checkout -b develop
 or
-$ git branch develop && git checkout develop   
+$ git branch develop && git checkout develop
 ```
 
 ## feature
 git 允許許多開發者一同開發這個project ，如果大家都一股腦往develop 上放東西，每個開發者都會被commit 時的衝突問題煩到死，因此要開發一個新的feature，就要新建一個feature 分枝。  
 開發完時，這個分枝再併回develop 上：
 ```shell
-$ git checkout -b feature-issue42  
-git commits  
+$ git checkout -b feature-issue42
+git commits
 $ git checkout develop && git merge –no-ff feature-issue42
 ```
 這個部分應該是最花時間的，通常會遇到共同開發的pull/push也是在這個部分，這裡不贅述，就請參考之前的文章[以pull request參與github專案開發]({{< relref "pull_request.md">}})：   
@@ -52,23 +52,23 @@ $ git checkout develop && git merge –no-ff feature-issue42
 ## release
 軟體開發到一個程度，就進入release 流程，從develop 切換到release中，停止新增feature，開始專注在修bug 跟改文件等等工作上，準備就緒後，就外送到master 跟送回develop 中。  
 ```shell
-$ git checkout develop && git checkout -b release  
-git commits (only bug fixes)  
-$ git checkout master && git merge --no-ff release  
-$ git tag add -v0.2 -m 'message here'  
-$ git checkout develop && git merge --no-ff release   
+$ git checkout develop && git checkout -b release
+git commits (only bug fixes)
+$ git checkout master && git merge --no-ff release
+$ git tag add -v0.2 -m 'message here'
+$ git checkout develop && git merge --no-ff release
 ```
 
 ## hotfix
 最後，沒有軟體是沒問題的，如果master上被檢出需要立即修補的重大問題，這時就要動用hotfix，把master 分枝出hotfix branch，修完後再併入master 和develop中。  
 ```shell
-$ git checkout master  
-$ git checkout -b hotfix  
-fix bugs, commit  
-$ git checkout master && git merge --no-ff hotfix  
-$ git tag -a 0.2.1 -m 'message here'  
-$ git checkout develop && git merge --no-ff hotfix  
-$ git branch -d hotfix   
+$ git checkout master
+$ git checkout -b hotfix
+fix bugs, commit
+$ git checkout master && git merge --no-ff hotfix
+$ git tag -a 0.2.1 -m 'message here'
+$ git checkout develop && git merge --no-ff hotfix
+$ git branch -d hotfix
 ```
 
 在文中的merge 指令都有使用 no fast-forwarding的--no-ff 指令，這是為了保留一個分枝跟合併的 記錄，以免fast-forwarding造成所有branch全混成一條。  

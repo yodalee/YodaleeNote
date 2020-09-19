@@ -71,13 +71,13 @@ git am *.patch
 在 apply patch 的時候，也可以使用 `git apply -3` 來使用3方衍合，但若你的repository 中沒有patch 的祖先，這個apply 一樣會失效。  
 衝突時am 會跳出類似這樣的訊息：  
 ```txt
-Applying: <commit message>  
-error: xxxxxxxxxxxxxxxxxxx  
-Patch failed at 0001 <commit message>  
-The copy of the patch that failed is found in: .git/rebase-apply/patch  
-When you have resolved this problem, run "git am --continue".  
-If you prefer to skip this patch, run "git am --skip" instead.  
-To restore the original branch and stop patching, run "git am --abort".   
+Applying: <commit message>
+error: xxxxxxxxxxxxxxxxxxx
+Patch failed at 0001 <commit message>
+The copy of the patch that failed is found in: .git/rebase-apply/patch
+When you have resolved this problem, run "git am --continue".
+If you prefer to skip this patch, run "git am --skip" instead.
+To restore the original branch and stop patching, run "git am --abort".
 ```
 
 這裡我們只能手動解決，在apply 的指令加上：  

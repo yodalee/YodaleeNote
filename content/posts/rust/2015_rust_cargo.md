@@ -21,21 +21,21 @@ project的資料會使用Cargo.toml這個檔案來管理，toml 是一款[極簡
 
 Cargo.toml 裡面會定義這個package 的資料：  
 ```toml
-[package]  
-name = "package name"  
-version = "0.1.0"  
-authors = ["author <author@xxxxx.com>"]   
+[package]
+name = "package name"
+version = "0.1.0"
+authors = ["author <author@xxxxx.com>"]
 ```
 Cargo 有一系列可用的指令，用cargo --help 就可以看到  
 ```txt
-build Compile the current project  
-clean Remove the target directory  
-doc Build this project's and its dependencies' documentation  
-new Create a new cargo project  
-run Build and execute src/main.rs  
-test Run the tests  
-bench Run the benchmarks  
-update Update dependencies listed in Cargo.lock   
+build Compile the current project
+clean Remove the target directory
+doc Build this project's and its dependencies' documentation
+new Create a new cargo project
+run Build and execute src/main.rs
+test Run the tests
+bench Run the benchmarks
+update Update dependencies listed in Cargo.lock
 ```
 一般最常用的組合，大概就是 new, build, run 三個基本指令，用來初始、編譯、執行，預設會用src/main.rs當作預設的編譯目標，
 並建構在target資料夾內，下面是其他的功能：  
@@ -44,21 +44,21 @@ update Update dependencies listed in Cargo.lock
 
 如果要用到其他的套件，把相依的套件名字填入Cargo.toml裡面，以下幾種寫法都可以，第一種是最常見的：   
 ```toml
-[dependencies]  
-package "package version"  
+[dependencies]
+package "package version"
 
-[dependencies.package]  
-git = "url"  
+[dependencies.package]
+git = "url"
 
-[dependencies.package]  
-path = "path"   
+[dependencies.package]
+path = "path"
 ```
 第二種跟第三種都是特化，不走 [crates.io](https://crates.io) 而是從 url 或是本地端取得套件，一般都是要測試最新版或修套件的時候才會用到。  
 在原始碼用extern指定它即可：   
 ```rust
-//main.rs  
-extern package  
-use package::{};   
+//main.rs
+extern package
+use package::{};
 ```
 Cargo build 的時候會自動去檢查相依性套件，從它的git repository裡面簽出最新的master版本放到家目錄的.cargo 中，並用它進行建構；
 簽出的版本會寫進Cargo.lock，如果把Cargo.lock 傳給別人，他們就只之後就能用這個版本建構，如果要更新Cargo.lock 的話，
@@ -68,7 +68,7 @@ Cargo build 的時候會自動去檢查相依性套件，從它的git repository
 
 如果需要修相依套件裡面的bug，cargo 可以指定用本地的套件，而非簽出在.cargo 裡面的套件，只要在project 往上到根目錄的任一個地方，產生一個.cargo 的目錄，並在裡面建立config 檔，標示local project 的Cargo.toml 所在：  
 ```toml
-paths = ['path to local project']  
+paths = ['path to local project']
 ```
 
 ## 測試：
@@ -79,23 +79,23 @@ cargo test 會執行在src 跟tests 裡面的測試，也就是有#[test] attrib
 
 一開始先定義package:  
 ```toml
-[package]  
-name = "servo"  
-version = "0.0.1"  
-authors = ["The Servo Project Developers"]   
+[package]
+name = "servo"
+version = "0.0.1"
+authors = ["The Servo Project Developers"]
 ```
 servo要編出的library  
 ```toml
-[lib]  
-name = "servo"  
-path = "lib.rs"  
-crate-type = ["rlib"]   
+[lib]
+name = "servo"
+path = "lib.rs"
+crate-type = ["rlib"]
 ```
 下面有一大排dependency，都是servo project 內的子專案，所以都是用相對路徑的方式來定義，
 而這些子專案的Cargo.toml內又會定義相依套件，例如外部相依大部分定義在util 裡面，這就會用git 的方式來引用：  
 ```toml
-[dependencies.azure]  
-git = "https://github.com/servo/rust-azure"   
+[dependencies.azure]
+git = "https://github.com/servo/rust-azure"
 ```
 有一次有寫到一個issue 就是要更動相依的rust-mozjs的套件，再更新servo 內Cargo.lock 檔，相關的更動可見：  
 <https://github.com/servo/mozjs/pull/29>  

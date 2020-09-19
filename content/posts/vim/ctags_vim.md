@@ -20,7 +20,7 @@ vim 搭配 ctags 是一款生猛的工具組，可以快速在trace 專案尋找
 ## 設定
 在專案的根目錄中使用：  
 ```shell
-ctags -R   
+ctags -R
 ```
 
 產生tags 檔，在瀏覽原始碼的時候，就能用：  
@@ -31,7 +31,7 @@ ctags -R
 另外在搜尋的時候，找到了一個taglist 的替代品 [tagbar](https://github.com/majutsushi/tagbar)，可以使用Vundle 安裝：  
 在 .vimrc 裡面加上：  
 ```vimrc
-Plugin 'majutsushi/tagbar'  
+Plugin 'majutsushi/tagbar'
 map <F12> :TagbarToggle<CR>
 ```
 就能用F12 開關Tagbar 的視窗，第一眼看來還不錯，比taglist 還要漂亮跟清楚很多，據說相對taglist 對Cpp 的支援也更好；

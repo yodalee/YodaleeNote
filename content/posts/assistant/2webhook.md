@@ -30,14 +30,14 @@ dialogflow 可以讓一個 Intent 的 fulfillment，也就是完成回應，送�
 
 下面開始寫我們首先開一個新的 python 專案，建立 pip requirements.txt：  
 ```txt
-# requirements.txt  
-Flask==1.1.1   
+# requirements.txt
+Flask==1.1.1
 ```
 使用 pip 跟 virtualenv 建立環境：  
 ```bash
-python -m venv env  
-source env/bin/activate  
-pip install -r requirements.txt   
+python -m venv env
+source env/bin/activate
+pip install -r requirements.txt
 ```
 接著建立 flask 實作的 webhook：  
 ```python
@@ -81,9 +81,9 @@ dialogflow 接受的回應內容是 json 格式，可以填充的內容請見[�
 
 使用 ngrok 也非常簡單，安裝好 ngrok 之後照著網頁的指示先註冊金鑰：  
 ```bash
->> ngrok authtoken <token>  
->> ngrok http 8080  
-Forwarding https://wwwwww.ngrok.io -> http://localhost:8080   
+>> ngrok authtoken <token>
+>> ngrok http 8080
+Forwarding https://wwwwww.ngrok.io -> http://localhost:8080
 ```
 也就是 wwwwww.ngrok.io 已經被映射到我們的 localhost:8080 由 flask 執行的伺服器，因此我們可以在 webhook 的地方填入 wwwwww.ngrok.io/webhook。  
 

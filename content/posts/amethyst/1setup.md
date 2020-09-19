@@ -22,25 +22,25 @@ series:
 3. 用 Cargo new 生一個空專案  
 在 Cargo.toml 裡面加上 amethyst 的 dependency，這個真的很麻煩完全不建議
 ```shell
-cargo install amethyst_tools  
-amethyst new <game-name>  
+cargo install amethyst_tools
+amethyst new <game-name>
 ```
 
 專案會自動新增 Cargo.toml，比較重要的是下面的 features，amethyst 可以選擇依賴的底層 API，
 如果是 Linux/Windows 選 Vulkan；蘋果用戶選 Metal；empty 我編譯完成圖形介面會出不來所以就不要用了。  
 
 ```toml
-[package]  
-name = "rocket"  
-version = "0.1.0"  
-authors = []  
-edition = "2018"  
-[dependencies]  
-amethyst = "0.15.0"  
-[features]  
-default = ["vulkan"]  
-empty = ["amethyst/empty"]  
-metal = ["amethyst/metal"]  
+[package]
+name = "rocket"
+version = "0.1.0"
+authors = []
+edition = "2018"
+[dependencies]
+amethyst = "0.15.0"
+[features]
+default = ["vulkan"]
+empty = ["amethyst/empty"]
+metal = ["amethyst/metal"]
 vulkan = ["amethyst/vulkan"]
 ```
 
@@ -49,15 +49,15 @@ vulkan = ["amethyst/vulkan"]
 
 預設版本執行起來應該會看到完全空白的畫面，生成的 main.rs 如下所示：  
 ```rust
-use amethyst::{  
-    core::transform::TransformBundle,  
-    prelude::*,  
-    renderer::{  
-        plugins::{RenderFlat2D, RenderToWindow},  
-        types::DefaultBackend,  
-        RenderingBundle,  
-    },  
-    utils::application_root_dir,  
+use amethyst::{
+    core::transform::TransformBundle,
+    prelude::*,
+    renderer::{
+        plugins::{RenderFlat2D, RenderToWindow},
+        types::DefaultBackend,
+        RenderingBundle,
+    },
+    utils::application_root_dir,
 };
 ```
 
@@ -110,8 +110,8 @@ fn main() -> amethyst::Result<()> {
 }
 ```
 
-剩下的 main 內容就是把 `game_data` 建起來，預設我們引入兩個 bundle，用來顯示的 RenderingBundle 跟做圖形轉換用的 TransformBundle。  
-首先我們生一個 RenderingBundle，裡面有兩個 plugin，RenderToWindow 讀入我們寫好的 display.ron 並顯示主視窗；RenderFlat2D 可以在畫面上顯示 Sprite。  
-最後拿著我們生成的遊戲狀態 `MyState`、 `game_data` 全部塞進 Application 裡面就可以了；看到這麼一大團程式碼，就可以理解為什麼一定要用 amethyst 工具幫我們生出預設的設定了，自己手爆這堆東西一定會累死。  
+剩下的 main 內容就是把 `game_data` 建起來，預設我們引入兩個 bundle，用來顯示的 RenderingBundle 跟做圖形轉換用的 TransformBundle。
+首先我們生一個 RenderingBundle，裡面有兩個 plugin，RenderToWindow 讀入我們寫好的 display.ron 並顯示主視窗；RenderFlat2D 可以在畫面上顯示 Sprite。
+最後拿著我們生成的遊戲狀態 `MyState`、 `game_data` 全部塞進 Application 裡面就可以了；看到這麼一大團程式碼，就可以理解為什麼一定要用 amethyst 工具幫我們生出預設的設定了，自己手爆這堆東西一定會累死。
 
-到這邊我們就寫好一個空白視窗的小程式了，下一步我們要在畫面上畫上一些東西。  
+到這邊我們就寫好一個空白視窗的小程式了，下一步我們要在畫面上畫上一些東西。

@@ -43,8 +43,8 @@ x,y,z三數字分別定義字型格式、前景、背景。
 
 例：
 ```c
-printf("\033[1;33mtest\033[0m") 
-printf("\e[1;33mtest\e[0m")    
+printf("\033[1;33mtest\033[0m")
+printf("\e[1;33mtest\e[0m")
 ```
 
 ## BASH shell：  
@@ -53,7 +53,7 @@ printf("\e[1;33mtest\e[0m")
 
 值得一提的，這個設定對 [shell prompt](https://wiki.archlinux.org/index.php/Color_Bash_Prompt)也有用，比如說我的PS1參數的設定：
 ```
-PS1="[\e[1;32m\u\e[0m@\e[1;34m\h\e[0m \e[1;33m\W\e[0m]\$"  
+PS1="[\e[1;32m\u\e[0m@\e[1;34m\h\e[0m \e[1;33m\W\e[0m]\$"
 ```
 很難看懂，總之，綠色的使用者名稱，藍色的電腦名稱跟黃色的路徑，還滿潮的XD  
 

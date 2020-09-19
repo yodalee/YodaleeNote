@@ -28,17 +28,17 @@ series: null
 這部分urllib老早就寫好了，用如下的code，下面一行就可以把整個html以bytes的方式取出來：   
 ```python
 import urllib
-html = urllib.request.urlopen(hw_url).read()  
+html = urllib.request.urlopen(hw_url).read()
 ```
 如果要寫入檔案，在開檔的時候指定為 'wb' 就可以直接將html 寫到檔案中而不怕格式錯誤。 
 否則就要呼叫.decode("utf-8")的方式先轉換html的格式。  
 針對form filling的部分也有相對應的方式，可以用下面的方式把POST的訊息編碼，在urlopen的時候附加在後面。  
 ```python
-data = {}  
-data['id'] = ID  
-form_data = urllib.parse.urlencode(data)  
-form_data = form_data.encode('utf-8') # data should be bytes  
-response = urllib.request.urlopen(php_url, form\_data)
+data = {}
+data['id'] = ID
+form_data = urllib.parse.urlencode(data)
+form_data = form_data.encode('utf-8') # data should be bytes
+response = urllib.request.urlopen(php_url, form_data)
 ```
 得到相同可以用read()取得資料的方式，實地驗證過，會得到一個相同的html file。  
 
@@ -64,8 +64,8 @@ re.match("\s*[A-Za-z][0-9]{8,8}\s*", string)
 ### 如何執行本地程式？  
 這個倒比較簡單，使用python subprocess即可簡單完成：  
 ```python
-command = "./{0}".format(program\_name)  
-stdout = subprocess.check\_output(command.split())   
+command = "./{0}".format(program_name)
+stdout = subprocess.check_output(command.split())
 ```
 j
 ### 如何透過php上傳檔案？
@@ -79,27 +79,27 @@ tuple 第一個元素為要填入form的name attribute，請愛用「觀看原�
 tuple 第二個元素為要填入的值：
 例如：
 ```python
-fields = [("name","yodalee"),("nickname","garbage")]  
+fields = [("name","yodalee"),("nickname","garbage")]
 ```
 
 files的部分則是三元的tuple，依序為form的 name attribute、filename、file的binary；第三個用open(file, 'rb')傳入即可；例如：  
 ```python
-files = [("model", "test.txt", open("test.txt", "rb"))]   
+files = [("model", "test.txt", open("test.txt", "rb"))]
 ```
 
 當個例子的code如下：  
 ```python
-fields = [("id",ID), ("model\_submit","")]  
-files = [("model", filename, open(filename, "rb").read())]  
+fields = [("id",ID), ("model_submit","")]
+files = [("model", filename, open(filename, "rb").read())]
 
-content\_type, body = encode\_multipart\_formdata(fields, files)  
-h = httplib.HTTP(host)  
-h.putrequest('POST', selector)  
-h.putheader('content-type', content\_type)  
-h.putheader('content-length', str(len(body)))  
-h.endheaders()  
-h.send(body)  
-errcode, errmsg, headers = h.getreply()  
+content_type, body = encode_multipart_formdata(fields, files)
+h = httplib.HTTP(host)
+h.putrequest('POST', selector)
+h.putheader('content-type', content_type)
+h.putheader('content-length', str(len(body)))
+h.endheaders()
+h.send(body)
+errcode, errmsg, headers = h.getreply()
 return h.file.read()
 ```
 在id的欄位填入ID，model\_submit欄位填入空白，檔案則上傳 filename 所指的檔案。   

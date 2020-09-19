@@ -25,44 +25,44 @@ Linker script，就是給Linker 看的script。
 外部函數，在一個foo.h 裡宣告，並在foo.c 裡面定義：  
 ```c
 // foo.c
-int foo();   
+int foo();
 ```
 外部變數，在var.c 裡面定義  
 ```c
 // var.c
-int var;   
+int var;
 ```
 在main.c 裡面引用它們：  
 ```c
 // main.c
-#include "foo.h"  
-extern int var;  
-int main(){  
-    var = 10000;  
-    foo();  
-    return 0;  
-}   
+#include "foo.h"
+extern int var;
+int main(){
+    var = 10000;
+    foo();
+    return 0;
+}
 ```
 開始編譯  
 ```bash
-gcc -c main.c  
-gcc -c foo.c   
+gcc -c main.c
+gcc -c foo.c
 ```
 這樣我們就得到兩個物件檔 main.o跟foo.o，我們可以用objdump -x 把物件檔main.o的內容倒出來看看，其中有趣的就是這個：  
 ```txt
-SYMBOL TABLE:  
-0000000000000000 g F .text 000000000000002a main  
-0000000000000000 *UND* 0000000000000000 var  
-0000000000000000 *UND* 0000000000000000 foo RELOCATION RECORDS FOR [.text]:  
-OFFSET TYPE VALUE   
-0000000000000011 R\_X86\_64\_PC32 var-0x0000000000000008  
-000000000000001f R\_X86\_64\_PC32 foo-0x0000000000000004   
+SYMBOL TABLE:
+0000000000000000 g F .text 000000000000002a main
+0000000000000000 *UND* 0000000000000000 var
+0000000000000000 *UND* 0000000000000000 foo RELOCATION RECORDS FOR [.text]:
+OFFSET TYPE VALUE
+0000000000000011 R_X86_64_PC32 var-0x0000000000000008
+000000000000001f R_X86_64_PC32 foo-0x0000000000000004
 ```
 可以看到var, foo 這兩個符號還是未定(UND, undefined)，若我們此時強行連結，就會得到：  
 ```txt
 $ ld main.o
-main.c:(.text+0x11): undefined reference to 'var'  
-main.c:(.text+0x1f): undefined reference to'foo'   
+main.c:(.text+0x11): undefined reference to 'var'
+main.c:(.text+0x1f): undefined reference to'foo'
 ```
 必須把foo.o 跟var.o 兩個檔案一起連結才行。  
 
@@ -77,14 +77,14 @@ Linker script 可以讓我們對 linker 下達指示，把程式、變數放在�
 
 Linker 的作用，就是把輸入物件檔的section整理成到輸出檔的section，最簡單的linker script 就是用SECTIONS指令去定義section 的分佈：  
 ```txt
-SECTIONS  
-{  
-    . = 0x10000;  
-    .text : { *(.text) }  
-    . = 0x8000000;  
-    .data : { *(.data) }  
-    .bss : { *(.bss) }  
-}   
+SECTIONS
+{
+    . = 0x10000;
+    .text : { *(.text) }
+    . = 0x8000000;
+    .data : { *(.data) }
+    .bss : { *(.bss) }
+}
 ```
 在Linker script 裡面，最要緊的就是這個符號 '.' location counter，你可以想像這是一個探針，從最終執行檔的頭掃到尾，
 而 '.' 這個符號就指向現在掃到的位址，你可以讀取現在這個探針的位址，也可以移動探針。  
@@ -103,7 +103,7 @@ SECTIONS
 另外我們可以用ENTRY指定程式進入點的符號，不設定的話linker會試圖用預設.text 的起始點，或者用位址0的地方；
 在x86 預設的linker script 倒是可以看到這個預設的程式進入點：  
 ```txt
-ENTRY(_start)  
+ENTRY(_start)
 ```
 
 ### Symbol
@@ -113,27 +113,27 @@ ENTRY(_start)
 以上面的STM32 硬體為例，因為FLASH 記憶體被map 到0x00000000，RAM的資料被指向0x20000000，
 為了把資料從FLASH 搬到RAM 裡，在linker script 的RAM 兩端，加上了：  
 ```txt
-\_sidata = .;  
-//in FLASH \_sdata = .;  
-\_edata = .;   
+_sidata = .;
+//in FLASH _sdata = .;
+_edata = .;
 ```
 等於是把當前 location counter 這根探針指向的位址，放到\_sdata 這個符號裡面，所以在主程式中，就能向這樣取用RAM 的位址：  
 ```c
-extern uint32\_t \_sidata;  
-extern uint32\_t \_sdata;  
-extern uint32\_t \_edata;  
+extern uint32_t _sidata;
+extern uint32_t _sdata;
+extern uint32_t _edata;
 
-uint32\_t *idata\_begin = &\_sidata;   
-uint32\_t *data\_begin = &\_sdata;   
-uint32\_t *data\_end = &\_edata;   
-while (data\_begin < data\_end) *data\_begin++ = *idata\_begin++;    
+uint32_t *idata_begin = &_sidata;
+uint32_t *data_begin = &_sdata;
+uint32_t *data_end = &_edata;
+while (data_begin < data_end) *data_begin++ = *idata_begin++;
 ```
 注意我們用reference 去取\_sdata, \_edata 的位址，這是正確用法。  
 
 ### PROVIDE
 Linker script 還定義了PROVIDE 指令，來避免linker script 的符號跟C中相衝突，上面如果在C程式裡有\_sdata的變數，linker 會丟出雙重定義錯誤，但如果是  
 ```txt
-PROVIDE(\_sdata = .)
+PROVIDE(_sdata = .)
 ```
 就不會有這個問題。  
 
@@ -146,8 +146,8 @@ KEEP 指令保留某個符號不要被最佳化掉，在script 裡面isr\_vector
 Linker 預設會取用全部的記憶體，我們可以用MEMORY指令指定記憶體大小，例子中我們指定了FLASH跟RAM的輸出位置與大小：  
 ```txt
 MEMORY {
-    FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 128K  
-    RAM (rwx) : ORIGIN = 0x20000000, LENGTH = 40K    
+    FLASH (rx) : ORIGIN = 0x00000000, LENGTH = 128K
+    RAM (rwx) : ORIGIN = 0x20000000, LENGTH = 40K
 }
 ```
 接著我們在上面的SECTION部分，就能用 > 符號把資料寫到指定的位置  

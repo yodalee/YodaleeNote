@@ -73,12 +73,12 @@ scanf("%d%n", &a, &n);
 * *決定這筆資料是否要存入argument 中
 * n 決定要讀入多少個char     
 ```c
-int a;  
-scanf("%d"); //runtime error, 讀入東西沒地方存，seg fault  
-scanf("%d", a); //runtime error, 是&a，這很容易忘記  
+int a;
+scanf("%d"); //runtime error, 讀入東西沒地方存，seg fault
+scanf("%d", a); //runtime error, 是&a，這很容易忘記
 scanf("%d", ＆a);  // 正確用法
-scanf("%*d"); //OK，讀入的數字就dump掉  
-scanf("%3d",＆a); //輸入4444，a＝444  
+scanf("%*d"); //OK，讀入的數字就dump掉
+scanf("%3d",＆a); //輸入4444，a＝444
 ```
 
 搭配上面的[]，scanf就變得超強大，比如說常有人問要如何換行？  

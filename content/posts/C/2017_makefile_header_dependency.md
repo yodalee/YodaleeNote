@@ -69,7 +69,7 @@ name.o name.d: name.c aaa.h
 ```
 對每個.c 檔都產生過 .d 檔之後，就能直接include所有.d 檔案了。  
 ```makefile
-include $(sources: .c=.d)    
+include $(sources: .c=.d)
 ```
 因為 .d 的dependency 包括對應的 .c 檔，這樣只要.c 檔更新了，makefile 也會重build .d 檔，保持相依資訊在最新，同時只更新需要的 .d ，不會浪費build 的時間。  
 這個做法有幾個問題，首先是re-invocation 的問題，使用include的問題在於Makefile 本身的設計，因為include 可能帶入新的變數定義、目標等等，

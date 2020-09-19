@@ -34,9 +34,9 @@ series:
 ## verilog的轉換
 為了要對應combinational 和sequential 兩種電路，verilog裡面兩種不同的宣告方式：  
 ```verilog
-// edge trigger  
+// edge trigger
 always @( posedge/negedge clock)
-// level trigger(感謝為中大神指正)  
+// level trigger(感謝為中大神指正)
 always @( state, counter)
 ```
 
@@ -48,7 +48,7 @@ always @( state, counter)
 always @(state, counter)
 begin
   counter_next = counter;
-end  
+end
 ```
 因為總要有這個信號當輸入，才能用它來給其他信號值，現在也可以用always @(*)來代替，讓compiler自動宣告為輸入。  
 
@@ -77,7 +77,7 @@ FSM最重要的有幾個元素：狀態、輸入、輸出。
 always @(posedge clock)
 begin
   State <= state_next;
-end 
+end
 ```
 注意，只有這裡可以用posedge clock，因為只有這裡宣告所有register。  
 
@@ -86,9 +86,9 @@ end
 always @(*)
 begin
   if (input == 1’b1)
-    State\_next = state+1’b1;
+    State_next = state+1’b1;
   else
-    state\_next = state;
+    state_next = state;
 end
 ```
 這裡寫下一個要敲進register的值的運算  

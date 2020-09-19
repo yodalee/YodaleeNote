@@ -53,7 +53,7 @@ Struct State;
 let start_state = State{};
 let next_state = State{};
 let rule = FARule(start_state, c, next_state);
-NFA(start_state, next_state, rule); 
+NFA(start_state, next_state, rule);
 ```
 因為Rust 在struct 的比較的時候，會直接把struct 拆開比較裡面的值，所以上面 `start_state == next_state` 會是true，
 解決方法在於自己實做比較的方法，改成比較struct 的位址即可避免不同struct 被認定成相同：  

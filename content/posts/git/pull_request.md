@@ -41,12 +41,12 @@ git@github.com:mainuser/project
 通常新手使用git都會在來個「master大蜈蚣法」，一個master一路往前衝；不過project一大的時候還是建議開branch，改用「master大開花法」，每個branch只做一點點feature，然後再merge/rebase回master裡，反正 git 就是branch怎麼開都無所謂。  
 參與pull request的時候更是如此，通常這時候project已經相當大了；儘量讓project manager看到少量的檔案變化，而不是整個project的檔案都變過；每個branch取個簡單易懂的名字：bug編號，feature編號都是不錯的選擇。  
 ```shell
-git branch -b branchname  
-git checkout branchname  
+git branch -b branchname
+git checkout branchname
 ```
 或是  
 ```shell
-git checkout -b branchname   
+git checkout -b branchname
 ```
 ## Step 3: Make modification
 
@@ -84,9 +84,9 @@ git fetch origin -p
 
 最後要保持你的project跟遠端是同步的：  
 ```shell
-git fetch upstream  
-git checkout master  
-git rebase upstream/master   
+git fetch upstream
+git checkout master
+git rebase upstream/master
 ```
 
 完成的畫面大概會像這樣：  

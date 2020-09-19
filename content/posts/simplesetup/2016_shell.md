@@ -35,13 +35,13 @@ fi
 
 接著它需要一點時間train 一下，平常cd 的時候它就會把cd 的資料夾記下來，之後就能用  
 ```bash
-j foo  
+j foo
 jo foo
 ```
 前者cd到名稱含有或近似foo 的資料夾，後者直接開視窗的file manager檢視該資料夾。  
 也可以下多個參數，例如：  
 ```txt
-victim/alice/data  
+victim/alice/data
 victim/bob/data
 ```
 如果只下j data 可能會跳去alice的資料，但下了 j bob data 就能跳到後者  
@@ -61,13 +61,13 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 archlinux 則有收到repository 中，安裝repository 之後在shellrc 裡面加上  
 ```bash
-source /usr/share/fzf/completion.zsh  
+source /usr/share/fzf/completion.zsh
 source /usr/share/fzf/key-bindings.zsh
 ```
 最一般的使用方式，是把其他會吐出一堆東西的指令當作fzf 指令的輸入，fzf 會把輸出全列出來，然後讓你打字進行模糊搜尋，
 或者用上下選取，用一下就覺得快若閃電，絲毫沒有延遲，例如：  
 ```bash
-locate servo | fzf  
+locate servo | fzf
 find -type f | fzf
 ```
 加了key-bindings.zsh 之後就連上面的Ctrl+R 也會變成fzf 模式，潮爽der；

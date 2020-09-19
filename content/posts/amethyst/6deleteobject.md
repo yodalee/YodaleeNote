@@ -39,7 +39,7 @@ for (_, _, transform) in (&physicals, !&bullets, &mut transforms).join() {
   } else if obj_x > ARENA_WIDTH {
     transform.set_translation_x(0.5);
   }
- 
+
   if obj_y < 0.0 {
     transform.set_translation_y(ARENA_HEIGHT-0.5);
   } else if obj_y > ARENA_HEIGHT {

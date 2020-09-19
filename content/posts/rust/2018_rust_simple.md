@@ -148,7 +148,7 @@ fn test_simple_big_function_recursive() {
     let factor = Node::fun("factor", "x", Node::if_cond_else(
             Node::gt(Node::variable("x"), Node::number(1)),
             Node::multiply(Node::variable("x"),
-              Node::call(Node::variable("factor"), 
+              Node::call(Node::variable("factor"),
               Node::subtract(Node::variable("x"), Node::number(1)))),
             Node::number(1)));
     let statement = Node::sequence(

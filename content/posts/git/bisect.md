@@ -30,12 +30,12 @@ bad commit 在歷史上要比good commit 來得晚
 可以透過checkout tag的方式作大範圍的搜尋，以免bisect檢查太多commit，在這個例子中，我們發現v1.2.8->v1.2.9的過程中這個bug 被修掉了。   
 因此我們設定：   
 ```shell
-$ git bisect start   
-$ git bisect bad 1.2.9   
-$ git bisect good 1.2.8   
-Bisecting: 11 revisions left to test after this (roughly 4 steps)   
+$ git bisect start
+$ git bisect bad 1.2.9
+$ git bisect good 1.2.8
+Bisecting: 11 revisions left to test after this (roughly 4 steps)
 [bc1b16509cec70de7a32354026443fca777f4d7d] created a .gitignore file
-(which is almost a copy of .hgignore with some minor changes and comments)    
+(which is almost a copy of .hgignore with some minor changes and comments)
 ```
 
 這時候我們已經進入bisect 狀態，用git branch的話會看到現在是(no branch)狀態。  
@@ -43,30 +43,30 @@ Bisecting: 11 revisions left to test after this (roughly 4 steps)
 這時bisect會checkout 處在good/bad 中間位置的版本，我們執行事先寫好的一個測試檔test.py，它會自動測試這個 issue 的狀態  
 
 ```python
-from pyquery import PyQuery as pq   
-x = pq("<div></div>")  
-y = pq("<div><table></table></div>")  
-print(x.is\_("table"))  
-print(y.is\_("table"))   
+from pyquery import PyQuery as pq
+x = pq("<div></div>")
+y = pq("<div><table></table></div>")
+print(x.is_("table"))
+print(y.is_("table"))
 ```
 執行發現它還是回傳False/False，因此我們輸入   
 ```shell
-$ git bisect bad  
-Bisecting: 5 revisions left to test after this (roughly 3 steps)  
-[b81a9e8a2b0d48ec0c64d6de14293dd4a680a20b] fixed issue #9   
+$ git bisect bad
+Bisecting: 5 revisions left to test after this (roughly 3 steps)
+[b81a9e8a2b0d48ec0c64d6de14293dd4a680a20b] fixed issue #9
 ```
 bisect 會以binary search的方式checkout 一個更舊的版本，然後你再測試一次。  
 經過五次的bad/good的測試結果，bisect回傳：  
 
 ```shell
-300cd0822505a4bd308acd1520ff3ef0f20f8635 is the first bad commit  
-commit 300cd0822505a4bd308acd1520ff3ef0f20f8635  
-Author: Gael Pasgrimaud <gael@gawel.org>  
-Date: Fri Jan 3 10:35:30 2014 +0100  
+300cd0822505a4bd308acd1520ff3ef0f20f8635 is the first bad commit
+commit 300cd0822505a4bd308acd1520ff3ef0f20f8635
+Author: Gael Pasgrimaud <gael@gawel.org>
+Date: Fri Jan 3 10:35:30 2014 +0100
 
-fixed issue #19  
+fixed issue #19
 
-:040000 040000 1d9cb3b170a8fdb2846e3c0e0fb6d2be9a9538d5 07d3a40ff73dda078d7543be2fab2f9f927b0c1f M pyquery    
+:040000 040000 1d9cb3b170a8fdb2846e3c0e0fb6d2be9a9538d5 07d3a40ff73dda078d7543be2fab2f9f927b0c1f M pyquery
 ```
 
 這樣就抓到這個 fixed issue #19 的commit 就是修好這個issue 的commit 了，最後要用  
@@ -85,13 +85,13 @@ $ git bisect reset
 
 所以我改了上面這個script 為：  
 ```python
-import sys  
-from pyquery import PyQuery as pq  
-x = pq("<div></div>")  
-y = pq("<div><table></table></div>")  
-if x.is\_("table") == False and y.is\_("table") == False:  
-sys.exit(1)  
-else:   
+import sys
+from pyquery import PyQuery as pq
+x = pq("<div></div>")
+y = pq("<div><table></table></div>")
+if x.is_("table") == False and y.is_("table") == False:
+sys.exit(1)
+else:
 sys.exit(0)
 ```
 
@@ -108,14 +108,14 @@ git bisect run會極速的checkout 舊分枝，跑python script，看結果跑�
 
 第一個是寫一個shell script test.sh，先刪掉所有pyc檔之後，再執行python script:  
 ```shell
-find . -name "*.pyc" -exec rm {} \;  
+find . -name "*.pyc" -exec rm {} \;
 ./test.py
 ```
 然後執行 `git bisect run ./test.sh`  
 
 第二個是讓python script 跑慢一點，讓python能察覺到python 的版本變化：  
 ```python
-import time   
+import time
 time.sleep(1)
 ```
 

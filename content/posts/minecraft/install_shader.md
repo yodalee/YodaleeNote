@@ -20,8 +20,8 @@ series: null
 
 另外是一個插曲，一開始裝好的時候，不管是哪個shader，打開畫面都會一片漆黑，下面出現類似：  
 ```
-Invalid program: final  
-Cannot create FrameBuffer  
+Invalid program: final
+Cannot create FrameBuffer
 ```
 之類的錯誤，後來發現我沒用Optirun開，使用的顯卡是Intel 的HD Graphics 4000，可能是程式不相容不然就是顯卡不夠力，總之顯示不出來；後來用了Optirun 用筆電的nVidia GT 640M才一切正常，這是顯示結果：  
 ![shader](/images/minecraft/shader.png)

@@ -11,11 +11,11 @@ series: null
 最近幾天在研究嵌入式系統，玩一玩也有一些心得。  
 課程上所用的編譯工具是arm-none-linux-gnu toolchain，在Archlinux 下可以用如下的方式安裝：  
 ```bash
-yaourt -S gcc-linaro-arm-linux-gnueabihf  
-yaourt -S qemu-linaro  
-yaourt -S arm-none-eabi-gcc49-linaro  
-yaourt -S arm-none-eabi-gdb-linaro  
-ln -s /opt/gcc-linaro-arm-linux-gnueabihf/libc /usr/arm-linux-gnueabihf   
+yaourt -S gcc-linaro-arm-linux-gnueabihf
+yaourt -S qemu-linaro
+yaourt -S arm-none-eabi-gcc49-linaro
+yaourt -S arm-none-eabi-gdb-linaro
+ln -s /opt/gcc-linaro-arm-linux-gnueabihf/libc /usr/arm-linux-gnueabihf
 ```
 不過最近心血來潮，想來試試如果用另一套編譯器 LLVM 來編譯看看，至於為什麼…好玩嘛(炸)，總之這裡是設定筆記：  
 <!--more-->

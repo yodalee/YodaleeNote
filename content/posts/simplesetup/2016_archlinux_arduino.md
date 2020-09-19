@@ -14,8 +14,8 @@ series: null
 
 先用yaourt 裝arduino，然後把一般使用者加到uucp 跟lock 群組裡面，讓使用者可以取用serial 的權限：  
 ```bash
-gpasswd -a $USER uucp  
-gpasswd -a $USER lock  
+gpasswd -a $USER uucp
+gpasswd -a $USER lock
 ```
 
 再來登出登入就設定完了，打開arduino 就有介面可以使用了。  
@@ -41,7 +41,7 @@ $HOME/.arduino15/packages/Intel/tools/core2-32-poky-linux/1.6.2+1.0/i686/sysroot
 ## 解法一（不完整，請用解法二）  
 如果用file 去看那個執行檔就會看出一點端倪，裡面有這句：  
 ```txt
-interpreter /opt/poky-edison/1.6.1/sysroots/core2-32-poky-linux/lib/ld-linux.so.2  
+interpreter /opt/poky-edison/1.6.1/sysroots/core2-32-poky-linux/lib/ld-linux.so.2
 ```
 意即這個執行檔需要這個dynamic linker來執行，而安裝時，這個路徑並沒弄好，因為在這個安裝包
 （$HOME/.arduino/packages/Intel/tools/core2-32-poky-linux/1.6.2+1.0/i686）
@@ -63,7 +63,7 @@ relocate\_sdk.sh 就沒把該修改interpreter 的執行檔傳給relocate\_sdk.p
 
 確實去找manpage find，會找到這行  
 ```txt
--perm +mode  
+-perm +mode
 This is no longer supported (and has been deprecated since 2005). Use -perm /mode instead.
 ```
 所以大概是這個script 太久沒維護了吧。  

@@ -127,7 +127,7 @@ tokenSpec = [
   ('comment', r'//[^\n]*|/\*(\*(?!\/)|[^*])*\*/'),
   ('integerConstant', r'\d+'),
   ('symbol', r'[+\-*\/\&\|\<\>\=\~\(\)\{\}\[\]\.\,\;]'),
-  ('identifier', r'[A-Za-z\_][A-Za-z\_0-9]*'),
+  ('identifier', r'[A-Za-z_][A-Za-z_0-9]*'),
   ('stringConstant', r'\"([^"]*)\"'),
   ('newline', r'\n'),
   ('space', r'[ \t]+'),

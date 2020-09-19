@@ -28,9 +28,9 @@ series: null
 簡單的例子，我們幾個cpp檔裡面都有一個debug變數(總不能main裡的叫maindebug，gui裡的叫guidebug吧？)，如果不加上static   
 ```cpp
 //main.cpp
-int debug  = 0; 
+int debug  = 0;
 //src1.cpp
-int debug  = 0; 
+int debug  = 0;
 ```
 這樣在最後編譯連結的階段，就會回傳錯誤，因為 debug 在這裡被重複定義。  
 因此，請為全域變數加上static。  
@@ -62,7 +62,7 @@ void foo(){
 在class裡面用會複雜一點，假設現在有一個叫 `static_test` 的class，架構如下：   
 ```cpp
 //static_test.h
-class static_test { 
+class static_test {
 public:
     static int static_var;
     static void output();

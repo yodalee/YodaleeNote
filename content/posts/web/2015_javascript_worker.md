@@ -22,28 +22,28 @@ series: null
 
 我看到的設計是這樣，在主要文件內 main.js 中，宣告worker  
 ```js
-var worker = new Worker("workerFile");   
+var worker = new Worker("workerFile");
 ```
 
 在workerFile 內要定義onmessage 函式，並且用參數的command判斷執行哪個對應的函式：  
 ```js
-this.onmessage = function(e) {  
-    switch(e.data.command) {  
-        case 'act1':  
-            fun\_act1(e.data.payload);  
-        break;  
-    }   
+this.onmessage = function(e) {
+    switch(e.data.command) {
+        case 'act1':
+            fun_act1(e.data.payload);
+        break;
+    }
 }
 ```
 這時候main.js就可以利用postmessage 叫worker 作事：  
 ```js
-worker.postMessage({  
-    command: 'act1',  
-    payload: blahblahblah  
-})  
-worker.onmessage = function(e) {  
-    data = e.data;  
-}   
+worker.postMessage({
+    command: 'act1',
+    payload: blahblahblah
+})
+worker.onmessage = function(e) {
+    data = e.data;
+}
 ```
 同樣我們在worker 裡面也可以呼叫postmessage，對方接口就是main.js 裡的onmessage，這樣就能做到雙方互相傳遞資料。  
 

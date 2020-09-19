@@ -193,20 +193,20 @@ impl SimpleState for Asteroid {
 在 state `on_start` 時，呼叫 `load_sprite_sheet` 得到 `Handle<SpriteSheet>`，呼叫 `initialize_camera` 和 `initialize_ship` 初始化 camera 跟 ship entity。  
 有一行特別是這行
 ```rust
-world.register::<Ship>()  
+world.register::<Ship>()
 ```
 如果不加這行的話，會遇到執行期錯誤：  
 
 ```txt
-thread 'main' panicked at 'Tried to fetch resource of type `MaskedStorage<Ship>`[^1] from the `World`, but the resource does not exist.  
+thread 'main' panicked at 'Tried to fetch resource of type `MaskedStorage<Ship>`[^1] from the `World`, but the resource does not exist.
 
-You may ensure the resource exists through one of the following methods:  
+You may ensure the resource exists through one of the following methods:
 
-* Inserting it when the world is created: `world.insert(..)`.  
-* If the resource implements `Default`, include it in a system's `SystemData`, and ensure the system is registered in the dispatcher.  
-* If the resource does not implement `Default`, insert it in the world during `System::setup`.  
+* Inserting it when the world is created: `world.insert(..)`.
+* If the resource implements `Default`, include it in a system's `SystemData`, and ensure the system is registered in the dispatcher.
+* If the resource does not implement `Default`, insert it in the world during `System::setup`.
 
-[^1]: Full type name: `specs::storage::MaskedStorage<rocket::entities::Ship>`', /home/yodalee/.rustup/toolchains/nightly-x86\_64-unknown-linux-gnu/lib/rustlib/src/rust/src/libstd/macros.rs:16:9  
+[^1]: Full type name: `specs::storage::MaskedStorage<rocket::entities::Ship>`', /home/yodalee/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src/libstd/macros.rs:16:9
 ```
 
 這個原因是 component 內的 storage 要經過初始化才能使用，我們在 entity 裡面使用了 Ship 這個 component 卻沒初始化 storage，程式就爆掉了。  

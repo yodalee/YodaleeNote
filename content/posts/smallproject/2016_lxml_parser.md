@@ -61,7 +61,7 @@ for events, element in context:
   print(elem.text)
   ```
 文中並有說，iterparse 雖然不會把整個檔案載入，為了加速整份檔案可能被多次讀取的狀況，它會保留過去element 的reference，
-因此剖析會愈跑愈慢；解決方法是在iterparse 中，取完element 的資料就把它給刪除，同時還有element已經剖析過的sibiling，在iteration 最後加上這段：  
+因此剖析會愈跑愈慢；解決方法是在iterparse 中，取完element 的資料就把它給刪除，同時還有element已經剖析過的sibiling，在iteration 最後加上這段：
 ```python
 element.clear()
 while element.getprevious() is not None:
@@ -69,9 +69,9 @@ while element.getprevious() is not None:
 ```
 要注意的一個是，使用iterparse 的時候，要避免使用如getnext() 方法，我用這個方法，有機會在剖析的時候遇到它回傳None，
 應該是iterparse 在處理的時候，next element 還沒有被載入，因此getnext 還拿不到結果；
-從上面的end 事件來說，每個iteration，就只能取用element 裡面的元素。  
+從上面的end 事件來說，每個iteration，就只能取用element 裡面的元素。
 
-改寫過之後的parse 的執行結果：  
+改寫過之後的parse 的執行結果：
 ```txt
 group count 525
 parse 280895 entries
@@ -83,14 +83,14 @@ parse 280895 entries
   page faults from disk:     0
   other page faults:         21457
 ```
-跟文中不同，因為我有興趣的tag 比例較高，執行時間沒有下降太多，但記憶體用量大幅下降。  
+跟文中不同，因為我有興趣的tag 比例較高，執行時間沒有下降太多，但記憶體用量大幅下降。
 
-另外文中也有提到其他技巧，像是不要用find, findall，它們會用XPath-like expression language called ElementPath。  
+另外文中也有提到其他技巧，像是不要用find, findall，它們會用XPath-like expression language called ElementPath。
 
-## 
+##
 lxml 提供iterchildren/iterdescendents 跟XPath，前兩者相較 ElementPath速度會更快一些；
 對於複雜的模式，XPath可以經過事先compile，比起每次呼叫元素的xpath() method，經過precompile 的XPath在頻繁取用下會快很多，
-兩種寫法分別是：  
+兩種寫法分別是：
 ```
 # non-precompile:
 xpathContent = "//div[@class='contents']"
@@ -99,17 +99,17 @@ content = root.xpath(xpathContent)
 xpathContent = etree.XPath("//div[@class='contents']")
 content = xpathContent(root)
 ```
-下面是我實測的結果，在都是完全載入記憶體下，有無precompile 的速度差接近兩倍，不過這也表示我用了iterparse 其實速度是下降的，因為我iterparse 其實是有使用precompile 的：  
+下面是我實測的結果，在都是完全載入記憶體下，有無precompile 的速度差接近兩倍，不過這也表示我用了iterparse 其實速度是下降的，因為我iterparse 其實是有使用precompile 的：
 ```txt
 ./parser.py 14.99s user 0.35s system 99% cpu 15.344 total   
 ./parser.py 25.82s user 0.40s system 99% cpu 26.232 total    
 ```
-以上大概是使用lxml 時，一些減少記憶體用量的技巧，記錄一下希望對大家有幫助。  
+以上大概是使用lxml 時，一些減少記憶體用量的技巧，記錄一下希望對大家有幫助。
 
-## 題外話：  
-在寫這篇的過程中，我發現Shell script 的time 其實是一個相當強大的指令，除了時間之外它還能記錄其他有用的數值，像是 memory usage, I/O, IPC call 等等的資訊。  
+## 題外話：
+在寫這篇的過程中，我發現Shell script 的time 其實是一個相當強大的指令，除了時間之外它還能記錄其他有用的數值，像是 memory usage, I/O, IPC call 等等的資訊。
 我的time 是用zsh 下的版本，我也不確定它是哪裡來的，用whereis 找不到，用time --version 也看不到相關資訊，
-但man time 有相關的說明，總之copy and paste from stack overflow，把我的TIMEFMT 變數設定為：  
+但man time 有相關的說明，總之copy and paste from stack overflow，把我的TIMEFMT 變數設定為：
 ```bash
 export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$' \
   avg shared (code):         %X KB'$'\
@@ -119,4 +119,4 @@ export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$' \
   page faults from disk:     %F'$'\
   other page faults:         %R'
 ```
-其他的變數選項可以在man time 的format string 一節找到，這裡就不細講了，算是寫code 的一個小小收穫吧。 
+其他的變數選項可以在man time 的format string 一節找到，這裡就不細講了，算是寫code 的一個小小收穫吧。

@@ -69,7 +69,7 @@ ctypes.ArgumentError: argument 1: <type 'exceptions.TypeError'>: wrong type
 
 這部分採 strict type check ，甚至比C 本身嚴格，如果設定argtypes 為：  
 ```python
-POINTER(c_int)  
+POINTER(c_int)
 ```
 那用 `c_char_p` 這種在C 中可以轉型過去的型態也無法被接受。  
 

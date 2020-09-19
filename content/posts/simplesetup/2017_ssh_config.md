@@ -22,8 +22,8 @@ ssh 是工作上的重要工具之一，平時要連進其他電腦、傳送檔�
 3. 問 pass phrase，我們都用上 public key 就是不想打密碼，除非有安全性考量否則留空即可  
 
 ```txt
-Enter file in which to save the key (/home/garbage/.ssh/id\_rsa): /tmp/id\_rsa  
-Enter passphrase (empty for no passphrase):  
+Enter file in which to save the key (/home/garbage/.ssh/id_rsa): /tmp/id_rsa
+Enter passphrase (empty for no passphrase):
 Enter same passphrase again:
 ```
 會產生兩個檔案，`id\_[algorithm]` `id\_[algorithm].pub`，從檔名看 pub 自然是公開金鑰了。  
@@ -60,7 +60,7 @@ ssh MyMachine 就會直接連上 yolo@remotemachine.com -p 9453
 為了連線所以在 router 上面鑽一個洞，開一個 ip 會直接進到工作室A的另一台主機B，到主機B就進到內網，可以直連測試主機A。  
 如果要打指令，大概會長得像下面這樣，等於是透過machineB ，開一個 pseudo-tty，再執行 ssh進到machineA：  
 ```bash
-ssh -t userB@machineB.ip -p 9453 ssh userA@machineA.ip  
+ssh -t userB@machineB.ip -p 9453 ssh userA@machineA.ip
 ```
 要簡單一點找到[這個 stackoverflow](https://askubuntu.com/questions/311447/how-do-i-ssh-to-machine-a-via-b-in-one-command)，
 關鍵字是ssh proxy，在 .ssh/config 裡面加上這些設定  

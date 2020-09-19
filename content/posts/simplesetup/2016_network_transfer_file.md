@@ -23,20 +23,20 @@ series: null
 
 在筆電上用ifconfig 就會看到介面ip 已設定：   
 ```txt
-enp2s0f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500   
-inet 192.168.66.99 netmask 255.255.255.0 broadcast 192.168.66.255    
+enp2s0f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500
+inet 192.168.66.99 netmask 255.255.255.0 broadcast 192.168.66.255
 ```
 連接上網路線的話，也會看到雙方的有線網路都顯示連線，這時候可以先用ping 去測一下，確定已連線  
 ```bash
-ping 192.168.66.100 -c 3  
-PING 192.168.66.100 (192.168.66.100) 56(84) bytes of data.   
-64 bytes from 192.168.66.100: icmp_seq=1 ttl=64 time=12.4 ms   
-64 bytes from 192.168.66.100: icmp_seq=2 ttl=64 time=7.74 ms   
-64 bytes from 192.168.66.100: icmp_seq=3 ttl=64 time=2.46 ms   
+ping 192.168.66.100 -c 3
+PING 192.168.66.100 (192.168.66.100) 56(84) bytes of data.
+64 bytes from 192.168.66.100: icmp_seq=1 ttl=64 time=12.4 ms
+64 bytes from 192.168.66.100: icmp_seq=2 ttl=64 time=7.74 ms
+64 bytes from 192.168.66.100: icmp_seq=3 ttl=64 time=2.46 ms
 
---- 192.168.66.100 ping statistics ---   
-3 packets transmitted, 3 received, 0% packet loss, time 2003ms   
-rtt min/avg/max/mdev = 2.468/7.566/12.488/4.092 ms    
+--- 192.168.66.100 ping statistics ---
+3 packets transmitted, 3 received, 0% packet loss, time 2003ms
+rtt min/avg/max/mdev = 2.468/7.566/12.488/4.092 ms
 ```
 
 接著在筆電上設定ssh，我在archlinux 上是用openSSH，[相關的設定](http://smalldd.pixnet.net/blog/post/24627330-arch-linux-%E5%AE%89%E8%A3%9D-openssh)。
@@ -47,12 +47,12 @@ systemctl start sshd
 ```
 就能透過該ip ，從桌電ssh 進入筆電了：  
 ```bash
-ssh username@192.168.66.99   
+ssh username@192.168.66.99
 ```
 
 確認連線之後，就能用任何你想得到的方法，透過網路備份，像什麼sftp, fillzilla 的，我最後同樣用rsync 來處理，這應該會要求目標電腦上也有安裝rsync，它會透過一個rsync --server來接收檔案：  
 ```bash
-rsync -av --progress -e ssh /media/data/Animate 192.168.66.99:/media/data 
+rsync -av --progress -e ssh /media/data/Animate 192.168.66.99:/media/data
 ```
 
 log 我就不貼了，反正就一直傳一直傳一直傳，均速大概是 50 MB/s，雖然連線資訊寫的速度是1000 Mb/s，不過也算相當快了，一集動畫100M 在1-2 秒間就會傳完。  

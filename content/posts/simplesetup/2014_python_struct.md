@@ -31,42 +31,42 @@ series: null
 例如：我們可以看到dex 35的header為：  
 
 ```c
-typedefstructDexHeader {  
-    u1 magic[8]; /*includes version number */  
-    u4 checksum; /*adler32 checksum */  
-    u1 signature[kSHA1DigestLen]; /*SHA-1 hash */  
-    u4 fileSize; /*length of entire file */  
-    u4 headerSize; /*offset to start of next section */  
-    u4 endianTag;  
-    u4 linkSize;  
-    u4 linkOff;  
-    u4 mapOff;  
-    u4 stringIdsSize;  
-    u4 stringIdsOff;  
-    u4 typeIdsSize;  
-    u4 typeIdsOff;  
-    u4 protoIdsSize;  
-    u4 protoIdsOff;  
-    u4 fieldIdsSize;  
-    u4 fieldIdsOff;  
-    u4 methodIdsSize;  
-    u4 methodIdsOff;  
-    u4 classDefsSize;  
-    u4 classDefsOff;  
-    u4 dataSize;  
-    u4 dataOff;  
-}DexHeader;    
+typedefstructDexHeader {
+    u1 magic[8]; /*includes version number */
+    u4 checksum; /*adler32 checksum */
+    u1 signature[kSHA1DigestLen]; /*SHA-1 hash */
+    u4 fileSize; /*length of entire file */
+    u4 headerSize; /*offset to start of next section */
+    u4 endianTag;
+    u4 linkSize;
+    u4 linkOff;
+    u4 mapOff;
+    u4 stringIdsSize;
+    u4 stringIdsOff;
+    u4 typeIdsSize;
+    u4 typeIdsOff;
+    u4 protoIdsSize;
+    u4 protoIdsOff;
+    u4 fieldIdsSize;
+    u4 fieldIdsOff;
+    u4 methodIdsSize;
+    u4 methodIdsOff;
+    u4 classDefsSize;
+    u4 classDefsOff;
+    u4 dataSize;
+    u4 dataOff;
+}DexHeader;
 ```
 
 對這個我們可以寫出v35 format string為：`8sI20s20I`，就這麼簡單。 接著我們可以呼叫unpack來取得header的內容。  
 ```python
-infile = self.open("yay.dex", "rb")  
-header = struct.unpack(self.v35fmt, infile.read(struct.calcsize(self.v35fmt)))  
+infile = self.open("yay.dex", "rb")
+header = struct.unpack(self.v35fmt, infile.read(struct.calcsize(self.v35fmt)))
 ```
 比較麻煩的一點是，unpack的資料長度必須和format string會處理到的長度一樣，這裡struct提供了calcsize來處理這個問題，它會回傳format string代表的長度。  
 ```python
 print(header)
 (b'dex\n035\x00', 3615126987, b'A\x89\xd9Y\xd8mm\xe4\xfe\x9d8\x0c\xc25\xbc\xcc\x9b\x86\xbd)',
-912, 112, 305419896, 0, 0, 752, 16, 112, 8, 176, 4, 208, 1, 256, 5, 264, 1, 304, 576, 336)    
+912, 112, 305419896, 0, 0, 752, 16, 112, 8, 176, 4, 208, 1, 256, 5, 264, 1, 304, 576, 336)
 ```
 可以看見資料已經寫入tuple中了，之後再一個一個轉出即可。

@@ -28,11 +28,11 @@ series: null
 PEG 有個好處是在處理基礎的結構的時候，比起用 regular expression 各種複雜組合還要簡潔，像是 floating point 的時候，
 這是 C floating point 的語法，雖然這還不含 floating point 的 hex 表達式，但不負責任的臆測，要加上 hex 的支援只要多個 (decimal | hex) 的選擇就好了：  
 ```txt
-sign = { "+" | "-" }  
-fractional = { digit* ~ "." ~ digit+ | digit+ ~ "." }  
-exponent = { ("e" | "E") ~ sign? ~ digit+ }  
-floating\_sfx = { "f" | "F" | "l" | "L" }  
-floating = @{ fractional ~ exponent? ~ floating\_sfx? }   
+sign = { "+" | "-" }
+fractional = { digit* ~ "." ~ digit+ | digit+ ~ "." }
+exponent = { ("e" | "E") ~ sign? ~ digit+ }
+floating_sfx = { "f" | "F" | "l" | "L" }
+floating = @{ fractional ~ exponent? ~ floating_sfx? }
 ```
 不過脫離基本結構，開始往上層架構走的時候麻煩就來了。  
 
@@ -61,14 +61,14 @@ block -> declaration* ~ statement*
 
 這個例子最後的寫法其實是這樣：  
 ```txt
-compound\_statement -> block*  
-block -> (declaration | statement)+   
+compound_statement -> block*
+block -> (declaration | statement)+
 ```
 
 或者是這樣，反正轉成 AST 之後也沒人在意 block 到底是只有 declaration 、只有 statement 還是兩個都有，乾脆把所有 declaration 跟 statement 都攪進一個 block 裡：  
 ```txt
-compound\_statement -> block  
-block -> (declaration | statement)*   
+compound_statement -> block
+block -> (declaration | statement)*
 ```
 
 這個例子很明顯的體現出 PEG 文法的問題，透過文法加上 `?+*`，我們可以很有效的把本來的 list 打平到一層語法，但連接數層的 `+*` 就需要花費時間調解層與層之間的融合，是一件複雜度有點高的事情。  
@@ -89,7 +89,7 @@ CFG 那邊的人大概會指著 PEG 的人說，你們 PEG 的人就是太自由
 用 rust 的 pest PEG 套件寫轉換的程式，大部分都是 match rule ，看是哪種 Rule 之後去呼叫對應的函式來處理。  
 在expression 的部分可以直接使用 pest 提供的 precedence climbing 功能，無論是文法或建 AST 都很簡單，文法甚至可以收到一行，因為 expression 都是一樣的格式：  
 ```txt
-expression -> unary_expr (binary_op unary_expr)* 
+expression -> unary_expr (binary_op unary_expr)*
 ```
 再到 precedence climbing 為所有 op 分出順序，就像 climb.rs 裡面那壯觀的 C operator 優先次序：   
 ```rust

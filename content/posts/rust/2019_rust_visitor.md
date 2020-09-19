@@ -162,7 +162,7 @@ fn dump_nochild(&mut self, label: &str) -> u32
 ```
 make\_node 的介面則是：  
 ```rust
-fn make\_node(&self, visit: &mut DumpGraphviz) -> u32
+fn make_node(&self, visit: &mut DumpGraphviz) -> u32
 ```
 整體就變得清爽多了。  
 

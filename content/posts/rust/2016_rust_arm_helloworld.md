@@ -82,13 +82,13 @@ ENDFUNC             defaultExceptionHandler
 
 首先是寫一個Cargo.toml  
 ```toml
-[package]  
-name = "mini\_arm"  
-version = "0.1.0"  
-authors = ["yodalee <lc85301@gmail.com>"]  
+[package]
+name = "mini_arm"
+version = "0.1.0"
+authors = ["yodalee <lc85301@gmail.com>"]
 
-[lib]  
-crate-type = ["staticlib"]   
+[lib]
+crate-type = ["staticlib"]
 ```
 然後新建檔案 src/lib.rs  
 ```rust
@@ -147,30 +147,30 @@ loop {}
 
 後面的內容就跟神blog 的內容講得差不多，需要在Cargo.toml 中加上rlibc的dependencies，並且在linker 參數加上 --gc-sections，才能使用一些rust 的code。  
 ```toml
-[dependencies]  
-rlibc = "1.0.0"   
+[dependencies]
+rlibc = "1.0.0"
 ```
 現在我們試著用qemu 執行時，qmeu 它爆炸了：  
 ```txt
-emu: fatal: Trying to execute code outside RAM or ROM at 0xe12fff1e  
+emu: fatal: Trying to execute code outside RAM or ROM at 0xe12fff1e
 
-R00=00000000 R01=00000000 R02=00000000 R03=00000000  
-R04=00000000 R05=00000000 R06=00000000 R07=00000000  
-R08=00000000 R09=00000000 R10=00000000 R11=00000000  
-R12=00000000 R13=ffffffe0 R14=fffffff9 R15=e12fff1e  
-PSR=40000153 -Z-- A svc32  
-FPSCR: 00000000   
+R00=00000000 R01=00000000 R02=00000000 R03=00000000
+R04=00000000 R05=00000000 R06=00000000 R07=00000000
+R08=00000000 R09=00000000 R10=00000000 R11=00000000
+R12=00000000 R13=ffffffe0 R14=fffffff9 R15=e12fff1e
+PSR=40000153 -Z-- A svc32
+FPSCR: 00000000
 ```
 
 使用qemu 搭配gdb 來檢查一下：  
 ```bash
-qemu-system-arm -M stm32-p103 -nographic -kernel hello.bin -S -gdb tcp::9453  
-$(gdb) file hello.elf  
-$(gdb) target remote localhost:9453   
+qemu-system-arm -M stm32-p103 -nographic -kernel hello.bin -S -gdb tcp::9453
+$(gdb) file hello.elf
+$(gdb) target remote localhost:9453
 ```
 它一進到rust\_main 之後就死機了，當下的第一個指令是：  
 ```txt
-34: e24dd004 sub sp, sp, #4   
+34: e24dd004 sub sp, sp, #4
 ```
 很奇怪的，這行指令就是一直讓它當掉，比對了C version之後，發現可能是eabi 的問題：  
 C用的是arm-none-eabi；我們則用了arm-linux-gnueabihf，於是我們要改用thumbv7em-none-eabi 的rustc；首先是從網路上拿到thumbv7em-none-eabi.json：  
