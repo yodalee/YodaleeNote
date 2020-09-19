@@ -21,7 +21,7 @@ series: null
 還可以用setReqeustHeader來指定post 的內容，總之有許多的設定可以選用，我用的就很直接，一個非同步的post 把資料送去server 就是  
 ```javascript
 xmlhttp = new XMLHttpRequest()   
-xmlhttp.open(“POST”, “upload?data=” + data, true);   
+xmlhttp.open("POST", "upload?data=" + data, true);   
 xmlhttp.send();    
 ```
 
@@ -38,7 +38,7 @@ data 很長的話應該要放在send() 裡面，才是POST method ，理論上�
 上面應該要改成：  
 ```python
 xmlhttp = new XMLHttpRequest()   
-xmlhttp.open(“POST”, “upload", true);   
+xmlhttp.open("POST", "upload", true);   
 xmlhttp.send(data);  
 
 class UploadHandler(webapp2.RequestHandler):   

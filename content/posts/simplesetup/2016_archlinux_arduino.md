@@ -25,7 +25,7 @@ gpasswd -a $USER lock
 
 而安裝時會出問題，大致的錯誤訊息會類似這樣：  
 ```txt
-Setting it up...find: invalid mode ‘+111’
+Setting it up...find: invalid mode '+111’
 /tmp/tmp.ioGoYaYhZu/relocate_sdk.sh /home/yodalee/.arduino15/packages/Intel/tools/core2-32-poky-linux/1.6.2+1.0/i686/relocate_sdk.sh
 SDK could not be set up. Relocate script failed. Abort!
 ```

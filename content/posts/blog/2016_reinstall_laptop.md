@@ -21,7 +21,7 @@ series: null
 用rsync 的好處是快，而且可以增量備份，隨時加一點東西上去也OK，例如週末有空的時候做全資料夾備份，直到重灌前一刻再增量備份：  
 
 ```shell
-rsync -av --exclude=”.*” --exclude=”.*/” src_dir dest_dir
+rsync -av --exclude=".*" --exclude=".*/" src_dir dest_dir
 ```
 
 不過如果你的資料夾裡有 git 的話，就要小心，上面這個不會備份隱藏的資料夾，要把那個exclude 拿掉。  

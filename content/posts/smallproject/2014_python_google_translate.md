@@ -33,7 +33,7 @@ go.translate("worship", "zh_tw")
 </message> 
 ```
 
-Source是原始文字，Translation則是翻譯文，如果還沒翻譯，就會在translation tag加上type=”unfinished”的屬性。  
+Source是原始文字，Translation則是翻譯文，如果還沒翻譯，就會在translation tag加上type="unfinished"的屬性。  
 
 ## 整體程式流程：  
 

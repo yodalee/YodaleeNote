@@ -31,7 +31,7 @@ struct Car
 
 impl Car {
     fn run(&self){
-        println!(“my speed is {:d}”, self.Speed);
+        println!("my speed is {:d}", self.Speed);
     }
 }
 ```
@@ -48,7 +48,7 @@ trait movable {
 
 impl movable for Car{
     fn run(&self){
-        println!(“my speed is {:d}”, self.Speed);
+        println!("my speed is {:d}", self.Speed);
     }
 }
 ```

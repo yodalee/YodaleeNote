@@ -13,7 +13,7 @@ series: null
 int main(int argc, char *argv[]) {
     QCL *qcl = new QCL();
     Girl *gf = qcl->findGirlfriend();
-    printf(“%s\n”, gf→name());
+    printf("%s\n", gf→name());
     return 0;
 }
 ```
@@ -31,7 +31,7 @@ Segmentation fault
 fn main() {
     let qcl = QCL{};
     let gf = qcl.findGirlfriend();
-    println!(“{}”, gf.unwrap().name());
+    println!("{}", gf.unwrap().name());
 }
 ```
 ```txt

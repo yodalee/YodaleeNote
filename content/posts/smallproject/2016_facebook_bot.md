@@ -62,7 +62,7 @@ curl -ik -X POST "https://graph.facebook.com/v2.6/me/subscribed\_apps?access\_to
 ```
 理應會收到  
 ```json
-{“success”: true}
+{"success": true}
 ```
 
 ## 接收訊息

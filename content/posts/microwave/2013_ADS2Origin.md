@@ -61,7 +61,7 @@ data = [[S(1,1)],[S(2,1),....]]
 
 ```python
 for line in zip(*data):
-    outfile.write(“%s\n” %(“\t”.join(line)))
+    outfile.write("%s\n" %("\t".join(line)))
 ```
 
 很快速的就完成檔案格式化寫出的工作。  

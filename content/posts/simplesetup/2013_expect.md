@@ -28,7 +28,7 @@ expect最基本的指令大概是：
 ```shell
 #!/usr/bin/expect
 
-set password “mypassword”
+set password "mypassword"
 
 spawn scp account@workstation:/etc/hosts .
 match_max 1000

@@ -53,7 +53,7 @@ macro_rules! foo {
     (y) => (4);
 }
 fn main() {
-    println!(“{}”, foo!(x));
+    println!("{}", foo!(x));
 }
 ```
 

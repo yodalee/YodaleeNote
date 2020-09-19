@@ -35,7 +35,7 @@ int var;
 在main.c 裡面引用它們：  
 ```c
 // main.c
-#include “foo.h”  
+#include "foo.h"  
 extern int var;  
 int main(){  
     var = 10000;  

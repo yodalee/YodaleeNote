@@ -84,21 +84,21 @@ Arg 要哪些功能一樣一一往後串接，以下介紹幾種Argument 的設�
 
 1. 是讓程式判斷相關參數是否出現：  
 ```rust
-.arg(Arg::with_name(“debug”)
-  .short(“d”)
-  .help(“execute in debug mode”))
+.arg(Arg::with_name("debug")
+  .short("d")
+  .help("execute in debug mode"))
 ```
 使用matches.is\_present()可叫出是否有這個參數。  
 
 2. 取得參數後的值：  
 設定參數takes\_value(true)  
 ```rust
-.arg(Arg::with_name(“debug”)
-  .long(“debug”)
-  .short(“d”)
+.arg(Arg::with_name("debug")
+  .long("debug")
+  .short("d")
   .takes_value(true))
 ```
-利用 matches.value\_of(“debug”) 取得其值，參數值可接受下列方式設定：  
+利用 matches.value\_of("debug") 取得其值，參數值可接受下列方式設定：  
 ```bash
 -d value, --debug value  
 -d=value, --debug=value  
@@ -107,16 +107,16 @@ Arg 要哪些功能一樣一一往後串接，以下介紹幾種Argument 的設�
 
 3. 非參數的值，這是針對「不是hyphen」開頭的參數，不用設定long, short，可以直接抓：  
 ```rust
-.arg(Arg::with_name(“arg”))
+.arg(Arg::with_name("arg"))
 
-matches.value_of(“arg”)
+matches.value_of("arg")
 ```
 如果設定multiple ，可以一次抓一排：  
 ```rust
-.arg(Arg::with_name(“arg”)
+.arg(Arg::with_name("arg")
   .multiple(true))
 
-let trail: Vec<&str> = matches.values_of(“arg”)
+let trail: Vec<&str> = matches.values_of("arg")
   .unwrap()
   .collect()
 ```
@@ -139,7 +139,7 @@ let trail: Vec<&str> = matches.values_of(“arg”)
 
 在App 中使用subcommand設定子命令，就像git add 這樣： 
 ```rust
-.subcommand(SubCommand::with_name(“add”))
+.subcommand(SubCommand::with_name("add"))
 ```
 subcommand 下就跟App 設定一樣，可以用.arg 設定給subcommand 的argument  
 

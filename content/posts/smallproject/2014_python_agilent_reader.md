@@ -32,9 +32,9 @@ int32 bufferSize
 那我就先定義好namedtuple跟struct的format string:  
 ```python
 from collections import namedtuple  
-bufHeaderfmt = “ihhi”  
+bufHeaderfmt = "ihhi"  
 bufHeaderSiz = struct.calcsize(bufHeaderfmt)  
-bufHeader = namedtuple(“bufHeader”, "headerSize bufferType bytesPerPoint bufferSize")  
+bufHeader = namedtuple("bufHeader", "headerSize bufferType bytesPerPoint bufferSize")  
 ```
 
 再來我們讀入檔案，直接寫到tuple裡，就可以用名字直接存取值，例如我們要跳過header：  

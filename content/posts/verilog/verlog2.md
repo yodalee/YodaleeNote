@@ -52,11 +52,11 @@ endcase
 注意到，上面無論是if還是case，最後都有一個else/default，再次重申，verilog和一般的C是不一樣的，在C裡面的if 就是判斷條件，符合就跳到指定的程式碼，不符合就繼續執行；但verilog是要轉成電路的，你不指定else，mux的輸入要接給誰？  
 一般verilog的編譯器會指給輸出，也就是如下的電路：  
 ![latch](/images/verilog/latch.png)
-如此有個訊號被鎖在這個mux裡面，就是基本的latch，雖然一般來說，這樣的latch對電路的行為影響不算太大，有時候充滿latch的code還是可以正常運作；但個人習慣上還是強烈建議把if, case全都加上else，消掉所有的latch；因為有latch 的code的行為較難預料，輸出變得依據”上一個狀態”來決定，而不是單純的combinational circuilt。  
+如此有個訊號被鎖在這個mux裡面，就是基本的latch，雖然一般來說，這樣的latch對電路的行為影響不算太大，有時候充滿latch的code還是可以正常運作；但個人習慣上還是強烈建議把if, case全都加上else，消掉所有的latch；因為有latch 的code的行為較難預料，輸出變得依據"上一個狀態"來決定，而不是單純的combinational circuilt。  
 
 ## Combinational loop
 另一個情況是產生combinational loop。  
-理論上，用我上一篇所說的FSM和三大塊架構下去寫，是不會出現combinational loop的，三大塊的架構最主要的核心，就是把”變數” (state)和”變數的下一個狀態”(stata\_next)的運算分開，在combinational 的部分就只靠state(和其他變數)去運算state\_next。  
+理論上，用我上一篇所說的FSM和三大塊架構下去寫，是不會出現combinational loop的，三大塊的架構最主要的核心，就是把"變數" (state)和"變數的下一個狀態"(stata\_next)的運算分開，在combinational 的部分就只靠state(和其他變數)去運算state\_next。  
 所以說，在verilog 裡面，絕對絕對絕對沒有assign的左右兩邊是相同的狀況，這也是verilog最難讓人習慣的地方，因為一般程式寫a=a+1實在太常見了。  
 比如說  
 ```verilog

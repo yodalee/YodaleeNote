@@ -44,7 +44,7 @@ Aborting
 stash@{0}: WIP on feature: ef9d050 feature initial commit
 ```
 
-這裡重要的是“０”這個數字，這是stash的index；另外 `feature initial commit` 則是這個stash是這在哪個commit中分支出來的。  
+這裡重要的是"０"這個數字，這是stash的index；另外 `feature initial commit` 則是這個stash是這在哪個commit中分支出來的。  
 
 Git stash時還可以加上message來取代上面的ef9d050 feature initial commit這段  
 ```shell

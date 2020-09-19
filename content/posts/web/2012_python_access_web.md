@@ -31,7 +31,7 @@ import urllib
 html = urllib.request.urlopen(hw_url).read()  
 ```
 如果要寫入檔案，在開檔的時候指定為 'wb' 就可以直接將html 寫到檔案中而不怕格式錯誤。 
-否則就要呼叫.decode(“utf-8”)的方式先轉換html的格式。  
+否則就要呼叫.decode("utf-8")的方式先轉換html的格式。  
 針對form filling的部分也有相對應的方式，可以用下面的方式把POST的訊息編碼，在urlopen的時候附加在後面。  
 ```python
 data = {}  
@@ -57,7 +57,7 @@ links = re.findall("<a\s+href\s*=\s*'(.*)'", data, re.DOTALL)
 
 另一方面，當使用者要使用這個程式時，會需要輸入他們的學號以供使用，這部分也是使用re module來進行檢查：  
 ```python
-re.match(“\s*[A-Za-z][0-9]{8,8}\s*”, string)
+re.match("\s*[A-Za-z][0-9]{8,8}\s*", string)
 ```
 不match的話就會回傳None，讓程式再進行一次問話。  
 
@@ -79,12 +79,12 @@ tuple 第一個元素為要填入form的name attribute，請愛用「觀看原�
 tuple 第二個元素為要填入的值：
 例如：
 ```python
-fields = [(“name”,”yodalee”),(“nickname”,”garbage”)]  
+fields = [("name","yodalee"),("nickname","garbage")]  
 ```
 
 files的部分則是三元的tuple，依序為form的 name attribute、filename、file的binary；第三個用open(file, 'rb')傳入即可；例如：  
 ```python
-files = [(“model”, “test.txt”, open(“test.txt”, “rb”))]   
+files = [("model", "test.txt", open("test.txt", "rb"))]   
 ```
 
 當個例子的code如下：  

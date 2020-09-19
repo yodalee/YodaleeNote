@@ -21,8 +21,8 @@ series: null
 
 ![PRaftermerge1](/images/git/PRaftermerge1.png)
 
-送出新的 Pull Request 的時候，github 會比較兩個 branch 最近的共同祖先，從那個 commit 開始算pull request，在上圖中會是那個”Add features 2” 的commit。  
-這時我們從”fix some typo” 送了PR，github 會比較這個新的commit ，跟revert 過後的commit 作比較，因為revert 這個commit 修改的檔案（等同我們Pull Request的修改只是剛好反向），兩者因此有衝突；同時，之前的 commit “Add features 1, 2” 都不會算在這個Pull Request 裡面。  
+送出新的 Pull Request 的時候，github 會比較兩個 branch 最近的共同祖先，從那個 commit 開始算pull request，在上圖中會是那個"Add features 2" 的commit。  
+這時我們從"fix some typo" 送了PR，github 會比較這個新的commit ，跟revert 過後的commit 作比較，因為revert 這個commit 修改的檔案（等同我們Pull Request的修改只是剛好反向），兩者因此有衝突；同時，之前的 commit "Add features 1, 2" 都不會算在這個Pull Request 裡面。  
 
 要修正這個問題，我們必須讓 upstream 跟現在這個 develop branch完全沒有共同祖先，我所知的有兩個解法：  
 

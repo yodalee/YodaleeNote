@@ -88,7 +88,7 @@ while(true) {
 這步比較麻煩先跳過，之後研究出來再另文介紹。   
 
 另一個要解決的問題則是 isr\_vector，這裡可以看到一種很謎樣的寫法，用 link\_section 這個attribute，定義區段名為 .isr\_vector，
-並設定為一個array，內含一個extern “c” fn()，如果要需要其他的ISR，則可以在後面寫更多的function，並把1改為需要的數量。   
+並設定為一個array，內含一個extern "c" fn()，如果要需要其他的ISR，則可以在後面寫更多的function，並把1改為需要的數量。   
 ```rust
 #[link\_section=".isr\_vector"]
 pub static ISRVECTORS: [unsafe extern "C" fn(); 1] = [

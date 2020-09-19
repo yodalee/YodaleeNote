@@ -108,7 +108,7 @@ git bisect run會極速的checkout 舊分枝，跑python script，看結果跑�
 
 第一個是寫一個shell script test.sh，先刪掉所有pyc檔之後，再執行python script:  
 ```shell
-find . -name “*.pyc” -exec rm {} \;  
+find . -name "*.pyc" -exec rm {} \;  
 ./test.py
 ```
 然後執行 `git bisect run ./test.sh`  

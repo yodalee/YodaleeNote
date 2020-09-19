@@ -28,7 +28,7 @@ app = webapp2.WSGIApplication([
 
 class MessageFetchHandler(webapp2.RequestHandler):
   def get(self):
-    reqType = self.request.get("type") # reqType == "data“
+    reqType = self.request.get("type") # reqType == "data"
 ```
 
 剩下的就是handler的事了，想回什麼就回什麼，文字就文字，binary 就把binary讀出來寫回去，像是：  

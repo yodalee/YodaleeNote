@@ -17,7 +17,7 @@ j
 well，畢竟在陰間不好辦事，又遇到base64 decode的問題，弄了很久一直沒進度，這次放假問題解掉了，順利把資料送到後端；問題有兩個  
 
 1. 我之前把資料放在url 裡面一起送，結果base64 string 的'+'全變成space，後端python base64 module decode不出來，
-本來是用一種很蠢的解法，先讓資料經過data.replace(“ “, “+”)，結果 deploy 的時候遇到……
+本來是用一種很蠢的解法，先讓資料經過data.replace(" ", "+")，結果 deploy 的時候遇到……
 2. 資料放在url 裡面有長度限制，應該要放在send資料裡才對，連帶這樣也沒 '+' 被取代的問題
 
 詳情寫在上面那篇文內。  
@@ -59,7 +59,7 @@ app = webapp2.WSGIApplication([
 最後我們就能在圖片/聲音 tag 的src後面，直接寫上/wav, /img之類的網址：  
 ```html
 <audio controls>  
-    <source src="/wav?key=XXX” type="audio/wav">  
+    <source src="/wav?key=XXX" type="audio/wav">  
     Your browser does not support the audio element  
 </audio>   
 ```

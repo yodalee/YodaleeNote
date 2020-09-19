@@ -60,7 +60,7 @@ typedefstructDexHeader {
 
 對這個我們可以寫出v35 format string為：`8sI20s20I`，就這麼簡單。 接著我們可以呼叫unpack來取得header的內容。  
 ```python
-infile = self.open(“yay.dex”, “rb”)  
+infile = self.open("yay.dex", "rb")  
 header = struct.unpack(self.v35fmt, infile.read(struct.calcsize(self.v35fmt)))  
 ```
 比較麻煩的一點是，unpack的資料長度必須和format string會處理到的長度一樣，這裡struct提供了calcsize來處理這個問題，它會回傳format string代表的長度。  

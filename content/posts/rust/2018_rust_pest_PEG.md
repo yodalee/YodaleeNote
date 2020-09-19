@@ -45,16 +45,16 @@ grammar 檔案內容就是PEG 的語法，在編譯的時候會被 pest 轉換�
 
 pest 的語法基本上跟 PEG 沒有太大差別，在文法檔案中，就是 rule = { rule content } 的方式去定義規則：  
 
-* 匹配字串使用雙引號包住，用 ^ 設定 ASCII 為無關大小寫，例：op\_add = { “+” }, const = { ^”const” }
-* 一定文字範圍的用單引號搭配 ..，例：number = { ‘0’..’9’ }
-* 選擇規則用 | ，例：alpha = { ‘a’..’z’ | ‘A’..’Z’ }
-* 連結規則用 ~，跟 PEG 定義用空白直接連接不同，空白在 pest 用做排版，例：stat_assign = { variable ~ “=” ~ expr ~ “;” }
+* 匹配字串使用雙引號包住，用 ^ 設定 ASCII 為無關大小寫，例：op\_add = { "+" }, const = { ^"const" }
+* 一定文字範圍的用單引號搭配 ..，例：number = { '0’..’9’ }
+* 選擇規則用 | ，例：alpha = { 'a’..’z’ | 'A’..’Z’ }
+* 連結規則用 ~，跟 PEG 定義用空白直接連接不同，空白在 pest 用做排版，例：stat_assign = { variable ~ "=" ~ expr ~ ";" }
 
 定義規則中，可以用到其他規則，例：factor = { (variable | number) }。  
 另外有一些特別的規則，包括：  
 
 * whitespace：whitespace 裡指定的字串，會自動在 ~ 連結的位置中插入 (whitespace)*，
-平常不需要特別指明處理 whitespace，例如上面的 stat\_assign 就變得能夠剖析 ”foo = 123” 而不只是 “foo=123”。
+平常不需要特別指明處理 whitespace，例如上面的 stat\_assign 就變得能夠剖析 "foo = 123" 而不只是 "foo=123"。
 * comment：comment 會在規則和子規則間被執行，不需特別指明。
 * any：匹配任一字元，對應 PEG 中的 .。
 * soi, eoi：對應匹配內容的開始和結束，這兩個還滿重要的，以之前的 S = A, A = aAa | a 為例，
@@ -81,8 +81,8 @@ number = @ { (digit)+ }、stats = { (stat)* }
 factor = _{ (variable | number) }
 ```
 那在剖析完之後，會直接跳過 factor，產生 variable 或 number 的節點。
-* Atomic @：這跟上面的 whitespace 有關，像我的 variable 寫成 `variable = { (alpha) ~ (alpha | digit)* }` ，豈不是可以接受 “a 123” 這樣奇怪的變數名？這時候就用 @ 確保規則中不執行 whitespace 規則。
-* Compound-atomic $：這跟 atomic 一樣，只是規則的子規則，例如 `expr = $ { “-” ~ term }` ，則 term 仍然適用 whitespace。
+* Atomic @：這跟上面的 whitespace 有關，像我的 variable 寫成 `variable = { (alpha) ~ (alpha | digit)* }` ，豈不是可以接受 "a 123" 這樣奇怪的變數名？這時候就用 @ 確保規則中不執行 whitespace 規則。
+* Compound-atomic $：這跟 atomic 一樣，只是規則的子規則，例如 `expr = $ { "-" ~ term }` ，則 term 仍然適用 whitespace。
 * Non-atomic !：因為一個 atomic 規則下所有規則都會是 atomic，可以用 ! 來停止這樣的效果。
 
 我們可以把上面這些都綜合起來，寫出一個極簡的 simple language parser，當然這實在是太簡單了，簡單到會出一些問題：  
@@ -91,7 +91,7 @@ factor = _{ (variable | number) }
 alpha = { 'a'..'z' | 'A'..'Z' }
 digit = { '0'..'9' }
 
-whitespace = _{ " " | “\n” }
+whitespace = _{ " " | "\n" }
 
 variable = @ { (alpha) ~ (alpha | digit)* }
 number = @ { (digit)+ }

@@ -14,7 +14,7 @@ series: null
 雖然這樣會比較不那麼自動一點，但也不是沒有解，在終端機下，如果有什麼要自動化的話，就要用makefile啦。  
 <!--more-->
 
-以下就是自己寫個簡單的makefile，在projectname和packagename裡面分別填入build.xml裡的`<project name=””/>`，跟AndroidManifest.xml裡面的`<manifest package=””/>`，這樣就可以用：  
+以下就是自己寫個簡單的makefile，在projectname和packagename裡面分別填入build.xml裡的`<project name=""/>`，跟AndroidManifest.xml裡面的`<manifest package=""/>`，這樣就可以用：  
 ```bash
 make debug  
 make install  

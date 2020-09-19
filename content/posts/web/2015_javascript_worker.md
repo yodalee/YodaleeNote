@@ -22,7 +22,7 @@ series: null
 
 我看到的設計是這樣，在主要文件內 main.js 中，宣告worker  
 ```js
-var worker = new Worker(“workerFile”);   
+var worker = new Worker("workerFile");   
 ```
 
 在workerFile 內要定義onmessage 函式，並且用參數的command判斷執行哪個對應的函式：  

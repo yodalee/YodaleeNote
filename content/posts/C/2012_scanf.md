@@ -51,7 +51,7 @@ int sscanf(char *, format, argument pointer list)
 * d 跟 i 的差別在於，i 可以接受各種進位的輸入
 以 0x 為首則以16進位讀入，以0為首則以8進位讀入。  
 ```c
-scanf(“%i”,&a)
+scanf("%i",&a)
 0x10
 a = 16
 ```
@@ -74,17 +74,17 @@ scanf("%d%n", &a, &n);
 * n 決定要讀入多少個char     
 ```c
 int a;  
-scanf(“%d”); //runtime error, 讀入東西沒地方存，seg fault  
-scanf(“%d”, a); //runtime error, 是&a，這很容易忘記  
-scanf(“%d”, ＆a);  // 正確用法
-scanf(“%*d”); //OK，讀入的數字就dump掉  
-scanf(“%3d”,＆a); //輸入4444，a＝444  
+scanf("%d"); //runtime error, 讀入東西沒地方存，seg fault  
+scanf("%d", a); //runtime error, 是&a，這很容易忘記  
+scanf("%d", ＆a);  // 正確用法
+scanf("%*d"); //OK，讀入的數字就dump掉  
+scanf("%3d",＆a); //輸入4444，a＝444  
 ```
 
 搭配上面的[]，scanf就變得超強大，比如說常有人問要如何換行？  
 其實只要這樣就是換一行。  
 ```c
-scanf(“%*[^\n]\n”)
+scanf("%*[^\n]\n")
 ```
 
 ### modifier  

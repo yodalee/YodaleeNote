@@ -26,7 +26,7 @@ series: null
 這門課不算太難，帶過密碼學上幾個重要的概念：Stream cipher, Block cipher, Asymmetirc cipher，人人都怕的數學只在非對稱式加密前帶過一些。  
 上課的內容還有授課方向，跟這本 [understanding cryptography](https://link.springer.com/book/10.1007/978-3-642-04101-3) 非常相似，打書名就能找到這本書的全文電子檔；兩者搭配來看，可以補線上課程內容的不足。  
 
-程式作業有6題，只有一個是要求用現有的 AES lib 來實作 CBC 跟CTR 加密，另外五個都是利用已知的漏洞去破解某些密文，就跟教授上課不斷提醒的：”Don’t invent your own ciphers or modes”。  
+程式作業有6題，只有一個是要求用現有的 AES lib 來實作 CBC 跟CTR 加密，另外五個都是利用已知的漏洞去破解某些密文，就跟教授上課不斷提醒的："Don’t invent your own ciphers or modes"。  
 作業藉實際攻擊讓大家了解，即使數學理論上安全的加密，在不正確的實作下，仍會導致安全性流失，寫程式會需要一些底子，不過只要會python 或C++應該不算太難。  
 從程式作業，真的可以體會密碼的設計是一門高深的學問，倒也不是說不要去實作和修改，否則一些知名的 lib 像 openSSL 是誰在維護？而是要先學好基本概念，了解可能的弱點與攻擊方式，多和大家討論分享實作方式，有討論才有進步。  
 

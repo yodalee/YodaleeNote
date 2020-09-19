@@ -29,7 +29,7 @@ cargo new raytracing-rust –bin
 用了cargo 的好處就是想要什麼，[crates.io](https://crates.io/) 上可能都有，例如我們要測量程式執行時間，只要在Cargo.toml 裡加上  
 ```toml
 [dependencies]  
-time = “0.1”   
+time = "0.1"   
 ```
 主程式就可以加上：  
 ```rust
@@ -44,7 +44,7 @@ let t2 = precise_time_ns;
 要寫入bmp 檔也是，完全不用手爆savebmp function，一樣加上  
 ```toml
 [dependencies]
-bmp = “0.1.4”
+bmp = "0.1.4"
 ```
 ```rust
 extern crate bmp;
