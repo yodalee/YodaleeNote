@@ -12,6 +12,8 @@ copyright = "Yodalee - All rights reserved."
 paginate = 10
 paginatePath = "page"
 
+googleAnalytics = "UA-77945119-5"
+
 [permalinks]
 posts = "/:year/:month/:filename/"
 

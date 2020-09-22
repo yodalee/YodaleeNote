@@ -41,6 +41,9 @@
   {{- end }}
   {{- $script := resources.Get "script.js" | resources.Fingerprint }}
   <script defer src="{{ $script.RelPermalink }}"></script>
+
+  <!-- google analytics -->
+  {{ template "_internal/google_analytics.html" . }}
 </head>
 <body>
 <div class="pure-g">
