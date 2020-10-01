@@ -5,7 +5,7 @@ defaultLanguageCode = "en-us"
 
 title = "Yodalee Note"
 
-theme = "slick"
+theme = "silhouette-hugo"
 
 copyright = "Yodalee - All rights reserved."
 
