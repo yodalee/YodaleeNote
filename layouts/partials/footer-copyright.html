@@ -1,2 +1,4 @@
 <h5>{{ .Site.Copyright }}</h5>
 {{ .Site.Params.ContentSharing }}
+
+{{ if .Params.latex }}{{ partial "latex.html" . }}{{ end }}
