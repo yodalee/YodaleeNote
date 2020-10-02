@@ -1,37 +1,27 @@
 {{ define "head" }}
   {{ if .IsHome }}
+    <div class="parent"></div>
     <style type="text/css">
-      .feature-image {
+      .parent {
+        /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
         background-image: linear-gradient(
-            rgba(0, 0, 0, 0.15), 
-            rgba(0, 0, 0, 0.15)
-          ), url('{{ "images/v1.png" | absURL }}');
-          height: 350px;
-      }
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0)), url('{{ "images/v1.png" | absURL }}');
 
-      .feature-image-text {
-          margin-top: 20px;
-      }
+        /* Set a specific height */
+        height: 350px;
 
-      @media (min-width: 1200px) {
-        .feature-image {
-            background-position: 0% 30%;
-        }
+        /* Position and center the image to scale nicely on all screens */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: relative;
       }
 
       @media (max-width: 768px) {
-        .feature-image {
-            height: 250px;
-            background-position: 0% 0%;
+        .parent {
+          display: none;
         }
-      }
-    </style>
-  {{ else }}
-    <style type="text/css">
-      .feature-image {
-        background-color: #F8F8F8;;
-        border-bottom: 1px dotted #BBB;
-        height: 150px;
       }
     </style>
   {{ end }}
