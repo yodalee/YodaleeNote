@@ -1,0 +1,16 @@
+{{ with .Site.Social.twitter -}}
+<a class="py-2 px-2" href="https://twitter.com/{{ . }}" target="_blank" rel="nofollow"><i class="fab fa-twitter"></i></a>
+{{ end -}}
+{{ with .Site.Social.instagram -}}
+<a class="py-2 px-2" href="https://instagram.com/{{ . }}" target="_blank" rel="nofollow"><i class="fab fa-instagram"></i></a>
+{{ end -}}
+{{ with .Site.Social.linkedin -}}
+<a class="py-2 px-2" href="https://www.linkedin.com/in/{{ . }}/" target="_blank" rel="nofollow"><i class="fab fa-linkedin"></i></a>
+{{ end -}}
+{{ with .Site.Social.github -}}
+<a class="py-2 px-2" href="https://github.com/{{ . }}/" target="_blank" rel="nofollow"><i class="fab fa-github"></i></a>
+{{ end -}}
+{{ with .Site.Social.email -}}
+<a class="py-2 px-2" href="mailto:{{ . }}/" target="_blank" rel="nofollow"><i class="far fa-envelope"></i></a>
+{{ end -}}
+<a class="py-2 px-2" href='{{ "index.xml" | absURL }}'><i class="fas fa-rss"></i></a>

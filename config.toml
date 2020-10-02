@@ -61,73 +61,7 @@ series = "series"
   name = "YodaLee"
   email = "lc85301@gmail.com"
 
-[services.rss]
-    # limit the length of the rss feed (default: unlimited)
-    limit = 0
-
-[menu]
-
-  # Configure main menu entries (header)
-  # Currently set to list all taxonomies and posts
-  [[menu.main]]
-    identifier = "post"
-    name = "Posts"
-    title = "All posts"
-    url = "/posts/"
-    weight = 1
-
-  [[menu.main]]
-    identifier = "categories"
-    name = "Categories"
-    title = "All categories"
-    url = "/categories/"
-    weight = 2
-
-  [[menu.main]]
-    identifier = "tags"
-    name = "Tags"
-    title = "All tags"
-    url = "/tags/"
-    weight = 2
-
-  [[menu.main]]
-    identifier = "series"
-    name = "Series"
-    title = "All series"
-    url = "/series/"
-    weight = 2
-
-  # Define the entries for post metadata
-  # Identifiers should match with the taxonomy entries
-  [[menu.meta]]
-    identifier = "categories"
-    name = "Categories"
-    weight = 1
-  [[menu.meta]]
-    identifier = "series"
-    name = "Series"
-    weight = 2
-  [[menu.meta]]
-    identifier = "tags"
-    name = "Tags"
-    weight = 3
-
-  # Add some footer links to your likings
-  [[menu.footer]]
-    name = "GitHub"
-    title = "Github"
-    url = "https://github.com/spookey/slick"
-    weight = 1
-
-  [[menu.footer]]
-    name = "Email"
-    title = "Email"
-    url = "mailto:lc85301@gmail.com"
-    weight = 2
-
-  [[menu.footer]]
-    name = "Linkedin"
-    title = "Linkedin"
-    url = "https://www.linkedin.com/in/yodalee/"
-    weight = 3
-
+[Social]
+  linkedin = "yodalee"
+  github = "yodalee"
+  email = "lc85301@gmail.com"
