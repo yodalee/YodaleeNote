@@ -1,0 +1,90 @@
+{{ define "head" }}
+  {{ if .IsHome }}
+    <div class="parent"></div>
+    <style type="text/css">
+      .parent {
+        /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+        background-image: linear-gradient(
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0)), url('{{ "images/v1.png" | absURL }}');
+
+        /* Set a specific height */
+        height: 350px;
+
+        /* Position and center the image to scale nicely on all screens */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: relative;
+      }
+
+      @media (max-width: 768px) {
+        .parent {
+          display: none;
+        }
+      }
+    </style>
+  {{ end }}
+{{ end }}
+{{ define "header" }}
+  {{ if not .IsHome }}
+
+    <header class="feature-image">
+        <div class="feature-image-text">
+            <h1 class="text-center">{{ .Title }}</h1>
+
+            {{ if eq .Type "categories" }}
+              {{ $title := urlize .Title }}
+              {{ with .Site.Taxonomies.categories }}
+                {{ range $name, $taxonomy := . }}
+                  {{ $term := urlize $name }}
+                  {{ if eq $term $title }}
+                    A {{ $taxonomy.Count }}-post collection
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+
+            {{ if eq .Type "tags" }}
+              {{ $title := urlize .Title }}
+              {{ with .Site.Taxonomies.tags }}
+                {{ range $name, $taxonomy := . }}
+                  {{ $term := urlize $name }}
+                  {{ if eq $term $title }}
+                    A {{ $taxonomy.Count }}-post collection
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
+        </div>
+    </header>
+  {{ end }}
+{{ end }}
+{{ define "main" }}
+  <div class="container mt-4 mb-4 recent-posts">
+      {{ $pages := .Pages }}
+      {{ if .IsHome }}
+      {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+      {{ end }}
+      {{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) 10 }}
+      {{ range $paginator.Pages }}
+      <article class="post">
+        <a class="title" href="{{ .Permalink }}"><h2>{{ .Title }}</h2></a>
+        {{ partial "post-meta" . }}
+        <div>
+            {{ .Summary }}
+        </div>
+        <div>
+            <a href="{{ .Permalink }}" class="btn btn-outline-secondary" role="button">Continue Reading...</a>
+        </div>
+      </article>
+    {{ end }}
+    <div class="d-flex justify-content-center">
+        {{ template "_internal/pagination.html" . }}
+    </div>
+  </div>
+  {{ partial "sidebar" . }}
+{{ end }}
+
+
+
