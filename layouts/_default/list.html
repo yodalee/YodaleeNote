@@ -27,13 +27,6 @@
   {{ end }}
 {{ end }}
 {{ define "header" }}
-  {{ if .IsHome }}
-    <header class="feature-image">
-        <div class="feature-image-text white-shadow-text">
-            {{ partial "header-about-me" . }}
-        </div>
-    </header>
-  {{ end }}
   {{ if not .IsHome }}
 
     <header class="feature-image">

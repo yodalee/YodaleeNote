@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "https://yodalee.me"
 
 languageCode = "en"
 defaultLanguageCode = "en-us"
@@ -17,49 +17,15 @@ googleAnalytics = "UA-77945119-5"
 [permalinks]
 posts = "/:year/:month/:filename/"
 
-[params]
-  subtitle = "My Life, My Note"
-  description = "My personal blogs"
-
-  # Define formatting of dates
-  # (optional, falls back to RFC822 format if not set)
-  # For reference to date and time formatting, see:
-  # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
-  # Make sure to set showMetaDates to true to see any dates
-  dateFmt = "02 Jan 2006"
-
-  # Header with title/subtitle can be disabled here.
-  # (If you disable this, add some link on the index page inside menu.main,
-  #  otherwise your visitors will get confused and lost...)
-  showNavHeader = true
-
-  # Decide if only summaries are shown on the main page or the full content
-  showFullContent = false
-
-  # If false no pagination is shown when there is nothing to paginate
-  showEmptyPagination = true
-
-  # If false the dates for the posts are not shown
-  showMetaDates = true
-
-  # If false the taxonomy links for the posts are not shown
-  showMetaLinks = true
-
-  # Uses Hugo internal templates if set
-  opengraph = false
-  schema = false
-  twitter_cards = false
-
+[Params]
+  Author = "YodaLee"
+  IntroDescription = "My lifes, My notes"
 
 # Define all supported taxonomies (add series to the default)
 [taxonomies]
 tags = "tags"
 categories = "categories"
 series = "series"
-
-[author]
-  name = "YodaLee"
-  email = "lc85301@gmail.com"
 
 [Social]
   linkedin = "yodalee"
