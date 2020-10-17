@@ -115,9 +115,7 @@ footer hr {
     font-size: 2rem;
 }
 
-.post h1,
-.recent-posts h2,
-.sidebar h2 {
+.mb-3 {
     padding-bottom: 10px;
     border-bottom: 1px dotted #2c2a24;
 }
