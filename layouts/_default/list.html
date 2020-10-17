@@ -62,6 +62,18 @@
                 {{ end }}
               {{ end }}
             {{ end }}
+
+            {{ if eq .Type "series" }}
+              {{ $title := urlize .Title }}
+              {{ with .Site.Taxonomies.series }}
+                {{ range $name, $taxonomy := . }}
+                  {{ $term := urlize $name }}
+                  {{ if eq $term $title }}
+                    A {{ $taxonomy.Count }}-post collection
+                  {{ end }}
+                {{ end }}
+              {{ end }}
+            {{ end }}
         </div>
     </header>
   {{ end }}
