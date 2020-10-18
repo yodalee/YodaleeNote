@@ -8,7 +8,9 @@
 <article class="container mt-4 post">
   <h1>{{ .Title }}</h1>
   {{ partial "post-meta" . }}
+  {{ partial "series" . }}
   {{ .Content }}
+  {{ partial "series" . }}
 </article>
 {{ partial "sidebar" . }}
 {{ end }}

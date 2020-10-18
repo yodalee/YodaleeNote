@@ -1,0 +1,27 @@
+<div class="container mb-3">
+  <div class="row">
+  {{ if .Params.series }}
+    {{ $title := .Params.Title }}
+    {{ $same_series := where (where $.Site.Pages "Params.series" "!=" nil) "Params.series" "intersect" .Params.series }}
+    {{ range $i, $e := $same_series }}
+      {{ if eq $title $e.Params.title }}
+        {{ $prev := index $same_series (add $i 1) }}
+        {{ if $prev }}
+          <div class="col-md-6">
+            <i class="fas fa-arrow-left" title="Left" aria-hidden="true"></i>&nbsp;
+            <a href="{{$prev.Permalink}}">{{ $prev.Params.title }}</a>
+          </div>
+        {{ end }}
+
+        {{ $next := index $same_series (sub $i 1) }}
+        {{ if $next }}
+          <div class="col-md-6">
+            <a href="{{$next.Permalink}}">{{ $next.Params.title }}</a>
+            <i class="fas fa-arrow-right" title="Right" aria-hidden="true"></i>&nbsp;
+          </div>
+        {{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  </div>
+</div>

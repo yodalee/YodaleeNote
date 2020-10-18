@@ -223,3 +223,7 @@ blockquote::before {
     left: 10px;
     top: -10px;
 }
+
+.series-right {
+    text-align: right;
+}
