@@ -227,3 +227,17 @@ blockquote::before {
 .series-right {
     text-align: right;
 }
+
+.toc {
+  width: fit-content;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 30px;
+  box-sizing: content-box;
+  display: inline-block;
+  background-color: rgb(248, 249, 250);
+}
+
+.toc-content {
+  margin-bottom: 0;
+}

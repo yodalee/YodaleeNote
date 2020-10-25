@@ -1,0 +1,17 @@
+{{ if .Params.series }}
+  <div class="toc">
+    {{ $title := .Params.Title }}
+    {{ $same_series := where (where $.Site.Pages "Params.series" "!=" nil) "Params.series" "intersect" .Params.series }}
+    <ol class="toc-content">
+    {{ range $i, $e := $same_series.Reverse }}
+      <li class="toc-li">
+      {{ if eq $title $e.Params.title }}
+        {{ $e.Params.title }}
+      {{ else }}
+        <a href="{{$e.Permalink}}">{{ $e.Params.title }}</a>
+      {{ end }}
+      </li>
+    {{ end }}
+    </ol>
+  </div>
+{{ end }}
