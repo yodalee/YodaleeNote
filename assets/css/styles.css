@@ -79,6 +79,22 @@ footer,
     background-color: #eeedea;
 }
 
+.panel-title {
+  position: relative;
+}
+
+.panel-title::after {
+  content: ">";
+	color: #333;
+	top: -2px;
+	right: 0px;
+	position: absolute;
+}
+
+.panel-title[aria-expanded="true"]::after {
+  content: "<";
+}
+
 footer {
     background-color: #27343c;
     color: #fff3e4;
