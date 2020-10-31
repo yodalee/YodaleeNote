@@ -220,19 +220,22 @@ a.btn-outline-secondary:hover {
     border-color: #adadad;
 }
 
-.blockquote {
+blockquote {
     margin: 25px auto;
     font-style: italic;
     color: #555555;
-    padding: 1.2em 30px 1.2em 75px;
+    padding: 1em 30px 1em 30px;
     border-left: 8px solid #78C0A8;
     position: relative;
     background: #EDEDED;
 }
 
+blockquote p {
+  margin-bottom: 0px;
+}
+
 blockquote::before {
     font-family: Arial;
-    content: "\201C";
     color: #78C0A8;
     font-size: 4em;
     position: absolute;
