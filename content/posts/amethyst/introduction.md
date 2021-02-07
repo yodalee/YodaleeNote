@@ -27,6 +27,8 @@ series:
 它也是用 amethyst 寫的，只是年代久遠現在已經編不起來了，我直接拿了它的素材來用（應該是不至於被吉吧Orz），完成的畫面應該會如下所示：  
 ![finalscreenshot](/images/amethyst/finalscreenshot.png)
 
+## [原始碼在此](https://github.com/yodalee/amethyst-asteroid)
+
 如果去看 amethyst 的教學文，它有用 amethyst 寫一個 [pong 遊戲](https://book.amethyst.rs/stable/pong-tutorial.html)，但我覺得 pong 不算一個好的例子，它不會生成跟刪除新的物體，偏偏這應該是很多遊戲必備的功能，用打小行星這種比較能示範怎麼做。  
 總之讓我們開始吧，這篇就作一個目錄的角色，用來連接所有教學文，希望能對大家成功傳教（欸。
 
@@ -40,3 +42,6 @@ series:
 7. [亂數]({{< relref "7random.md" >}})
 8. [使用ncollide2d實作碰撞]({{< relref "8ncollide.md" >}})
 9. [UI]({{< relref "9ui.md" >}})
+10. [暫停狀態]({{< relref "10pause.md">}})
+11. [事件]({{< relref "11event.md">}})
+12. [更多的狀態]({{< relref "12state.md">}})
