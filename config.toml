@@ -13,6 +13,7 @@ paginate = 10
 paginatePath = "page"
 
 googleAnalytics = "UA-77945119-5"
+disqusShortName = "YodaLee"
 
 [permalinks]
 posts = "/:year/:month/:filename/"
