@@ -1,0 +1,62 @@
+baseURL: "https://yodalee.me/"
+
+title: "Yodalee Note"
+
+theme: "PaperMod"
+
+taxonomies:
+  tags: "tags"
+  categories: "categories"
+  series: "series"
+
+disqusShortname: "YodaLee"
+
+googleAnalytics: "UA-77945119-5"
+
+permalinks:
+  posts: "/:year/:month/:filename/"
+
+menus:
+  main:
+    - name: Archive
+      url: archives/
+      weight: 5
+    - name: Search
+      url: search/
+      weight: 10
+    - name: Categories
+      url: categories
+      weight: 15
+    - name: Tags
+      url: tags
+      weight: 20
+    - name: Series
+      url: series
+      weight: 25
+
+params:
+  ShowReadingTime: true
+  ShowShareButtons: true
+  ShowTOC: true
+  TOCOpen: true
+  comments: true
+
+  author: YodaLee
+
+  homeInfoParams:
+    Title: Yodalee's Note
+    Content: My lifes, My notes
+
+  socialIcons:
+    - name: "email"
+      url: "mailto:lc85301@gmail.com"
+    - name: "github"
+      url: "https://github.com/yodalee"
+    - name: "linkedin"
+      url: "https://linkedin.com/in/yodalee"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
