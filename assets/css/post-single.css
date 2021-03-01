@@ -149,7 +149,7 @@
 }
 
 .post-content table th {
-    background-color: #EEEEEE;
+    background-color: var(--tertiary);
     font-size: 14px;
     text-align: start
 }

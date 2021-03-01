@@ -126,6 +126,6 @@
 }
 
 .post-entry table th {
-    background-color: #EEEEEE;
+    background-color: var(--tertiary);
     text-align: start
 }
