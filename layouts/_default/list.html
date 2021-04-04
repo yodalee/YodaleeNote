@@ -1,108 +1,79 @@
-{{ define "head" }}
-  {{ if .IsHome }}
-    <div class="parent"></div>
-    <style type="text/css">
-      .parent {
-        /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
-        background-image: linear-gradient(
-          rgba(0, 0, 0, 0),
-          rgba(0, 0, 0, 0)), url('{{ "images/v1.png" | absURL }}');
+{{- define "main" }}
 
-        /* Set a specific height */
-        height: 350px;
+{{- if (and .Site.Params.profileMode.enabled .IsHome) }}
+{{- partial "index_profile.html" . }}
+{{- else }} {{/* if not profileMode */}}
 
-        /* Position and center the image to scale nicely on all screens */
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        position: relative;
-      }
-
-      @media (max-width: 768px) {
-        .parent {
-          display: none;
-        }
-      }
-    </style>
-  {{ else }}
-    <style type="text/css">
-      .feature-image-text {
-          margin-top: 20px;
-      }
-    </style>
-  {{ end }}
-{{ end }}
-{{ define "header" }}
-  {{ if not .IsHome }}
-
-    <header class="feature-image">
-        <div class="feature-image-text">
-            <h1 class="text-center">{{ .Title }}</h1>
-
-            {{ if eq .Type "categories" }}
-              {{ $title := urlize .Title }}
-              {{ with .Site.Taxonomies.categories }}
-                {{ range $name, $taxonomy := . }}
-                  {{ $term := urlize $name }}
-                  {{ if eq $term $title }}
-                    A {{ $taxonomy.Count }}-post collection
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-            {{ end }}
-
-            {{ if eq .Type "tags" }}
-              {{ $title := urlize .Title }}
-              {{ with .Site.Taxonomies.tags }}
-                {{ range $name, $taxonomy := . }}
-                  {{ $term := urlize $name }}
-                  {{ if eq $term $title }}
-                    A {{ $taxonomy.Count }}-post collection
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-            {{ end }}
-
-            {{ if eq .Type "series" }}
-              {{ $title := urlize .Title }}
-              {{ with .Site.Taxonomies.series }}
-                {{ range $name, $taxonomy := . }}
-                  {{ $term := urlize $name }}
-                  {{ if eq $term $title }}
-                    A {{ $taxonomy.Count }}-post collection
-                  {{ end }}
-                {{ end }}
-              {{ end }}
-            {{ end }}
-        </div>
-    </header>
-  {{ end }}
-{{ end }}
-{{ define "main" }}
-  <div class="container mt-4 mb-4 recent-posts">
-      {{ $pages := .Pages }}
-      {{ if .IsHome }}
-      {{ $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
-      {{ end }}
-      {{ $paginator := .Paginate (where $pages "Params.hidden" "ne" true) 10 }}
-      {{ range $paginator.Pages }}
-      <article class="post">
-        <a class="title" href="{{ .Permalink }}"><h2>{{ .Title }}</h2></a>
-        {{ partial "post-meta" . }}
-        <div>
-            {{ .Summary }}
-        </div>
-        <div>
-            <a href="{{ .Permalink }}" class="btn btn-outline-secondary" role="button">Continue Reading...</a>
-        </div>
-      </article>
-    {{ end }}
-    <div class="d-flex justify-content-center">
-        {{ template "_internal/pagination.html" . }}
-    </div>
+{{- if not .IsHome | and .Title }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description }}
   </div>
-  {{ partial "sidebar" . }}
-{{ end }}
+  {{- end }}
+</header>
+{{- end }}
 
+{{- $pages := union .RegularPages .Sections }}
 
+{{- if .IsHome }}
+{{- $pages = where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- end}}
 
+{{ $paginator := .Paginate $pages }}
+
+{{- if and .IsHome .Site.Params.homeInfoParams (eq $paginator.PageNumber 1) }}
+{{- partial "home_info.html" . }}
+{{- end }}
+
+{{ $term := .Data.Term}}
+{{- range $index, $page := $paginator.Pages }}
+
+{{- $class := "post-entry" }}
+
+{{- $user_preferred := or .Site.Params.disableSpecial1stPost .Site.Params.homeInfoParams }}
+{{- if (and $.IsHome (eq $paginator.PageNumber 1) (eq $index 0) (not $user_preferred)) }}
+{{- $class = "first-entry" }}
+{{- else if $term }}
+{{- $class = "post-entry tag-entry" }}
+{{- end }}
+
+<article class="{{ $class }}">
+  {{- $isHidden := (.Site.Params.cover.hidden | default .Site.Params.cover.hiddenInList)}}
+  {{- partial "cover.html" (dict "cxt" . "IsHome" true "isHidden" $isHidden) }}
+  <header class="entry-header">
+    <h2>
+      {{ .Title }}
+      {{- if .Draft }}<div class="entry-isdraft"><sup>&nbsp;&nbsp;[draft]</sup></div>{{- end }}
+    </h2>
+  </header>
+  {{- if (ne .Site.Params.hideSummary true)}}
+  <section class="entry-content">
+    <p>{{ .Summary }}...</p>
+  </section>
+  {{- end }}
+  {{- if not (.Param "hideMeta") }}
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+  </footer>
+  {{- end }}
+  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+</article>
+{{- end }}
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">« {{ i18n "prev_page" }}</a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">{{ i18n "next_page" }} »</a>
+    {{- end }}
+  </nav>
+</footer>
+{{- end }}
+{{end}}{{/* end profileMode */}}
+{{- end }}{{- /* end main */ -}}

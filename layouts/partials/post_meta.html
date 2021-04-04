@@ -1,0 +1,42 @@
+<div class="mb-3">
+  <!-- date -->
+  <i class="far fa-calendar-alt"></i>&nbsp;
+  {{- (.Date.Format (default "January 2, 2006" .Site.Params.DateFormat)) -}}
+  &nbsp;|&nbsp;
+
+  <!-- categories -->
+  <i class="fa fa-folder-open" title="Categories" aria-hidden="true"></i>&nbsp;
+  {{ range $i, $e := .Params.categories }}
+  {{ if $i }}, {{ end }}
+  <a href='/categories/{{ (replace $e "#" "%23") | urlize }}/'>{{ $e }}</a>
+  {{ end }}
+
+  <!-- tags -->
+  &nbsp;|&nbsp;
+  <i class="fa fa-tags" title="Tags" aria-hidden="true"></i>&nbsp;
+  {{ range $i, $e := .Params.tags }}
+  {{ if $i }}, {{ end }}
+  <a href='/tags/{{ (replace $e "#" "%23") | urlize }}/'>{{ $e }}</a>
+  {{ end }}
+
+  <!-- series -->
+  {{ if .Params.series }}
+  &nbsp;|&nbsp;
+  <i class="fa fa-book" title="Series" aria-hidden="true"></i>&nbsp;
+  {{ range $i, $e := .Params.series }}
+    {{ if $i }}, {{ end }}
+      <a href='/series/{{ (replace $e "#" "%23") | urlize }}/'>{{ $e }}</a>
+    {{ end }}<br/>
+  {{ end }}
+
+  {{- if (.Param "ShowReadingTime") -}}
+  &nbsp;|&nbsp;
+  {{- i18n "read_time" .ReadingTime | default (printf "%s min" .ReadingTime) }}
+  {{- end -}}
+
+  {{ with (partial "author.html" . ) }}
+  &nbsp;|&nbsp;
+  {{ . }}
+  {{end}}
+
+</div>
