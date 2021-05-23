@@ -35,7 +35,8 @@
   </div>
   {{- end }}
   <div class="post-content">
-    {{- partial "anchored_headings.html" .Content -}}
+    {{ $wrappedTable := printf "<div class=table-wrapper> ${1} </div>" }}
+    {{- partial "anchored_headings.html" .Content | replaceRE "(<table>(?:.|\n)+?</table>)" $wrappedTable | safeHTML -}}
   </div>
   <footer class="post-footer">
     {{ partial "series-link" . }}

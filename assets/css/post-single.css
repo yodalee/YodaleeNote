@@ -128,6 +128,10 @@
     margin-top: 10px
 }
 
+.table-wrapper {
+  overflow-x: auto;
+}
+
 .post-content table {
     display: table;
     border-bottom: 1px solid black;
