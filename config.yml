@@ -43,6 +43,9 @@ params:
 
   author: YodaLee
 
+  images:
+  - android-chrome-512x512.png
+
   homeInfoParams:
     Title: Yodalee's Note
     Content: My lifes, My notes
