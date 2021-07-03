@@ -100,7 +100,7 @@ Return 部分：
 
 如此就完成了函式的呼叫與返回，有一點要注意的事，講義的部分沒有講很清楚：這週的作業有要寫bootstrap 的部分，他只寫要做到
 
-> SP=256
+> SP=256  
 > Call Sys.init  
 
 其實在Call Sys.init 的部分，也應該要把bootstrap 的 LCL, ARG, THIS, THAT 存到 stack 中，雖然 Sys.init 永遠不會 return，但在實作上還是要求這麼做。  

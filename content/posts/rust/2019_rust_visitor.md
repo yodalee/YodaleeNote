@@ -21,6 +21,7 @@ series: null
 AST 的資料結構：[cast](https://github.com/yodalee/carbon/blob/master/src/ast/cast.rs)  
 型別的資料結構：[ctype](https://github.com/yodalee/carbon/blob/master/src/ast/ctype.rs)  
 既然現在可以處理比較複雜的文法了，再來要做什麼？  
+<!--more-->
 
 想說就像作業的要求一樣，把我們處理好的 AST 用 graphviz 寫出去，是會有多難？  
 

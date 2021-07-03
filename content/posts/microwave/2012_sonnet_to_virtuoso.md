@@ -23,7 +23,7 @@ series: null
 幸好Virtuoso並沒有這麼笨，在匯入檔案的選項中，可以自行指定層與層的Map file，透過這個，理當能「無損的」將sonnet檔案匯入virtuoso中。  
 
 ## sonnet to GDSII：  
-在sonnet中，是將電路板切成一層一層不同的介質，然後可以在每層介質中填入金屬，去摸擬其中的電磁效應，我們要的就是這金屬的pattern。  
+在sonnet中，是將電路板切成一層一層不同的介質，然後可以在每層介質中填入金屬，去模擬其中的電磁效應，我們要的就是這金屬的pattern。  
 下面是一個sonnet層數設定的截圖，從最上面的空氣……到最底層的substrate  
 
 ![sige](/images/posts/sonnet2virtuoso/sige.jpg)

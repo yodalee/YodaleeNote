@@ -181,11 +181,11 @@ Tetris 的程式裡，也有迴圈不斷檢查 0xff44，行數在 VBlank 的時�
 Gameboy 的虛擬顯示空間為 256 x 256 pixels，內部實作為稱為 tile 的單位。
 每個 tile 大小 8 x 8 pixels，虛擬空間為 32 x 32 tiles，每個 tile 大小為 16 bytes，一個像素由兩個 bit 表示四個色階：黑、深灰、淺灰、白。
 
-Gameboy 的 VRAM 大小 8KB，功能細分如下：  
+Gameboy 的 VRAM 大小 8KB，從 0x8000 到 0xA000，功能細分如下：  
 
 ### 0x8000 - 0x97FF：
-這塊 6144 bytes 的空間，可以從 hardware IO line 設定要使用前面的 0x8000 - 0x9000 或後半的 0x8800 - 0x9800。
-儲存 tile 的資訊，4K 可以儲存 4K / 16 = 256 tiles。
+這塊 6144 bytes (6KB) 的空間，可以從 hardware IO line 設定要使用前面的 0x8000 - 0x9000 或後半的 0x8800 - 0x9800。
+兩者互相重疊，內容為 tile 的資訊，4K 可以儲存 4K / 16 = 256 tiles。
 注意到實體顯示畫面的尺寸是 20 x 18 = 360 tiles，這比可儲存的 256 tiles 還多，也就是說，在 gameboy 上執行的遊戲，畫面上一定有複數格顯示一樣的東西。
 
 ### 0x9800 - 0x9BFF：
@@ -197,6 +197,13 @@ tile 內容的儲存方式有點複雜，簡單畫個圖大概是這樣（這張
 line[7] = byte1[7] + byte2[7]  
 line[6] = byte1[6] + byte2[6]  
 依此類推。
+
+### 0x9C00 - 0x9FFF：
+
+這塊也是 1024 bytes 的空間，和 0x9800 那塊完全一模一樣，可以在程式執行的時候，透過設定 hardware IO 的方式，
+來決定要顯示 0x9800-0x9BFF 或是 0x9C00-0x9FFF 的 tiles 資料。  
+
+### 顯示實作：
 
 我的 gameboy 目前使用 [minifb](https://github.com/emoon/rust_minifb) 來顯示畫面，每當 GPU 進到 VBlank mode 的時候，就會叫 GPU 填一下顯示的 buffer。
 概念性的 code 如下：

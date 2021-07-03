@@ -130,8 +130,8 @@ handler沒有回音導致Facebook又發送一次「太強啦」過來，然後�
 為了這堆unicode 又花掉一個下午，寫這個簡單的Bot 一天就用掉了…寫到這裡我突然想到那篇傳奇文章
 [軟體工程師的鄙視鏈](https://vinta.ws/blog/695)裡面那句：  
 
-> 用 Python 3 的工程師鄙視還在用 Python 2 的工程師
-> 用 Python 2 的工程師鄙視遇到 UnicodeEncodeError 的工程師。  
+> 用 Python 3 的工程師鄙視還在用 Python 2 的工程師  
+> 用 Python 2 的工程師鄙視遇到 UnicodeEncodeError 的工程師 
 
 完了我要被鄙視了QAQ  
 

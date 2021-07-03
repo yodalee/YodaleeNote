@@ -71,7 +71,7 @@ And(out=ng, a=sign, b=true);
 
 作業的電路模擬器中內建DFF 和DRegister ，要實作Program Counter, Memory 等電路元件。  
 
-RAM 的架構基本上都一樣，寫好最底層的RAM8之後，一路上去的RAM 64, 512, 4K, 16K 都只是複製貼上而已，只是它的Hardward Simulator 怪怪的，有時候會摸擬到 \Explosion/，建議在跑script 的時候可以用慢一點跑.；把 view/animation 選為 No Animation 也或多或少能防止它爆掉。  
+RAM 的架構基本上都一樣，寫好最底層的RAM8之後，一路上去的RAM 64, 512, 4K, 16K 都只是複製貼上而已，只是它的Hardward Simulator 怪怪的，有時候會模擬到 \Explosion/，建議在跑script 的時候可以用慢一點跑.；把 view/animation 選為 No Animation 也或多或少能防止它爆掉。  
 
 Sub bus 用double dot .. 而非Verilog 裡的 comma，同時接線時是接在被 assign 那端，例如要把 15 pins 的 wire 接到元件 16 pins 的input上。  
 ```verilog
