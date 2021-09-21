@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 這章有點短，但因為接了鍵盤輸入又要介紹處理輸入的 system 的話，篇幅又太長了，以每章都介紹同樣內容的原則獨立出來；對應為 pong tutorial 的[第三章前半部](https://book.amethyst.rs/stable/pong-tutorial/pong-tutorial-03.html)。  

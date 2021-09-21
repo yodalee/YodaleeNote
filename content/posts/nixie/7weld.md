@@ -8,6 +8,7 @@ tags:
 - NixieClock
 series:
 - 自幹世界線變動率探測儀(Nixie Tube Clock)
+forkme: nixieclock
 ---
 
 靜候三天，板子終於送到了，我在等的週末去光華把 BOM 表印出來去光華搬了一批元件，最貴的還是 LED 跟 BJT，其他買一堆電阻不過小錢…。  

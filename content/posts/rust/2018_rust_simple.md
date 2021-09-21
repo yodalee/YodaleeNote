@@ -9,6 +9,7 @@ tags:
 - parsing expression grammar
 - rust
 series: null
+forkme: simplelang
 ---
 
 故事是這樣子的，很早以前曾經看過 understanding computation [這本書](http://computationbook.com/)，

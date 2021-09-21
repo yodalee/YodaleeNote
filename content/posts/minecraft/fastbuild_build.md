@@ -6,6 +6,7 @@ categories:
 tags:
 - minecraft
 series: null
+forkme: fastbuild
 ---
 
 最近想要寫一個快速整地用跟建設用的minecraft bukkit plugin，畢竟在進行大建築物的建設時，常常要剷平一整個山丘，或者要鋪一整片地板，很費工夫而且很慢，按著shift後退加滑鼠右鍵也很累。  

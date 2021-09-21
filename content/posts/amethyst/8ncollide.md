@@ -10,6 +10,7 @@ tags:
 - ncollide
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 碰撞偵測應該也是許多遊戲內必要的元素之一，比如說我們的打小行星遊戲，就需要偵測雷射砲跟小行星的碰撞，以及小行星和太空船的碰撞。  

@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 因為搬家（詳見[上一篇]({{< relref "2020_blogger_to_hugo.md" >}})）的關係好久沒有更新了；現在搬完家終於可以回來繼續寫 amethyst 的文章啦，

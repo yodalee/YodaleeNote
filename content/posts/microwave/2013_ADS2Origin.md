@@ -9,6 +9,7 @@ tags:
 - origin
 - python
 series: null
+forkme: ADSToOrigin
 ---
 
 最近在準備一些學校報告用的投影片，在學長主持的小咪報告之後，學長表示

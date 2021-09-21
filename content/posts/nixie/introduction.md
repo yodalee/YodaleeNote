@@ -8,6 +8,7 @@ tags:
 - NixieClock
 series:
 - 自幹世界線變動率探測儀(Nixie Tube Clock)
+forkme: nixieclock
 ---
 
 總之先秀個成品：  

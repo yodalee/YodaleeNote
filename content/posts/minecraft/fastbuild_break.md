@@ -6,6 +6,7 @@ categories:
 tags:
 - minecraft
 series: null
+forkme: fastbuild
 ---
 
 這篇接續[上一篇]({{< ref "fastbuild_build.md">}})最近花了一點時間，把fastbuild plugin本來預定的功能寫完了。  
