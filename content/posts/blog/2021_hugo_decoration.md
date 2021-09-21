@@ -133,7 +133,7 @@ def main():
 
 這部分在 hugo 內已經有內建的 [internal template](https://gohugo.io/templates/internal/#google-analytics) 了，只要在設定檔中加上 google analytics 的編號，並使用內建的 partial code 即可，一般的 theme 應該都會幫你加好 partial code了。
 ```toml
-# layouts/partials/adsense.html
+# config.yaml
 googleAnalytics = "UA-XXXXXXXX-X"
 ```
 
@@ -145,7 +145,7 @@ googleAnalytics = "UA-XXXXXXXX-X"
 <script data-ad-client="wwwww"  
  async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 ```
-2. 把這段 partial code 插入 <head></head> 之間：
+2. 把這段 partial code 插入 `<head></head>` 之間：
 ```go html template
 {{ partial "adsense.html" }}
 ```
