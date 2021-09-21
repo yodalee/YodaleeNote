@@ -47,8 +47,8 @@ grammar 檔案內容就是PEG 的語法，在編譯的時候會被 pest 轉換�
 pest 的語法基本上跟 PEG 沒有太大差別，在文法檔案中，就是 rule = { rule content } 的方式去定義規則：  
 
 * 匹配字串使用雙引號包住，用 ^ 設定 ASCII 為無關大小寫，例：op\_add = { "+" }, const = { ^"const" }
-* 一定文字範圍的用單引號搭配 ..，例：number = { '0’..’9’ }
-* 選擇規則用 | ，例：alpha = { 'a’..’z’ | 'A’..’Z’ }
+* 一定文字範圍的用單引號搭配 ..，例：number = { '0'..'9' }
+* 選擇規則用 | ，例：alpha = { 'a'..'z' | 'A'..'Z' }
 * 連結規則用 ~，跟 PEG 定義用空白直接連接不同，空白在 pest 用做排版，例：stat_assign = { variable ~ "=" ~ expr ~ ";" }
 
 定義規則中，可以用到其他規則，例：factor = { (variable | number) }。  

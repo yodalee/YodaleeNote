@@ -67,7 +67,7 @@ Class UserMessage(ndb.Model):
     isReady = ndb.BooleanProperty()
 ```
 
-Worker.py 一樣用 wsgi ，將對 /parse的要求交給 ParseHandler 處理，ParseHandler 可以用 self.request.get('key’) 拿到由caller 傳來的資料，
+Worker.py 一樣用 wsgi ，將對 /parse的要求交給 ParseHandler 處理，ParseHandler 可以用 self.request.get('key') 拿到由caller 傳來的資料，
 我們這裡沒做什麼事，就是取出使用者資料然後把isReady 改為 True 再存回去；為了模擬耗時工作我加了個 sleep(10)  
 ```python
 from google.appengine.ext import ndb

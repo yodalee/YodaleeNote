@@ -79,7 +79,7 @@ Yolal###,##a ##rb###. #eazest xwrcy#c#n th# worl#.
 "a"
 " "
 ```
-已經看得出明文大概是’yodalee is a’，如果再用這明文 `m0 = m1 xor c0 xor c1`，可以試著解其它的明文，找出更多粢訊把亂碼的部分消掉，完成攻擊。  
+已經看得出明文大概是'yodalee is a'，如果再用這明文 `m0 = m1 xor c0 xor c1`，可以試著解其它的明文，找出更多資訊把亂碼的部分消掉，完成攻擊。  
 例如用下面這段簡短的python code，就可以快速測試已知答案的話，其他密文的內容：   
 ```python
 ans0 = "xxx" print("".join([chr(ord(c) ^ c0[i] ^ c1[i]) for i, c in enumerate(ans)])
