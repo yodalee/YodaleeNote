@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 其實這章才是真的讓這堆教學跟官方 pong 不一樣的地方，在遊戲內生成 entity；官方的 pong 就是生出兩塊板子一顆球，球跑到場外就計分然後把球放回場中間，完全不會新增/刪除 entity。  

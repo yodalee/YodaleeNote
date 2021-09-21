@@ -8,6 +8,7 @@ tags:
 - NixieClock
 series:
 - 自幹世界線變動率探測儀(Nixie Tube Clock)
+forkme: nixieclock
 ---
 
 一般自組輝光管時鐘都要配高壓電源，當然從 110V 變壓到 180V 再經過整流、穩壓也是一招，但這樣很難調整電壓，自己繞變壓器其實也比直流升壓麻煩，體積跟重量也都大得多。  

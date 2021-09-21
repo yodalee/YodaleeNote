@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 上一章連接輸入的部分，我們完成了第一個 system 的設計，當然這個系統什麼事都沒做，這章我們就來把輸入接到真正的變化上。  

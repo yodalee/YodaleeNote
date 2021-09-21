@@ -11,6 +11,7 @@ tags:
 - emulator
 series:
 - 使用 Rust 開發 WebAssembly 程式
+forkme: "wasm_gameboy"
 ---
 
 在我們看過兩個官方文件的範例之後，可以開始寫點真正的 code 了，如之前所言，我們要把 gameboy 移植到 WebAssembly 上面，

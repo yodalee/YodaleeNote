@@ -8,6 +8,7 @@ tags:
 - emulator
 - rust
 series: null
+forkme: ruGameboy
 ---
 
 故事是這樣子的，之前看了網路上有個人寫了一份手把手教你寫一個 risc-v 模擬器 [Writing a RISC-V Emulator in Rust](https://book.rvemu.app)，

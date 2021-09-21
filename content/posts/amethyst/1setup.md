@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 首先我們要先設定專案，內容會對應官方教學的 [Getting Started](https://book.amethyst.rs/stable/getting-started.html) 和 Pong 的[第一章](https://book.amethyst.rs/stable/pong-tutorial/pong-tutorial-01.html)：  

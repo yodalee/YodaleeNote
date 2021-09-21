@@ -8,6 +8,7 @@ tags:
 - NixieClock
 series:
 - 自幹世界線變動率探測儀(Nixie Tube Clock)
+forkme: nixieclock
 ---
 
 下面就真的要開始用 easyEDA 畫 Layout 了。  

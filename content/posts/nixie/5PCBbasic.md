@@ -8,6 +8,7 @@ tags:
 - NixieClock
 series:
 - 自幹世界線變動率探測儀(Nixie Tube Clock)
+forkme: nixieclock
 ---
 
 介紹了這麼多，我們終於要進到電路板了，之前介紹的許多東西在這邊一口氣要全部發揮出來，我是沒有很確定輝光管用洞洞板會不會有問題，不過要整合起來還是洗電路板比較潮。  

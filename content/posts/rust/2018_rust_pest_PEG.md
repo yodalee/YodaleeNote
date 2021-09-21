@@ -9,6 +9,7 @@ tags:
 - pest
 - parsing expression grammar
 series: null
+forkme: simplelang
 ---
 
 [上一篇]({{< relref "2018_PEG.md">}})我們看了 PEG 相關的內容，這篇我們就來介紹該如何用 PEG 寫一個簡單的剖析器。  

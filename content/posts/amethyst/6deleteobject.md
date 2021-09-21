@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 一般來說這種射小行星的遊戲，都會有一個莫名的設定，那就是太空船和小行星來到邊界的時候，會從螢幕的對面出現，就好像畫面是一個攤平的球體一樣。  

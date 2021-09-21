@@ -8,6 +8,7 @@ tags:
 - NixieClock
 series:
 - 自幹世界線變動率探測儀(Nixie Tube Clock)
+forkme: nixieclock
 ---
 
 有了高壓電源之後下一步是驅動電路，如何控制 180 伏特的高壓電源開關？  

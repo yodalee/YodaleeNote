@@ -7,6 +7,7 @@ tags:
 - rust
 - raytracer
 series: null
+forkme: Raytracing-rust
 ---
 
 最近看到傳說中的jserv 大神所開的2016系統軟體課程，用C寫了一個Raytracing 的程式，就想我也用rust 也一遍，

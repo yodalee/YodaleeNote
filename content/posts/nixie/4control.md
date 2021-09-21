@@ -8,6 +8,7 @@ tags:
 - NixieClock
 series:
 - 自幹世界線變動率探測儀(Nixie Tube Clock)
+forkme: nixieclock
 ---
 
 現在我們進到本作品除了輝光管之外最貴的部分了，輝光管貴是因為它老舊了，用一支少一支，控制電路的部分就是在買它智慧財的價格了。  

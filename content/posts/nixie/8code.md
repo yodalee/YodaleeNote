@@ -8,6 +8,7 @@ tags:
 - NixieClock
 series:
 - 自幹世界線變動率探測儀(Nixie Tube Clock)
+forkme: nixieclock
 ---
 
 到了這邊木已成舟（無誤，電路板沒做好的話，程式寫再多都沒有用www，只能硬著頭皮去修或者認命掏銀子出來重洗了），再來就是不斷的寫 code 跟燒 code。

@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 畫東西應該是遊戲最基本的功能，除非你是要做什麼矮人要塞之類的 ASCII 遊戲…這種遊戲大概不太有人想玩了。  

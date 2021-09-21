@@ -9,6 +9,7 @@ tags:
 - keysight
 - agilent
 series: null
+forkme: keysightBin
 ---
 
 故事是這樣子的，最近拿到一些透過Agilent示波器（好啦你喜歡叫他Keysight也可以）讀到的資料，要對裡面的數字做分析，

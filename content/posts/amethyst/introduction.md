@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 故事是這個樣子的，之前因為武肺的關係耍廢了一陣子，你看 blog 都沒更新幾個月了，只有中間在那邊玩 vscode 整個就是魯廢。 最近受到強者我同學在歐陸大殺四方的呂行大神感召，試玩了一下 Rust 的 amethyst （紫水晶，託名字的福一定要查 rust amethyst 才會查到要的東西）框架，決定來寫點文介紹一下。  

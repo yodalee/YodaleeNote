@@ -6,6 +6,7 @@ categories:
 tags:
 - rust
 series: null
+forkme: computationbook-rust/blob/master/src/the_simplest_computers/finite_automata/nfasimulation.rs
 ---
 
 故事是這樣子的，最近寫了一些跟 Regex 相關的程式碼，無意間發現我之前understanding computation 這本書的實作中，並沒有實作非確定有限自動機（下稱 NFA）轉成有限自動機（DFA）的程式碼。  

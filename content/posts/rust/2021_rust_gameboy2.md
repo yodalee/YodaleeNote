@@ -8,6 +8,7 @@ tags:
 - emulator
 - rust
 series: null
+forkme: ruGameboy
 ---
 
 故事是這樣子的，距離我上一篇 2020/12/20 發的 [rust gameboy emulator]({{< relref "2020_rust_gameboy.md" >}}) 技術文之後，

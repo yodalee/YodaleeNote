@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 亂數在遊戲中也是個舉足輕重的腳角，少了亂數的遊戲就像沒加珍珠的奶茶(?，讓玩家食之無味；這章我們會加上亂數，以及產生小行星的 system。  

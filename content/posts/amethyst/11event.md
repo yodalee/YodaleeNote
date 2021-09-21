@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 上一篇我們做了兩個 state：遊戲進行和暫停的 state，理論上整個遊戲還需要更多的 state：像是遊戲結束、遊戲選單等等，但在這之前我們要先介紹 amethyst 的 event channel。  

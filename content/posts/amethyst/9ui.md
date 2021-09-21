@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 現在讓我們來建 UI，我覺得建 UI 是目前掌握度比較低的部分，我也在想怎麼做才是對的。  

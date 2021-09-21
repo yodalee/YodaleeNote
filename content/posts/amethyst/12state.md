@@ -9,6 +9,7 @@ tags:
 - amethyst
 series:
 - 使用 Amethyst Engine 實作小行星遊戲
+forkme: amethyst-asteroid
 ---
 
 這章我們要一口氣新增兩個新的狀態：StateMenu 跟 StateOver，基本上因為不同的 state 都分到不同的檔案，所以多幾個 state 也沒差。  
