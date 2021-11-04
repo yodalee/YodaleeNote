@@ -74,9 +74,10 @@ struct xMINI_LIST_ITEM
 * pvOwner 用 void，但在 FreeRTOS 通常會指向 TCB。
 * pvContainer 指向 Item 所在的 List_t。
 
-可以看到 MiniListItem 就是少了 pvOwner 跟 pxContainer 兩個資料，因為 ListEnd 不儲存實際的 TCB，省掉這兩個 field 可以節省一點記憶體。
+可以看到 MiniListItem 就是少了 pvOwner 跟 pxContainer 兩個資料，因為 ListEnd 不儲存實際的 TCB，省掉這兩個 field 可以節省一點記憶體。  
 實際上畫 UML 大概是長這個樣子：
-![freertoslist](/images/post/freertoslist.png)
+
+![freertoslist](/images/posts/freertoslist.png)
 
 ## Trace Code
 
@@ -228,6 +229,6 @@ __asm void xPortPendSVHandler( void )
 
 vTaskSwitchContext 內部會呼叫 taskSELECT_HIGHEST_PRIORITY_TASK，裡面會選出目前優先權最高的 Task ，將它設定為 pxCurrentTCB。  
 Macro listGET_OWNER_OF_NEXT_ENTRY 會去拿 List 裡面，pxIndex 指向的下一個 ListItem，
-如前所述，因為 pxIndex 指向的不什麼**第一個 Task**，而是其中一個，這個實作可以讓整個 List 裡面的 Task 都輪流執行。  
+如前所述，因為 pxIndex 指向的不是**第一個 Task**，而是其中一個，這個實作可以讓整個 List 裡面的 Task 都輪流執行。  
 
 上面大概就是筆記到 FreeRTOS Context Switch 的流程，整理比我想像得還要花時間，其他筆記有機會再慢慢整理。  
