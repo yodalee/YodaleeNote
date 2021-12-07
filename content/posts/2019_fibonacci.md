@@ -84,15 +84,23 @@ mpfr_clear(phi);
 扯遠了拉回來，如果我們要用 mpfr 這個函式庫，利用公式解來算 fib(93)，要怎麼做呢？  
 fib(93) 到底有多少位數呢？
 我們可以[用 2^n 作為 F(n) 的上界](https://math.stackexchange.com/questions/2971350/show-that-log-fib-n-is-thetan)，
-最後所需的位數至少就是 ceill(n*log(2))，相對應的我們運算中的浮點數精確度的要求，2^n 這個上界有點~~可恥~~粗糙但有用，
+最後所需的位數至少就是 ceil(n*log(2))，相對應的我們運算中的浮點數精確度的要求，2^n 這個上界有點~~可恥~~粗糙但有用，
 頂多會浪費點記憶體，最後除出來的小數點後面多幾個零而已，如果能套用更精確的上界當然更好。  
 
-mpfr 的函式庫設計精良，呼叫上非常直覺，這段程式碼其實就是寫公式解，應該滿好懂的，[程式碼在此](https://gist.github.com/yodalee/4e221b081be4b367e9c7ef328ada7db5)。
+mpfr 的函式庫設計精良，呼叫上非常直覺，這段程式碼其實就是寫公式解，應該滿好懂的，
+[程式碼在此](https://gist.github.com/yodalee/4e221b081be4b367e9c7ef328ada7db5)。  
+{{< rawhtml >}}
+<script src="https://gist.github.com/yodalee/4e221b081be4b367e9c7ef328ada7db5.js?file=fastfib.c"></script>
+{{< /rawhtml >}}
+
 有了這個就可以亂算一堆 fib 了，基本上要算費式數列第一億項 fib(100,000,000) 也是 OK 的（好啦我不保證答案是對的XD，至少 fib(10000) 是對的）。  
 
 But，人生最厲害的就是這個 But，公式解真的有比較快嗎？  
 我個人認為答案是否定的，我們同樣可以用 fast-fibonacci 搭配 gmp 函式庫來計算，因為都是整數的運算可以做到非常快，
 我的測試[程式碼在此](https://gist.github.com/yodalee/4e221b081be4b367e9c7ef328ada7db5)：  
+{{< rawhtml >}}
+<script src="https://gist.github.com/yodalee/4e221b081be4b367e9c7ef328ada7db5.js?file=formulafib.c"></script>
+{{< /rawhtml >}}
 
 同樣是計算 fib(100,000,000)：  
 
