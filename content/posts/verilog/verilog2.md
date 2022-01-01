@@ -61,7 +61,7 @@ endcase
 比如說  
 ```verilog
 always @(*) begin
-    state = (counter=2’d2)?state+1’b1:state;
+    state = (counter=2'd2)?state+1'b1:state;
 end
 ```
 這樣的code是絕對不可以出現的狀況，會產生另一個常見的 combinational loop 的警告。有時候這樣的 code 也可以存活，但出現 combinational loop 一般都會大大加重 quartus 編譯時的負擔。  

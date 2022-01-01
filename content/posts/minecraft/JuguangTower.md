@@ -32,10 +32,10 @@ series: null
 ![view](/images/minecraft/JuguangTower/view.png)
 
 天花板大概是最麻煩的東西了，原本的天花板是雕梁畫棟五彩繽紛，如照片所示，這在Minecraft 裡面根本做不到，只能用各種色彩的羊毛意思意思一下；只能說~~這中華民國美學你敢嘴~~？像素太低了沒辦法啦（yay  
-![realceiling](/images/minecraft/JuguangTower/realceiling.png)
+![realceiling](/images/minecraft/JuguangTower/realceiling.jpg)
 ![ceiling](/images/minecraft/JuguangTower/ceiling.png)
 
-庭園的部分，沒什麼就是一直種樹，超級花時間；在實際莒光樓，沒人會去坐，不知道幹什麼的樓梯，都靠[這個小工具](http://donatstudios.com/PixelCircleGenerator) 幫我算圓形怎麼蓋  
+庭園的部分，沒什麼就是一直種樹，超級花時間；在實際莒光樓，沒人會去坐，不知道幹什麼的樓梯，都靠[這個小工具](http://donatstudios.com/PixelCircleGenerator)幫我算圓形怎麼蓋  
 
 圍牆的部分就選用End Stone Brick ，顏色跟質料都很像：  
 ![wall](/images/minecraft/JuguangTower/wall.png)
