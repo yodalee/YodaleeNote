@@ -7,6 +7,8 @@ tags:
 - BookReview
 - c
 series: null
+images:
+- /images/book/modernC.jpg
 ---
 
 |   |   |
