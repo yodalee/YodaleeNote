@@ -120,7 +120,7 @@ mut proc = PROC[i].lock();
 1. scheduler 和 data struct 息息相關，要實作有效率的 scheduler，就得用上 list ，
 而不是如 xv6 一樣用一個靜態的 array 來儲存所有的 process；雖然在 rust 上實作 list 相對來說麻煩一點，
 但幸好這部分有 [Too Many Linked Lists](https://rust-unofficial.github.io/too-many-lists/fifth.html) 可以參考。
-2. 跟[上次實作 Context]({{<relref "2021_rrxv6_contextswitch">}}) 的時候一樣，我們需要用到 global data，
+2. 跟[上次實作 Context]({{<relref "rrxv6_contextswitch">}}) 的時候一樣，我們需要用到 global data，
 為了避免 context switch 前後互相競爭，這次 global data 就不能用 Mutex 了，存取也都會變成 unsafe，但……
 我就 unsafe。
 3. 同樣，為了持有一些資料的 reference，我們必須使用 pointer，這在 rust 裡也是 unsafe。
@@ -158,7 +158,7 @@ pub fn kstack(proc_id: u64) -> u64 {
 }
 ```
 
-在[初始化 virtual memory]({{<relref "2021_rrxv6_virtual_memory">}}) 的時候，要分配好實體記憶體並做好映射：
+在[初始化 virtual memory]({{<relref "rrxv6_virtual_memory">}}) 的時候，要分配好實體記憶體並做好映射：
 ```rust
 // alloc and map stack for kernel process
 for i in 0u64..NPROC as u64 {
@@ -327,7 +327,7 @@ pub fn init_cpu() {
 
 ## Context Switch
 
-現在我們可以來實作 Context switch 了，跟之前[簡略的實作]({{<relref "2021_rrxv6_contextswitch">}}) 沒差很多，
+現在我們可以來實作 Context switch 了，跟之前[簡略的實作]({{<relref "rrxv6_contextswitch">}}) 沒差很多，
 
 實作 next 介面，從 used list 裡面敲出下一個要執行的 process，由於 scheduler 會在多個 CPU 之間共享，
 要修改 used_list 的時候，必須要搭配 Mutex lock，取出 Proc 之後立即解鎖，這樣它就不會卡到其他 CPU 的執行：
@@ -343,7 +343,7 @@ pub fn next(&self) -> Option<Box<Proc>> {
 1. 把 interrupt 打開
 2. 呼叫 next 看看有沒有要執行的 process，沒有就直接進入休眠。
 3. 拿到要執行的 process，設定它的狀態為 RUNNING，將 pointer 寫入 CPU struct。
-4. 呼叫 assembly 的 [switch]({{<relref "2021_rrxv6_contextswitch#assembly-context-switch">}})
+4. 呼叫 assembly 的 [switch]({{<relref "rrxv6_contextswitch#assembly-context-switch">}})
 執行 context switch。
 5. 當 CPU 回到這裡（在 preempt 或 process 主動放棄執行），把這個 process 塞回 used list 裡，等待下一次被執行。
 
@@ -393,8 +393,8 @@ pub fn yield_proc() {
 ## Preempt Multitasking
 
 到這裡我們的 scheduler 已經能做到 cooperative multitasking 了，只要在 print_a/b 裡面呼叫 yield_proc 即可。  
-不過要改造成 preempt 也很簡單，我們在[上一章 interrupt]({{<relref "2021_rrxv6_interrupt">}}) 已經處理好 interrupt，
-搭配在 start 的時[設定好了 machine mode timer interrupt]({{<relref "2021_rrxv6_embedded_rust">}})。
+不過要改造成 preempt 也很簡單，我們在[上一章 interrupt]({{<relref "rrxv6_interrupt">}}) 已經處理好 interrupt，
+搭配在 start 的時[設定好了 machine mode timer interrupt]({{<relref "rrxv6_embedded_rust">}})。
 
 這一串 interrupt 及其處理流程整理如下：
 1. init_timer 設定 qemu clint (Core local interruptor)，設定對應的 timer setting，讓外部 timer 發中斷給 riscv hart。
@@ -406,7 +406,7 @@ pub fn yield_proc() {
 li a1, 2
 csrw sip, a1
 ```
-5. 在 start 函式裡已經[設定 sie (Supervisor Interrupt Enable) 開啟 Software Interrupt]({{<relref "2021_rrxv6_embedded_rust#%E5%85%B6%E4%BB%96%E7%9A%84-register">}})。
+5. 在 start 函式裡已經[設定 sie (Supervisor Interrupt Enable) 開啟 Software Interrupt]({{<relref "rrxv6_embedded_rust#%E5%85%B6%E4%BB%96%E7%9A%84-register">}})。
 6. 呼叫 intr_on 時設定 sstatus (Supervisor Status Register)，開啟 Supervisor mode interrupt。
 7. interrupt 發生，從 stvec 取出 handler kernelvel，保存 register 至 stack 上。
 8. 呼叫 rust 函式 kerneltrap。

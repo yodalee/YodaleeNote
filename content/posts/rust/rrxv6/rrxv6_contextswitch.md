@@ -12,6 +12,8 @@ tags:
 series:
 - rrxv6
 forkme: rrxv6
+aliases:
+- /2021/07/2021_rrxv6_contextswitch
 ---
 
 首先先預告一下，這篇有可能會是本系列連續更新的最後一篇，更新完這篇之後我要去閉關念書（看 code）一段時間，原因我等等會說明。

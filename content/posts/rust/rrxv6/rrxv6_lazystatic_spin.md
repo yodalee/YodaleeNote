@@ -13,6 +13,8 @@ tags:
 series:
 - rrxv6
 forkme: rrxv6
+aliases:
+- /2021/07/2021_rrxv6_lazystatic_spin/
 ---
 
 故事是這樣子的，上一篇我們使用 unsafe 來操作 global variable，並用這個做到 cooperative multitask，

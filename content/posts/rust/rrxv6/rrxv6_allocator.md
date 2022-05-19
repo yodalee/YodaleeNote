@@ -11,9 +11,11 @@ tags:
 series:
 - rrxv6
 forkme: rrxv6
+aliases:
+- /2021/08/2021_rrxv6_allocator/
 ---
 
-故事是這樣子的，雖然在上上篇的 [Context Switch]({{< relref "2021_rrxv6_contextswitch" >}}) 我們曾經預告過因為 static 的問題，
+故事是這樣子的，雖然在上上篇的 [Context Switch]({{<relref "rrxv6_contextswitch" >}}) 我們曾經預告過因為 static 的問題，
 可能要停更一段時間，但後來沒停更，static 問題很快就用 spin 提供的 no_std Mutex 解決了。  
 不過，no_std Mutex 雖然解決 static 不用手爆 constructor 的問題，同時卻產生了另一個問題：stack overflow。
 
@@ -26,7 +28,7 @@ forkme: rrxv6
 作者自己就有公佈一款 [linked list allocator](https://github.com/phil-opp/linked-list-allocator)，
 理論上我可以直接在 Cargo 上引用這個 repository，然後插到我的 project 即可。  
 當然，除了直接用人家的 project ，我們還是要看一下 Rust 的記憶體管理是怎麼實作的，這篇我們就實作一個只能 alloc 不能 dealloc 的記憶體管理
-（其實這樣說起來，我在 [Mutex]({{< relref "2021_rrxv6_lazystatic_spin" >}}) 都自己實作才對，不該直接用 spin 提供的）。
+（其實這樣說起來，我在 [Mutex]({{< relref "rrxv6_lazystatic_spin" >}}) 都自己實作才對，不該直接用 spin 提供的）。
 
 # Global Allocator
 

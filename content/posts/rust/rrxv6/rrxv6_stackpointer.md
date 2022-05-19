@@ -13,6 +13,8 @@ series:
 images:
 - /images/rrxv6/helloworld.png
 forkme: rrxv6
+aliases:
+- /2021/07/2021_rrxv6_stackpointer/
 ---
 
 上一篇我們成功讓 assembly 執行一個 jump 跳進 Rust 函式，但這樣其實一點用也沒有，畢竟只會 loop 的作業系統並不是一個很好的作業系統；
@@ -170,7 +172,7 @@ _entry:
 ## Uart Hello World
 
 其實 Rust 在寫嵌入式上真的是有點綁手綁腳，主因是 [Rust 與 asm 的整合](https://doc.rust-lang.org/beta/unstable-book/library-features/asm.html)
-不是沒有，但都還未穩定化，這也是我[前一篇]({{<relref "2021_rrxv6_boot#rust">}})介紹工具時有說後面的程式會需要 nightly 的原因；
+不是沒有，但都還未穩定化，這也是我[前一篇]({{<relref "rrxv6_boot#rust">}})介紹工具時有說後面的程式會需要 nightly 的原因；
 再來，Rust 的機車特性導致只要用了 `asm!` 執行 assembly，code 都必須要放在 unsafe block 裡面。
 
 所以這段開機程式其實很好改寫，全部用 assembly 寫，然後就會變成滿滿的 unsafe 跟 asm!，然後 code 就會很醜。

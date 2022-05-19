@@ -14,6 +14,8 @@ series:
 images:
 - /images/rrxv6/interrupt_gdb.png
 forkme: rrxv6
+aliases:
+- /2021/12/2021_rrxv6_interrupt/
 ---
 
 故事是這樣子的，上一章的結尾雖然寫了：
@@ -378,7 +380,7 @@ pub fn intr_on() {
 }
 ```
 
-最後一個是 csr SIE(也叫 Supervisor Interrupt Enable)，這個在[作業系統初始化的時候]({{< relref 2021_rrxv6_stackpointer>}}) 已經把 Supervisor Software/Timer/External Interrupt 都打開了。
+最後一個是 csr SIE(也叫 Supervisor Interrupt Enable)，這個在[作業系統初始化的時候]({{< relref rrxv6_stackpointer>}}) 已經把 Supervisor Software/Timer/External Interrupt 都打開了。
 
 如此就設定好 PLIC了。  
 
