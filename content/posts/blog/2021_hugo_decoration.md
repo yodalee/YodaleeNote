@@ -51,7 +51,7 @@ class CodeChecker(Checker):
       self.inCode = not self.inCode
     if self.inCode:
       line = line.replace("\\_", "_").rstrip() + os.linesep
-return line
+    return line
 
 def process(fpath):
   checker = CodeChecker()
