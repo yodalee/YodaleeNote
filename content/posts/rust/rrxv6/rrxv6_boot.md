@@ -13,6 +13,8 @@ series:
 images:
 - /images/rrxv6/loop.png
 forkme: rrxv6
+aliases:
+- /2021/07/2021_rrxv6_boot/
 ---
 
 故事是這樣子的，大概六月中的時候，小弟因緣際會空出一些時間，因為武肺持續三級警戒只能待在家裡，除了打混摸魚之外順便看了一下別人寫的翻譯文

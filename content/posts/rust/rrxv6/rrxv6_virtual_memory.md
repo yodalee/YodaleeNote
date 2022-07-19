@@ -14,6 +14,8 @@ images:
 - /images/rrxv6/translate.png
 forkme: rrxv6
 latex: true
+aliases:
+- /2021/12/2021_rrxv6_virtual_memory/
 ---
 
 上次我們發佈 rrxv6 的文章，已經是八月的事情了，大家可能以為我已經棄更了？
@@ -97,7 +99,7 @@ $$ 2^{39} = 512 GB $$
 其實這個東西已經有出現過了，全名是 SATP (Supervisor Address Translation and Protection)，
 或是過去曾稱為 SPTBR (Supervisor Page-Table Base Register)，它的地位相當於 x86 的 CR0 和 CR3；或是 ARM 裡面的 TTBCR。
 
-在我們[一開始初始化作業系統]({{< relref "2021_rrxv6_stackpointer" >}})的時候，
+在我們[一開始初始化作業系統]({{< relref "rrxv6_stackpointer" >}})的時候，
 會把 csr satp 寫入 0 關掉 virtual memory，在 4.1.12 描述 satp 的內容。
 
 ![satp](/images/rrxv6/satp.png)

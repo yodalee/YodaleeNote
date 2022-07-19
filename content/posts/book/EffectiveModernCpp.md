@@ -7,6 +7,8 @@ tags:
 - BookReview
 - Cpp
 series: null
+images:
+- /images/book/EffectiveModernCpp.jpg
 ---
 
 |   |   |

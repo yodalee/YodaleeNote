@@ -13,6 +13,8 @@ series:
 images:
 - /images/rrxv6/mstatus.png
 forkme: rrxv6
+aliases:
+- /2021/07/2021_rrxv6_embedded_rust
 ---
 
 上一回我們看到我們用 rust 寫了一些底層的 code，當然，這個寫法並不好看，有沒有更漂亮的寫法呢？
@@ -251,7 +253,7 @@ fn start() -> ! {
 
 # 結語
 
-為什麼我[第一篇]({{<relref "2021_rrxv6_boot.md" >}})會說：
+為什麼我[第一篇]({{<relref "rrxv6_boot.md" >}})會說：
 
 > 感覺自己挖了一個深不見底的坑
 

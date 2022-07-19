@@ -176,7 +176,7 @@ bx r14 就會跳進 pxCurrentTCB 的程式開始執行，也就是我們的 vTas
 
 有了 PendSV 就能完美解決上述的問題，在 Systick Handler 裡面，只做非常簡單的事：
 tickCount+1 並檢查 ReadyList 有沒有其他 Task 要切換，有的話就把 PendSV 中斷掛起來， Systick Handler 就結束了。  
-這樣如果有其他更重要的中斷需要處理，Systick handler 很快就結整不會卡死其他中斷；
+這樣如果有其他更重要的中斷需要處理，Systick handler 很快就結束，不會卡死其他中斷；
 有其他中斷要處理時，PendSV Handler 也會自動被 MCU 延遲，等到重要的事情處理完，再來處理比較不重要的 Context Switch。
 
 ## Context Switch

@@ -6,6 +6,8 @@ categories:
 tags:
 - BookReview
 series: null
+images:
+- /images/book/21thcenturycapital.jpg
 ---
 
 |   |   |
