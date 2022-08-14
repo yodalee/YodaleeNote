@@ -124,8 +124,11 @@ vscode 公開一個 API 讓安裝的語言擴充使用，需要什麼語言的�
 正好反過來如果下 b main 停下來的話，rust-gdb 下一步會停不下來，一口氣跑到 main 的尾巴…。  
 這個問題一時之間好像無解，也許要等 rust 跟 codelldb/gdb 真的接好之後再來看看了。  
 
-## 零碎操作：  
+## 快捷鍵操作：  
 Ctrl + KT 叫出 color theme 設定，我用的是 light 的 Solarized Light ，最近眼睛好像不太適合全黑的畫面了QQ。  
+Ctrl + P 開檔案，這部分已經整合了 find 要用 wildcard 才能找的功能，方便不少。
+Ctrl + Shift + F 全文搜尋，等於是有個 grep 帶著走，雖然沒有 regular expression 但已經十分夠用了
+Ctrl + , 開啟設定，在安裝完模組之後可以快速做各種設定
 
 ## 結語：
 回頭一看怎麼一堆快捷鍵，不過算啦，跟 vim 的快捷鍵比起來這還是算少的吧XD；話說大概是「把手留在核心區」這個哲學的關係，
