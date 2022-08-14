@@ -5,7 +5,8 @@ categories:
 - LifeRecord
 tags:
 - NixieClock
-- Rustlang
+- rust
+- COSCUP
 series: null
 ---
 
