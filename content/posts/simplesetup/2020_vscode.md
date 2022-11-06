@@ -55,10 +55,16 @@ vscode 基本上的優勢就是是它編輯/建構/除錯三位一體的編輯�
 可以用 LLVM 的 lldb 對程式除錯，裝了這個是為了要對 Rust 除錯   
 
 #### 工具類
+* [Vim](https://open-vsx.org/extension/vscodevim/vim)：
+整合 vim 編輯器，畢竟習慣了這樣打字效率才會高  
 * [Git Graph]( https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)：
 整合 gitg 類似的圖形化顯示工具到介面，git 管理上當然可以靠打字，但看歷史還是看圖方便  
 * [GitLens]( https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)：
 還沒試過，強者我同學 JJL 推薦的  
+* [Docker](https://open-vsx.org/extension/ms-azuretools/vscode-docker)
+最近開始試用 docker 管理所有的開發環境，可以在 vscode 裡面新增/管理/連線所有 docker image，非常方便  
+
+#### 其他
 * [TODO tree]( https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)：
 統一管理 project 內部的 TODO, FIXME, XXX  
 * [Trailing Spaces]( https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces)：
