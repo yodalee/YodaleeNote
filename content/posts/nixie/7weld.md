@@ -1,6 +1,6 @@
 ---
 title: "自幹世界線變動率探測儀（Nixie Tube Clock）：焊接"
-date: 2018-10-25
+date: 2018-10-26
 categories:
 - hardware
 tags:
