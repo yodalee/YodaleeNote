@@ -90,7 +90,7 @@ fib(93) 到底有多少位數呢？
 mpfr 的函式庫設計精良，呼叫上非常直覺，這段程式碼其實就是寫公式解，應該滿好懂的，
 [程式碼在此](https://gist.github.com/yodalee/4e221b081be4b367e9c7ef328ada7db5)。  
 {{< rawhtml >}}
-<script src="https://gist.github.com/yodalee/4e221b081be4b367e9c7ef328ada7db5.js?file=fastfib.c"></script>
+<script src="https://gist.github.com/yodalee/4e221b081be4b367e9c7ef328ada7db5.js?file=formulafib.c"></script>
 {{< /rawhtml >}}
 
 有了這個就可以亂算一堆 fib 了，基本上要算費式數列第一億項 fib(100,000,000) 也是 OK 的（好啦我不保證答案是對的XD，至少 fib(10000) 是對的）。  
@@ -99,7 +99,7 @@ But，人生最厲害的就是這個 But，公式解真的有比較快嗎？
 我個人認為答案是否定的，我們同樣可以用 fast-fibonacci 搭配 gmp 函式庫來計算，因為都是整數的運算可以做到非常快，
 我的測試[程式碼在此](https://gist.github.com/yodalee/4e221b081be4b367e9c7ef328ada7db5)：  
 {{< rawhtml >}}
-<script src="https://gist.github.com/yodalee/4e221b081be4b367e9c7ef328ada7db5.js?file=formulafib.c"></script>
+<script src="https://gist.github.com/yodalee/4e221b081be4b367e9c7ef328ada7db5.js?file=fastfib.c"></script>
 {{< /rawhtml >}}
 
 同樣是計算 fib(100,000,000)：  

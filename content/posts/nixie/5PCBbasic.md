@@ -4,7 +4,7 @@ date: 2018-10-23
 categories:
 - hardware
 tags:
-- Hardware
+- hardware
 - NixieClock
 series:
 - 自幹世界線變動率探測儀(Nixie Tube Clock)

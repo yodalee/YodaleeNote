@@ -5,8 +5,8 @@ categories:
 - LifeRecord
 - hareware
 tags:
-- Rustlang
-- Hardware
+- rust
+- hardware
 series: null
 ---
 

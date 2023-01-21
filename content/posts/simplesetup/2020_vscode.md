@@ -55,10 +55,16 @@ vscode 基本上的優勢就是是它編輯/建構/除錯三位一體的編輯�
 可以用 LLVM 的 lldb 對程式除錯，裝了這個是為了要對 Rust 除錯   
 
 #### 工具類
+* [Vim](https://open-vsx.org/extension/vscodevim/vim)：
+整合 vim 編輯器，畢竟習慣了這樣打字效率才會高  
 * [Git Graph]( https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)：
 整合 gitg 類似的圖形化顯示工具到介面，git 管理上當然可以靠打字，但看歷史還是看圖方便  
 * [GitLens]( https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)：
 還沒試過，強者我同學 JJL 推薦的  
+* [Docker](https://open-vsx.org/extension/ms-azuretools/vscode-docker)
+最近開始試用 docker 管理所有的開發環境，可以在 vscode 裡面新增/管理/連線所有 docker image，非常方便  
+
+#### 其他
 * [TODO tree]( https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)：
 統一管理 project 內部的 TODO, FIXME, XXX  
 * [Trailing Spaces]( https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces)：
@@ -124,8 +130,11 @@ vscode 公開一個 API 讓安裝的語言擴充使用，需要什麼語言的�
 正好反過來如果下 b main 停下來的話，rust-gdb 下一步會停不下來，一口氣跑到 main 的尾巴…。  
 這個問題一時之間好像無解，也許要等 rust 跟 codelldb/gdb 真的接好之後再來看看了。  
 
-## 零碎操作：  
+## 快捷鍵操作：  
 Ctrl + KT 叫出 color theme 設定，我用的是 light 的 Solarized Light ，最近眼睛好像不太適合全黑的畫面了QQ。  
+Ctrl + P 開檔案，這部分已經整合了 find 要用 wildcard 才能找的功能，方便不少。
+Ctrl + Shift + F 全文搜尋，等於是有個 grep 帶著走，雖然沒有 regular expression 但已經十分夠用了
+Ctrl + , 開啟設定，在安裝完模組之後可以快速做各種設定
 
 ## 結語：
 回頭一看怎麼一堆快捷鍵，不過算啦，跟 vim 的快捷鍵比起來這還是算少的吧XD；話說大概是「把手留在核心區」這個哲學的關係，
