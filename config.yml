@@ -44,6 +44,9 @@ params:
 
   author: YodaLee
 
+  assets:
+    disableHLJS: true
+
   images:
   - android-chrome-512x512.png
 
@@ -58,6 +61,10 @@ params:
       url: "https://github.com/yodalee"
     - name: "linkedin"
       url: "https://linkedin.com/in/yodalee"
+
+markup:
+  highlight:
+    style: solarized-dark
 
 outputs:
   home:
