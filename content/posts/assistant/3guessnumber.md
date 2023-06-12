@@ -52,7 +52,7 @@ Webhook 也是，要在單一的 webhook 裡面處理所有的 Intent 該怎麼�
 這個 Intent 不會由使用者的輸入進入，而是我們在 GuessNumber 的 webhook 設定 assistant 進入的狀態，在這裡要新增一個 Event，我叫它 `User_number_match`，在回應的部分設定一些恭禧使用者的話，然後設定這個 Intent 結束對話 End of Conversation。  
 之所以要新增這個 event，是要讓 webhook 有能力讓 dialogflow 判定要進到這個 Intent，一般 Intent 的判定都是透過使用者的輸入來決定，但在猜數字裡面使用者輸入數字判定的 Intent 一定是 GuessNumber 不會是 GuessEnd，那對話就無法結束了。因此我們自定義這個 `User_number_match` 事件，只要 webhook 發出這個事件 dialogflow 就會判定為 GuessEnd Intent 了。  
 
-![guessendintent](/images/assistant/guessnumber/2guessendintent.png)   
+![guessendintent](/images/assistant/guessnumber/3guessendintent.png)   
 
 ## 寫 code
 

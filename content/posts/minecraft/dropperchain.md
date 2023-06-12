@@ -26,9 +26,9 @@ series: null
 
 偵測器：  
 左右兩邊交互放置比較器偵測投擲器鏈內的內容，由於比較器輸出強驅動訊號，因此只有圖中紅色block上會放置紅石，上一層的比較器可透過白色方塊傳遞給下層紅色block，如圖所示：  
-![deletector1](/images/minecraft/dropperchain/detector1.png)
+![deletector1](/images/minecraft/dropperchain/detect1.png)
 Or gate ： 上一層的紅色block訊號，會經過兩次not，送給下一層的訊號；加入repeater的目的，是要防止自身紅色block的強訊號覆寫下一層not過的訊號，否則當整條鏈中只有紅色block該層投擲器有東西時，振盪器也不會驅動。  
-![deletector2](/images/minecraft/dropperchain/detector2.png)
+![deletector2](/images/minecraft/dropperchain/detect2.png)
 振盪器： 將訊號集中起來，驅動比較器制成的高頻振盪器，透過半板向上送給每一個投擲器，即完成本設計。  
 ![osc1](/images/minecraft/dropperchain/osc1.png)
 本設計缺點有：

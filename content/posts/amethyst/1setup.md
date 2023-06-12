@@ -46,7 +46,7 @@ vulkan = ["amethyst/vulkan"]
 ```
 
 專案建好可以直接先開始編譯，amethyst 框架滿大的，第一次編譯會花上幾分鐘的時間把整個框架給架起來，不過放心，編好一次之後編譯都只要編譯你寫的 code，速度會快很多（雖然說我覺得還是很慢，大概 30 秒至一分鐘不等，Rust 真的很適合[這張圖](https://xkcd.com/303/)）。  
-[![](https://imgs.xkcd.com/comics/compiling.png)](https://imgs.xkcd.com/comics/compiling.png)  
+![compiline](https://imgs.xkcd.com/comics/compiling.png)  
 
 預設版本執行起來應該會看到完全空白的畫面，生成的 main.rs 如下所示：  
 ```rust
