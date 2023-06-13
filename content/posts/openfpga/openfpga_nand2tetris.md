@@ -12,7 +12,7 @@ tags:
 series:
 - FPGA
 images:
-- /images/verilog/nand_screentest.jpg
+- /images/openfpga/nand_screentest.jpg
 forkme: icesugar-playground
 ---
 
@@ -26,7 +26,7 @@ forkme: icesugar-playground
 # CPU
 ## ALU
 
-![nand_alu](/images/verilog/nand_alu.png)
+![nand_alu](/images/openfpga/nand_alu.png)
 
 上圖是 Nand2Tetris 的 ALU 設計，六根控制信號 zx, nx, zy, ny, f, no，分別表示：
 * zx：選擇 input 1 或 0 作為 x
@@ -118,7 +118,7 @@ endmodule
 
 ## CPU
 
-![nand_cpu_interface](/images/verilog/nand_cpu_interface.png)
+![nand_cpu_interface](/images/openfpga/nand_cpu_interface.png)
 
 Nand2Tetris CPU 的介面如下：
 * rst：重設 CPU
@@ -141,11 +141,11 @@ module hack_cpu (
 );
 ```
 
-![nand_cpu](/images/verilog/nand_cpu.png)
+![nand_cpu](/images/openfpga/nand_cpu.png)
 Hack CPU 的架構圖如上，裡面有兩個 register，D (Data) Register 跟 A (Address) Register；
 顧名思義，A register 的值表示的就是現在要存取 Memory 的位址；D Register 則是運算用的資料。
 
-![nand_instruction](/images/verilog/nand_instruction.png)
+![nand_instruction](/images/openfpga/nand_instruction.png)
 
 Hack CPU 只有兩種指令：
 1. A instruction，開頭為 0 表示，把後面的 15 bits 的數值存入 A register。
@@ -322,7 +322,7 @@ endmodule
 在要 jump 的時候不會先把 jump address 送進 PC，
 而是透過 mux 直接送給 ROM，改將 jump address +1 送到 PC，這樣跳轉一結束就會繼續執行跳轉後的下一個指令。 
 
-![nand_modification](/images/verilog/nand_modification.png)
+![nand_modification](/images/openfpga/nand_modification.png)
 
 ## RAM
 
@@ -619,7 +619,7 @@ end
 
 有了這兩個補丁之後，nand2tetris 裡面的範例就可以正常執行了，執行結果如下：
 
-![screen test](/images/verilog/nand_screentest.jpg)
+![screen test](/images/openfpga/nand_screentest.jpg)
 
 完全執行要 40 秒左右，換算執行了大約 1G 個指令…，沒辦法這個 CPU 就是極簡，沒有太多指令可用，
 然後我的編譯器也沒有最佳化，寫一個 pixel 可能就要上百條指令才會完成。
