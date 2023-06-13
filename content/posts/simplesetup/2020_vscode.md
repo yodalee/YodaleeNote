@@ -31,6 +31,8 @@ series: null
 正好最近寫 code 沒什麼靈感，而且最近正好武漢肺炎的關係時機歹歹，就來試著跳槽一下吧（？，
 到目前為止用 vscode 對最近碰的一個 ncollide package 做了一些除錯的工作，筆記一下到目前為止的設定還有使用方式的筆記。  
 
+# 擴充功能
+
 vscode 基本上的優勢就是是它編輯/建構/除錯三位一體的編輯介面；還有它的擴充功能，用過的都說讚。  
 擴充方面主要參考的文件有兩個：
 
@@ -39,32 +41,36 @@ vscode 基本上的優勢就是是它編輯/建構/除錯三位一體的編輯�
 
 另外台灣 CUDA 第一把交椅強者我同學 JJL 大大也有推薦一些：  
 
-擴充的安裝方式是按快捷鍵 Ctrl + P，打入 ext install 後面接套件名，下面擴充的連結裡面也有顯示安裝的指令：  
+擴充的安裝方式是從左邊的選單選 Extension，再搜尋你想要找的擴充名字：
 
 * [vim 擴充]( https://marketplace.visualstudio.com/items?itemName=vscodevim.vim)  
-讓 vscode 的編輯介面套用 vim 的操作方式，想要手跟鍵盤黏踢踢就一定要裝  
 
-#### 語言相關：  
-* [C/C++ 擴充](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)：
-還沒試用只是覺得起家的 C++ 必須裝一下：  
-* [Python 擴充]( https://marketplace.visualstudio.com/items?itemName=ms-python.python)：
-一樣還沒試用只是覺得有一天會寫到先裝一下：  
-* [Rust 擴充](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust)：
-這個是這次語言唯一試用過的，雖然結果不怎麼樣  
-* [codelldb 除錯擴充](https://marketplace.visualstudio.com/items?itemName=vadimcn.vscode-lldb)，
-可以用 LLVM 的 lldb 對程式除錯，裝了這個是為了要對 Rust 除錯   
+## 語言相關：  
+* [C/C++](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools)：
+* [Clang-Format](https://marketplace.visualstudio.com/items?itemName=xaver.clang-format)
+C/C++ 語言擴充，包括文字上色、定義跳轉等等都需要。
+Clang-format 需要另外安裝 clang 的執行檔，~~終結宗教戰爭的好工具~~。
+* [Python 擴充](https://marketplace.visualstudio.com/items?itemName=ms-python.python)：
+* [autopep8](https://marketplace.visualstudio.com/items?itemName=ms-python.autopep8)
+Python 語言擴充，autopep8 也是排版工具
+* [Rust Analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)：
+可以直接在寫程式的時候幫你自動附注型別等資訊，讓 vscode 變 rust 神器。
+* [VerilogHDL](https://marketplace.visualstudio.com/items?itemName=mshr-h.VerilogHDL)
+verilog 與 SystemVerilog 上色工具
 
-#### 工具類
+## 工具類
 * [Vim](https://open-vsx.org/extension/vscodevim/vim)：
-整合 vim 編輯器，畢竟習慣了這樣打字效率才會高  
+整合 vim 編輯器，畢竟習慣了這樣打字效率才會高，想要手跟鍵盤黏踢踢就一定要裝  
 * [Git Graph]( https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph)：
 整合 gitg 類似的圖形化顯示工具到介面，git 管理上當然可以靠打字，但看歷史還是看圖方便  
 * [GitLens]( https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)：
 還沒試過，強者我同學 JJL 推薦的  
+* [CMake](https://marketplace.visualstudio.com/items?itemName=twxs.cmake)
+可以直接用 Ctrl + Shift + P 執行 Cmake configure, build, test 等指令，非常方便
 * [Docker](https://open-vsx.org/extension/ms-azuretools/vscode-docker)
 最近開始試用 docker 管理所有的開發環境，可以在 vscode 裡面新增/管理/連線所有 docker image，非常方便  
 
-#### 其他
+## 其他
 * [TODO tree]( https://marketplace.visualstudio.com/items?itemName=Gruntfuggly.todo-tree)：
 統一管理 project 內部的 TODO, FIXME, XXX  
 * [Trailing Spaces]( https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces)：
@@ -74,7 +80,7 @@ vscode 基本上的優勢就是是它編輯/建構/除錯三位一體的編輯�
 這點很強烈的突顯出 vim 等純文字編輯器無法和圖形整合的弱項，以致在 markdown、LaTex 這類文字和顯示有相互關係的文件編輯會很吃虧
 （好啦好啦我知道有人能人腦 render latex 的）。  
 
-## 怎麼建構專案？  
+# 怎麼建構專案？  
 在 vscode 裡面的建構叫 [task]( https://code.visualstudio.com/docs/editor/tasks)，
 在選單 terminal 下面的 run Task 跟 run Build Task (Ctrl + Shift + B)，沒有 cargo 預設的話就要自行編輯 tasks.json，
 以下是我這次 debug 時使用的 tasks.json  
@@ -97,12 +103,12 @@ vscode 基本上的優勢就是是它編輯/建構/除錯三位一體的編輯�
 ```
 應該滿直覺的，就是呼叫 cargo build 幫我編譯整個專案；在寫完 code 之後使用快捷鍵 Ctrl + Shift + B 就能編譯專案了。  
 
-## 如何除錯：  
+# 如何除錯：  
 [除錯](https://code.visualstudio.com/docs/editor/debugging)是 vscode 一項殺手級的功能，
 vscode 公開一個 API 讓安裝的語言擴充使用，需要什麼語言的除錯安裝擴充就好，像我上面就安裝了 C/C++, Python, Rust 的擴充。  
 如果我記憶沒錯的話，跟 visual studio 一樣，vscode 快捷鍵是也執行 Ctrl + F5 跟除錯 F5：  
 
-### 用 Ctrl + Shift + D 展開 debug 介面。  
+## 用 Ctrl + Shift + D 展開 debug 介面。  
 理論上用滑鼠在原始碼旁邊點一下就能加上 breakpoint，不知道是 Rust 還是 lldb 的問題，我用滑鼠加上去的 breakpoint 都煞不住，
 至少一定要先在 debug console 裡下一個 b main 讓程式煞住之後，用滑鼠加的 breakpoint 才會有用，真的很奇怪。  
 另外就是 debug console 的指令跟習慣的 gdb 有點不同要重新習慣，最奇怪的大概是按了 enter 竟然不會重複上個指令，
@@ -130,13 +136,17 @@ vscode 公開一個 API 讓安裝的語言擴充使用，需要什麼語言的�
 正好反過來如果下 b main 停下來的話，rust-gdb 下一步會停不下來，一口氣跑到 main 的尾巴…。  
 這個問題一時之間好像無解，也許要等 rust 跟 codelldb/gdb 真的接好之後再來看看了。  
 
-## 快捷鍵操作：  
+# 快捷鍵操作：  
 Ctrl + KT 叫出 color theme 設定，我用的是 light 的 Solarized Light ，最近眼睛好像不太適合全黑的畫面了QQ。  
 Ctrl + P 開檔案，這部分已經整合了 find 要用 wildcard 才能找的功能，方便不少。
 Ctrl + Shift + F 全文搜尋，等於是有個 grep 帶著走，雖然沒有 regular expression 但已經十分夠用了
+Ctrl + Shift + P 開始指令輸入框，一樣支援模糊比對
 Ctrl + , 開啟設定，在安裝完模組之後可以快速做各種設定
+Ctrl + ` 開啟整合式終端機
+Ctrl + Shift + ` 開啟一個新的終端機分頁
+Ctrl + PageUp/PageDown 在終端機分頁間切換
 
-## 結語：
+# 結語：
 回頭一看怎麼一堆快捷鍵，不過算啦，跟 vim 的快捷鍵比起來這還是算少的吧XD；話說大概是「把手留在核心區」這個哲學的關係，
 vim 大部分的按鍵都少有用 Ctrl/Alt 開頭的，剛好一般的圖形應用程式包括 vscode ，大部分的快捷鍵都是 Ctrl/Alt 開頭，
 也因此在操作上面，vim 很容易就能跟桌面應用程式整在一起，就像是瀏覽器的 vimium 跟 vscode vim 擴充。  
