@@ -70,7 +70,7 @@ icesugar 使用 ARM 的晶片提供 iCELink 來做燒錄，這讓燒錄變得非
 安裝開發工具鏈：
 ```bash
 yay -S yosys
-yay -S nextpnr-git place and route
+yay -S nextpnr-git # place and route
 yay -S trellis-git
 ```
 
