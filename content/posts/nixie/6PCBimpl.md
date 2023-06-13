@@ -45,7 +45,7 @@ Design Rule 請參考廠商給的資料，例如下面是我選用的 [JetPCB �
 不過 auto router 也可以當一個指標，如果你的 layout 開了 auto router 跑不到 90% 以上，表示你的 layout 還不夠簡單，可以看看 auto router 都是哪裡繞不出來一直在重試；簡而言之：easyEDA 的 AutoRouter 只會繞出一堆垃圾，請還是乖乖用手畫。  
 
 在 easyEDA 裡面用 track 畫走線，照著 ratlines 用走線連起來就行了，在輝光管部分的畫線要點在於分開上下板，我是下板走垂直線、上板走水平線，這樣子上下板的線就不會打架，如下圖所示：  
-![wire](wiring.png)
+![wire](/images/nixie/wiring.png)
 另外有一些其他 layout 的注意事項：  
 
 * 為了燒錄，要把 5V, GND, TX, RX, Reset 拉出來

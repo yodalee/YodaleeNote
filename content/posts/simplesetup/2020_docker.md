@@ -18,10 +18,7 @@ series: null
 
 其實網路上已經有 100 篇 docker 的教學文了，不過我還是來寫個 101 篇吧。  
 首先是關於 docker，大抵上就是一個輕量化的容器，在主機作業系統之上為每個應用程式建立一個最小的執行環境，
-每個 container 都是一個 user space process；相對的虛擬機則是把整個作業系統都包進去，每個虛擬機共用一個硬體，這部分就偷用一下他們官網的圖片。  
-
-[![](https://www.docker.com/sites/default/files/d8/2018-11/container-vm-whatcontainer_2.png)](https://www.docker.com/sites/default/files/d8/2018-11/container-vm-whatcontainer_2.png)  
-[![](https://www.docker.com/sites/default/files/d8/2018-11/docker-containerized-appliction-blue-border_2.png)](https://www.docker.com/sites/default/files/d8/2018-11/docker-containerized-appliction-blue-border_2.png)     
+每個 container 都是一個 user space process；相對的虛擬機則是把整個作業系統都包進去，每個虛擬機共用一個硬體。  
 
 當然我們這裡只是要用，背後的原理要是我哪天學會的話再來寫文章記錄QQ。  
 對比虛擬機 docker 具有小、快的優點，畢竟不用開一台機器就要裝一次作業系統，很適合像我這樣只是要用另一個作業系統做個測試，
