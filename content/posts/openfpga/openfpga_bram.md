@@ -10,7 +10,7 @@ tags:
 series:
 - FPGA
 images:
-- /images/verilog/bram_image.jpg
+- /images/openfpga/bram_image.jpg
 forkme: icesugar-playground
 ---
 
@@ -245,7 +245,7 @@ Dual Port 的記憶體 yosys 在合成的時候都會 match 不上去，這個�
 
 用上面的 imagesrc 取代原本的 vgatestsrc，就可以看到我們存在裡面的圖片。
 
-![bram_image](/images/verilog/bram_image.jpg)
+![bram_image](/images/openfpga/bram_image.jpg)
 
 一時之間不知道要顯示什麼，就用最近在重播的中華一番，找了一張乃哥最帥的黃金~~peko笑~~開口笑。  
 應該很明顯顏色爆掉了，畢竟我們就只有 512 色，如果能打通 DRAM 應該就可以直上全彩，搞不好還能做投影片輪播了呢。

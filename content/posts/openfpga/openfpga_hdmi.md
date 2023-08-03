@@ -11,7 +11,7 @@ tags:
 series:
 - FPGA
 images:
-- /images/verilog/hdmi_test_pattern.jpg
+- /images/openfpga/hdmi_test_pattern.jpg
 forkme: icesugar-playground
 ---
 
@@ -29,7 +29,7 @@ High Definition Multimedia Interface，HDMI （高畫質多媒體介面）是應
 * 7,9 Data 0+/- 紅色
 * 10,12 Data Clock +/-
 
-![hdmi_pin](/images/verilog/hdmi_pin.jpg)
+![hdmi_pin](/images/openfpga/hdmi_pin.jpg)
 
 HDMI 的信號走的是差動傳輸，比起 UART 的單端傳輸能做到更高的速率，相關的文章可以看[這篇](https://sipitogether.blog/signal-integrity/differential/singleend-or-differential/)，
 因為沒接所以我們沒辦法玩 HDMI 後面針腳提供 I2C，反正那個應該是用來走音訊用的，不玩沒差(欸。  
@@ -69,7 +69,7 @@ FPGA 運作在 25MHz，serial port 上行走的資料速度就要 250 MHz，要�
 它們裡面就會提供圖形化介面的 PLL 設定工具，應該是會直接幫你生出可用的 verilog code，但我們沒 license 就只能手爆了。
 
 手爆步驟如下，首先是查看 PLL datasheet，在第 18 章開始介紹完整的 PLL 架構：
-![hdmi_pll](/images/verilog/hdmi_pll.png)
+![hdmi_pll](/images/openfpga/hdmi_pll.png)
 
 PLL 的運作是這個樣子的，首先你會有個 input clock，然後提供一個 feedback 的時脈，兩個一齊進到中間的 VCO，
 VCO 會調整輸出時脈的頻率，直到 input 跟 feedback 的 phase 鎖定為止，至於怎麼實現就是一門專門的學問了，
@@ -372,7 +372,7 @@ end
 跟範例 code 一樣，使用 [vgatestsrc](https://github.com/ZipCPU/vgasim/blob/master/rtl/vgatestsrc.v) 來產生測試的畫面，
 就能看到顯示的 [Test Pattern](https://en.wikipedia.org/wiki/Test_card) 了。
 
-![hdmi_test_pattern](/images/verilog/hdmi_test_pattern.jpg)
+![hdmi_test_pattern](/images/openfpga/hdmi_test_pattern.jpg)
 
 看著這畫面實在有點古早的感覺。
 

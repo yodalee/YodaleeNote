@@ -10,7 +10,7 @@ tags:
 series:
 - FPGA
 images:
-- /images/verilog/icesugar-pro.jpg
+- /images/openfpga/icesugar-pro.jpg
 forkme: icesugar-playground
 ---
 
@@ -32,7 +32,7 @@ forkme: icesugar-playground
 # 規格
 
 下面是實體照片：
-![icesugar-pro](/images/verilog/icesugar-pro.jpg)
+![icesugar-pro](/images/openfpga/icesugar-pro.jpg)
 
 中間部分的主板包括 Lattice 的 FPGA、SDRAM 跟 FLASH：
 
@@ -70,7 +70,7 @@ icesugar 使用 ARM 的晶片提供 iCELink 來做燒錄，這讓燒錄變得非
 安裝開發工具鏈：
 ```bash
 yay -S yosys
-yay -S nextpnr-git place and route
+yay -S nextpnr-git # place and route
 yay -S trellis-git
 ```
 

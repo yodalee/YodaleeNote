@@ -11,7 +11,7 @@ tags:
 series:
 - FPGA
 images:
-- /images/verilog/uart_debug.jpg
+- /images/openfpga/uart_debug.jpg
 forkme: icesugar-playground
 ---
 
@@ -78,7 +78,7 @@ system verilog 分割出 always_ff/always_comb/always_latch 三個不同的關�
 幸好它有很多 GPIO 可以用，最後我的接線如圖所示，把 3.3V, GND 跟 GPIO F14 接出來，用手讓 F14 接到 GND 就能完成 reset 了，
 之前在 [nixie tube clock]({{< relref "posts/nixie/introduction.md" >}}) 時買的電子零件又再次派上用場了。
 
-![fpga_reset](/images/verilog/uart_reset.jpg)
+![fpga_reset](/images/openfpga/uart_reset.jpg)
 
 ## LPF 檔
 
@@ -362,11 +362,11 @@ icesugar 會透過 iCElink，一次把可用的介面都打開，UART 介面會�
 讓我們把裝置插上去，燒錄、reset 之後，在一個終端連接 UART 介面， 我們就能看到我們實作的 UART 模組運作的樣子了。  
 注意到 screen 本來打字是不會出現對應字元的，但因為我的 FPGA 把我打的字反射回來，螢幕上才會出現這些字。
 
-![uart_screen](/images/verilog/uart_screen.png)
+![uart_screen](/images/openfpga/uart_screen.png)
 
 另外附上 debug rx 中的照片，LED 顯示我剛剛按了 0x30 '0' 這個字。
 
-![uart_debug](/images/verilog/uart_debug.jpg)
+![uart_debug](/images/openfpga/uart_debug.jpg)
 
 # 結語
 

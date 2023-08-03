@@ -19,7 +19,7 @@ forkme: Raytracing-rust
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLHm_I0tE5kKPPWXkTTtOn8fkcwEGZNETh" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 {{< /rawhtml >}}
 
-* [C++ source code]*(https://sourceforge.net/projects/rasterrain/):  
+* [C++ source code](https://sourceforge.net/projects/rasterrain/):  
 * [Rewritten in C](https://github.com/purpon/raytracing_c):  
 
 這次決定全用cargo 的方式來維護我的project，第一步當然是先用cargo 產生project  
@@ -129,5 +129,6 @@ let shadowed = scene_obj
 ## 後記  
 * 寫這個就會覺得我當初3DMM 沒學好，對不起簡教授QAQ  
 * 算是小小吐槽一下好了，原本的那部影片用的根本是用了 Class 跟 Vector 的 C  
-我邊看邊Murmur: 你這樣寫你到底會不會寫C++ 呀幹 然後有些地方的寫法，例如它Sphere 的findIntersection()，
-把各個vector 翻出來開腸剖肚的寫法，你真的有想過這些東西都是向量運算，之前你就實作過了，你寫了20 行的東西我兩行就寫完了耶XD
+我邊看邊Murmur: 你這樣寫你到底會不會寫C++ 呀幹。  
+然後有些地方的寫法，例如它Sphere 的findIntersection()，  
+把各個vector 翻出來開腸剖肚的寫法，你真的有想過這些東西都是向量運算，之前你就實作過了，你寫了 20 行的東西我兩行就寫完了耶XD
