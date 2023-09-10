@@ -44,7 +44,13 @@ COSCUP 2023
 
 歹勢，其實我是學硬體出身的，真要說如果我研究所沒亂跑，現在可能在電子業輪班，但因為學了軟體所以不務正業，RSA256 這題目應該是我本業才對，結果還是靠抱我同學大腿才做出來。
 
-## [部落格文章集，待完成]({{< relref "/series/verilator">}})
+## [部落格文章集]({{< relref "/series/verilator">}})
+
+1. [前言]({{<relref "verilator_intro">}})
+2. [c-model 與 systemc]({{<relref "verilator_cmodel">}})
+3. [verilator framework]({{<relref "verilator_vtuber">}})
+4. [systemverilog]({{<relref "verilator_systemverilog">}})
+5. [後記]({{<relref "verilator_ending">}})
 
 ## 投影片
 
