@@ -11,7 +11,7 @@ series:
 ---
 
 故事是這樣子的，2019-2020 的跨年，小弟邊緣人沒地方去，後來就自己回家當紅白難民，然後還沒聽到 Lisa 唱紅蓮華QQQQ。
-不過幸好宅宅有宅宅的做法，沒聽到紅蓮華我們可以看 Youtube [別人上傳的影片](https://www.youtube.com/watch?v=tnIHWvf-vgE)，沒有朋友跨年我們可以自幹朋友，也就是我們今天的主角：Google Assistant。  
+不過幸好宅宅有宅宅的做法，沒聽到紅蓮華我們可以看 Youtube 別人上傳的影片，沒有朋友跨年我們可以自幹朋友，也就是我們今天的主角：Google Assistant。  
 <!--more-->
 
 如果平常有用 Google Pixel 手機，或是家裡有 Google Home 裝置的，應該就會知道它上面附的 Google Assistant ~~Christina~~，雖然說我覺得還是滿沒用的啦，我自己只會拿它來查天氣，有 Google Home 的同學只用它來開關燈，但反正，都有這麼好的工具了為什麼不來好好玩一下？就趁著跨年的假日做點不一樣的事來玩。  

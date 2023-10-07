@@ -81,9 +81,7 @@ Sulu 在片中也有代理艦長的機會，但不知是否導演刻意安排，
 雖然把人分群可以增加角色互動，也會增加不斷切換場景對觀眾造成的負擔，中場我覺得場景切換太快了，上個對話群還沒完全結束，突然硬生生被切到下一組。  
 片中在York Town 基地時打開了兩個支線，分別是Kirk 跟Spock 都想要離開艦隊，卻都還在猶豫；經過了電影中段的冒險，在收尾應該能有更多的鋪陳回心轉意的過程，電影卻在Kirk 的生日派對上嘎然而止，也造成末段的對話有點破碎。  
 
-結尾瞬間帶到 1701-A 的快轉下水過程和 To boldly go where no one has gone before 的發言，對照原系列的Star Trek 4: The Voyage Home，加上眾人齊聚艦橋，一同迎接新企業號的下水：  
-
-{{< youtube rvv1R-6a7q4 >}}
+結尾瞬間帶到 1701-A 的快轉下水過程和 To boldly go where no one has gone before 的發言，對照原系列的Star Trek 4: The Voyage Home，加上眾人齊聚艦橋，一同迎接新企業號的下水。  
 
 新版只剩下動畫和旁白的下水過程，少了人物的元素，看來實在免洗，而To boldly go where no one has gone before 生怕觀眾不知道一樣，連續11, 12, 13 都用同一個結尾，第一次用覺得感動，第二次覺得重複，到了第三次就覺得老套了，連Star Trek 6: The Undiscovered Country 一代的結尾都還處理得比較好。  
 
