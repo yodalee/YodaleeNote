@@ -2,7 +2,7 @@
 title: "關於費式數列的那些事"
 date: 2019-02-12
 categories:
-- comment
+- math
 tags:
 - c
 - python
