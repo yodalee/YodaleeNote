@@ -51,10 +51,9 @@ $ m^e\mod N $，並只用 verilator 來開發驗證，不會實作 $ I^2C $ 介�
 目前我大致規畫有下列幾個主題，涵蓋不止 verilator，還包括用來驗證的軟體工具與環境，
 這也是為什麼我會想下標*在 2022 年應該要如何開發數位電路*：
 
-1. c-model 與 systemc
-2. 使用 docker 與 CI
-3. verilator framework
-4. RSA256 實作
-5. 後記
+1. [c-model 與 systemc]({{<relref "verilator_cmodel">}})
+2. [verilator framework]({{<relref "verilator_vtuber">}})
+3. [systemverilog]({{<relref "verilator_systemverilog">}})
+4. [後記]({{<relref "verilator_ending">}})
 
 不過呢，看這個態勢大概又要拖稿啦，但至少我們前言發出來了，看倌們可以置板凳期待一下了。
