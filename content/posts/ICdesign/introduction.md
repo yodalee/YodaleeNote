@@ -30,7 +30,7 @@ tags:
 
 目前大致想到可以寫的文章、大綱如下，目前還沒有規劃到底會寫多少篇，會設單獨的[一個 category]({{< relref "/categories/ICdesign" >}})收集此類文章：
 
-*  下線流程概述  
+* [下線流程概述]({{< relref "chipflow" >}})  
 介紹整個下線過程中要做的事，包括 verilog/simulation、synthesis、post-synthesis simulation/LEC、APR、
 Post-layout simulation、DRC/LVS verification。
 * Design Compiler  
