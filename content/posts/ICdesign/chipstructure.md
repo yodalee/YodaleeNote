@@ -5,6 +5,8 @@ categories:
 - ICdesign
 tags:
 - ICdesign
+series:
+- ICdesign
 images:
 - /images/ICdesign/M4.png
 ---
@@ -13,6 +15,8 @@ images:
 讓大家對平常看到的晶片有個認識，後面實際操作軟體的寫文章才好寫。
 
 <!--more-->
+
+本篇文章在完成後經過修改，文與圖皆大幅更新過將錯誤內容修正為正確內容，如果你對文章歷史有興趣，可至 Github 搜尋[文章的歷史記錄](https://github.com/yodalee/YodaleeNote/blob/master/content/posts/ICdesign/chipstructure.md)
 
 # 封裝
 平常生活中最常看到的 chip，大概就是那種黑黑有腳的晶片，不然就是放在主機板上面的 CPU 晶片，這時候腳位是在背面的針腳或是接點，這是晶片的封裝。
@@ -63,48 +67,62 @@ images:
 
 注意這只適用在一般製程，愈是高階的製程愈可能因為製程限制或是效能、省電等要求，使標準元件有各類特殊設計。
 
+在標準元件庫之上就是我們設計者在 Layout 時要處理的部分了，以下我們用 Minecraft 舖了 33x33 的晶片出來
+（這己經是我找到最能重現 3D 的東西了），在這之前我們先來看看各層的定義：
+![layerdef](/images/ICdesign/layerdef.png)
+由下到上，由左至右依序為：
+基板、各層VDD線、Contact、M1、Via1、M2、Via2、M3、Via3、M4、Via4、M5。
+
 # followpin
-有了這樣格式固定的邏輯閘，我們會在最底層的金屬 M1，在晶片上放上一條一條的橫條 followpin，
+有了這樣格式固定的邏輯閘，我們會用最底層的金屬 M1，在晶片上放上一條一條的橫條 followpin，
 一條接正電 VDD，一條接地 VSS (GND)， 在 layout 中邏輯閘就會延著橫向的 VDD VSS 排成一列，就像貨架一樣，邏輯閘就能這樣連接上 VDD VSS。  
 
-下面我們用 Minecraft 舖了 33x33 的晶片出來（這己經是我找到最能重現 3D 的東西了），
-大概就像這個樣子，紅石代表 VDD，黑羊毛代表 VSS，灰色的則是邏輯閘的接點。
+晶片接上 follow pin 大概就像下圖這個樣子，邏輯閘的接點下面會有 Contact 接上基板。
 ![M1](/images/ICdesign/M1.png)
 
-這樣的設計能大幅減少晶片的複雜度，畢竟晶片要連結的東西包括訊號走線、時脈、VDD、VSS，全部都要繞線還要顧及線寬以控制壓降，
-變數太多難以處理，用這樣的接線立刻少 VDD VSS 兩個變數要處理。
+這樣的設計能大幅減少晶片的複雜度，畢竟晶片要連結的東西包括訊號走線、時脈、VDD、VSS，
+全部都要繞線還要顧及線寬以控制壓降，變數太多難以處理，用這樣的接線立刻少 VDD VSS 兩個變數要處理。
 
 # Metal
 
-再往上的 Metal 2 到 Top Metal，大致上會有幾個任務：
-1. Metal 2 - Metal3 有時用到 Metal 4 會用來繞線讓信號連接到各邏輯閘的接點。
-2. 由 Top Metal 往下幾層，會在晶片四面畫上 Power Ring。
-3. 從 Metal 2 到 Top Metal，會在晶片中加上 Metal Strip。
+再往上的 Metal 2 到 Top Metal，我們這裡蓋到 M5 就好，各層基本上都會有一個固定的走向，
+follow pin 己經使用最底層的 M1 水平放置了，往上的 M2-M5 依序就是垂直、水平、垂直、水平，
+或者我們就會直接記錄 M1(H)、M2(V)、M3(H)、M4(V)、M5(H)。
 
-第一點因為太複雜，我們沒辦法在 minecrfat 裡面重現，以下我們就展示 2, 3 是在做什麼，與其他圖相同，紅石方塊是 VDD，
-其他顏色是 VSS；M2, M3, M4 的 VSS 依序為棕色、藍色、綠色。  
+金屬線大致上會有幾個任務：
+1. 由 Top Metal 往下幾層，會在晶片四面畫上 Power Ring。
+2. 在晶片中加上水平與垂直網狀的 Metal Stripe，從外面的 Power Ring 連接給 follow pin。
+3. Metal 2 - Metal3 有時用到 Metal 4 會用來繞線讓信號連接到各邏輯閘的接點。
 
-下面是加上 M2 Power strip 的圖，為了不要妨礙到繞線，M2 的 VDD, VSS 都還比較細一些，
-M1 因為要接邏輯閘電源所以會走水平方向，M2 就會走垂直方向。
-![M2](/images/ICdesign/M2.png)
-
-再加一層 M3，到了上層金屬走線就會更寬一點，以導通更多的電流，Metal Strip 與 Metal Ring 一樣，M3 又輪到水平走向；每組 Power strip 都是 VDD/VSS 一組畫在一起。
-![M3](/images/ICdesign/M3.png)
-
-最後再來一層 M4，四角的原木標示了晶片的四角，我們在 M3, M4 加上外層的 Power Ring，這層 Ring 會連結更外面的 Pad。
+我們先看 Metal stripe 的部分，一般會使用 M4 開始接 stripe，留 M2, M3 用來繞線，以下是加上 M4 stripe 的圖：
 ![M4](/images/ICdesign/M4.png)
 
+與 M1 正交的 M4 會透過 M3, M2 把電源接給下方的 M1；再加一層 M5 stripe，到了上層金屬走線就會更寬一點，以導通更多的電流：
+![M5](/images/ICdesign/M5.png)
+
+加上 Power Ring 的結果，M4、M5 在 Ring 的方向和 stripe 是相同的，也同樣是 VDD/VSS 一組一起走線：
+![ring](/images/ICdesign/ring.png)
+
+這裡大家可以想一想，如果 Ring 的方向和 stripe 不一樣，那會出什麼事呢？
+
 每層 Strip 都會跟上線層的 Strip 透過 Via 相連，這樣才能把 VDD, VSS 由上而下導到最底層的邏輯閘，
-Via 的部分來個特寫，看看上下兩組 VDD/VSS 是如何連接的，來導播放大(X
-![Via](/images/ICdesign/M34via.png)
+與 Ring 也會透過 Via 相連，Via 的部分來個特寫，看看上下兩組 VDD/VSS 是如何連接的，來導播放大(X
+![Via](/images/ICdesign/M45via.png)
 
-後來想說好人做到底，我們就來畫個 Pad 吧。
-![Pad](/images/ICdesign/Pad.png)
+至於 Route 就沒什麼好說的，用 M2, M3 把下面各邏輯閘的訊號線接起來，這個因為很難蓋，所以意思一下就好了：
+![Route](/images/ICdesign/route.png)
 
-大體上來說 Pad 就是用黃色的 Top Metal，畫一個可以打鎊線的平板，可能 50 μm x 50 μm，同時一路走 Via 到下層的金屬，就我的經驗會一路下到 M1，
-但我們這邊先畫到藍色的 M3 就好；Power Ring 的 VDD/VSS (這裡是 VSS) 就會往外連到 Pad 上面。  
+為什麼 M2 M3 不加 stripe，也是要留空間給 route 使用，雖然我好像有一版下線曾經給 M2, M3 接了 stripe，幸好最後也沒事。
 
-當然這裡只是示意，和實際上的 Pad 還是會有差，畢竟標準元件庫中提供的 Pad 會是機密，跟邏輯閘一樣只畫個外框給你，細節是看不到的。
+# Pad
+
+Pad 的結構可以想成一根金屬的大棒棒，最上層會鋪一層大小最小也有 50 um x 50 um 的 Top Metal 用來打鎊線。
+做晶片的時候外面會圍著一圈 pad 把信號、電源送進來，如下圖所示，先用 Minecraft 的 beacon 代表鎊線XD：
+![Pad](/images/ICdesign/pad.png)
+
+注意到 Pad 會一路把訊號拉到最下層的 M1，這是因為 Pad 下面還會藏有 ESD device，所以必須連接到基板上，
+從 M1, M2 左右就是這個 Pad 的出 pin 位置（也有只用 M1 的），在加 Power Ring 的時候要小心不要用到這幾層，
+不然 Pad 的線一出來就撞在 Ring 上面根本接不了線。
 
 # 結語
 
@@ -117,8 +135,11 @@ Via 的部分來個特寫，看看上下兩組 VDD/VSS 是如何連接的，來�
 答案我會說是可以但也不行，可以是物理上的確可以這樣做；不行是因為你沒工具幫你這樣做，所有的 APR 軟體大概都只會繞訊號線，不會去管 VDD/VSS 要怎麼連；
 能生成的結構也己經寫死就是 Power Ring, Power Strip, followpin 等，不會有其他結構給你選。  
 
-APR 就像 AlphaGO 一樣，是針對一個特定問題設計的工具，而不是某種通用的圖論演算法大集合，它就跟數位晶片一樣，說穿了就沒那麼神奇了。
-總之這樣的假設也沒必要，市面上各種晶片，大抵也是依循同一套結構設計，也都能正常運作，除非你是什麼學術單位想試著挑戰晶片設計的基礎結構，不然照做就是了。
+APR 就像 AlphaGO 一樣，是針對一個特定問題設計的工具，而不是某種通用的圖論演算法大集合，
+之前有朋友問我說能不能用電路寫個圖論的問題然後讓 APR tool 去解，這就好像你把你電腦裡的所有文件變靜態網頁丟去網路上，
+希望 Google 爬過你的網頁，再用 Google 幫你搜尋文件裡面的關鍵字。  
+總之這樣的假設也沒必要，市面上各種晶片，大抵也是依循同一套結構設計，也都能正常運作，
+除非你是什麼學術單位想試著挑戰晶片設計的基礎結構，不然照做就是了。
 
 # 參考資料
 有關 Flip chip 可參考：[Flip Chip技術簡介與應用](https://www.moneydj.com/kmdj/report/reportviewer.aspx?a=f83cb156-6be4-40ba-9193-d828d6663dc6)  
