@@ -5,6 +5,8 @@ categories:
 - ICdesign
 tags:
 - ICdesign
+series:
+- ICdesign
 ---
 
 接續我們上一篇的[前言]({{< relref "introduction" >}})，今天我們就先來看看整個下線流程概述，
