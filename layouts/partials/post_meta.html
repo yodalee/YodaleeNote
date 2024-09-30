@@ -24,15 +24,20 @@
   &nbsp;|&nbsp;
   <i class="fa fa-book" title="Series" aria-hidden="true"></i>&nbsp;
   {{ range $i, $e := .Params.series }}
-    {{ if $i }}, {{ end }}
-      <a href='/series/{{ (replace $e "#" "%23") | urlize }}/'>{{ $e }}</a>
-    {{ end }}<br/>
+  {{ if $i }}, {{ end }}
+  <a href='/series/{{ (replace $e "#" "%23") | urlize }}/'>{{ $e }}</a>
+  {{ end }}<br />
   {{ end }}
 
   {{- if (.Param "ShowReadingTime") -}}
   &nbsp;|&nbsp;
   {{- i18n "read_time" .ReadingTime | default (printf "%s min" .ReadingTime) }}
   {{- end -}}
+
+  {{- if (.Param "ShowWordCount") -}}
+  &nbsp;|&nbsp;
+  {{- i18n "words" .WordCount | default (printf "%d words" .WordCount) }}
+  {{- end }}
 
   {{ with (partial "author.html" . ) }}
   &nbsp;|&nbsp;

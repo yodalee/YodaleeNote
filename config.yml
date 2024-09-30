@@ -36,8 +36,9 @@ menus:
       url: series
       weight: 25
 
+hasCJKLanguage: true
 params:
-  ShowReadingTime: true
+  ShowWordCount: true
   ShowShareButtons: true
   ShowTOC: true
   TOCOpen: true
