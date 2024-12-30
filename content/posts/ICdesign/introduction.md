@@ -47,6 +47,3 @@ Post-layout simulation、DRC/LVS verification。
 * Verification：  
 DRC 與 LVS，沒想到這麼多年之後，連我自己都做過 DRC engine 之後，換成要來解工具吐給我的 DRC violation。  
 而且都是貨真價實的 violation 不是什麼 Missing violation 還是 False violation；還要去看 LVS 那個 GY 的笑臉。
-
-有寫好的文章就收錄在這篇序文的下面：
-1. [Introduction]({{< relref "posts/ICdesign/introduction" >}})
