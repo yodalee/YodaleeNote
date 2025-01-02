@@ -5,6 +5,8 @@ categories:
 - ICdesign
 tags:
 - ICdesign
+series:
+- ICdesign
 ---
 
 故事是這樣子的，在睽違多年之後，最近又回頭去摸了數位電路設計與 tapeout，一個我已經疏遠許久的領域，在 11/13 的時候，
@@ -36,7 +38,7 @@ Post-layout simulation、DRC/LVS verification。
 * Design Compiler  
 介紹 synopsys 公司的起家厝 [design compiler](https://www.synopsys.com/implementation-and-signoff/rtl-synthesis-test/dc-ultra.html)，
 這篇應該短期不會完成，因為我也不懂 design compiler 相關的設定代表的意義，以及那些數字怎麼來的。
-* APR：晶片的物理架構  
+* [APR：晶片的物理架構]({{< relref "chipstructure" >}})  
 介紹晶片的內的架構，如 pad、鎊線、memory、power ring、power strip 等，讓大家了解 APR 到底在幹嘛。
 * APR：Innovus 設定流程：  
 大致走過 APR 需要的流程，這次使用的工具是 cadence 家的 [Innovus](https://www.cadence.com/zh_TW/home/tools/digital-design-and-signoff/soc-implementation-and-floorplanning/innovus-implementation-system.html)，
@@ -45,6 +47,3 @@ Post-layout simulation、DRC/LVS verification。
 * Verification：  
 DRC 與 LVS，沒想到這麼多年之後，連我自己都做過 DRC engine 之後，換成要來解工具吐給我的 DRC violation。  
 而且都是貨真價實的 violation 不是什麼 Missing violation 還是 False violation；還要去看 LVS 那個 GY 的笑臉。
-
-有寫好的文章就收錄在這篇序文的下面：
-1. [Introduction]({{< relref "posts/ICdesign/introduction" >}})
