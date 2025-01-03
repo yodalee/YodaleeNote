@@ -11,7 +11,7 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: unset;
+    -webkit-line-clamp: 3;
 }
 
 .first-entry .entry-header h1 {
@@ -22,7 +22,7 @@
 .first-entry .entry-content {
     margin: 14px 0;
     font-size: 16px;
-    -webkit-line-clamp: unset;
+    -webkit-line-clamp: 3;
 }
 
 .first-entry .entry-footer {
@@ -64,7 +64,7 @@
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: unset;
+    -webkit-line-clamp: 2;
 }
 
 .entry-footer {
@@ -80,17 +80,17 @@
     bottom: 0;
 }
 
-.entry-cover,
-.entry-isdraft {
-    font-size: 14px;
+.entry-hint {
     color: var(--secondary);
 }
 
-.entry-isdraft {
-    display: inline
+.entry-hint-parent {
+    display: flex;
+    justify-content: space-between;
 }
 
 .entry-cover {
+    font-size: 14px;
     margin-bottom: var(--gap);
     text-align: center;
 }
