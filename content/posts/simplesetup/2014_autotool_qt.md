@@ -2,7 +2,7 @@
 title: "使用autotool 編譯qt project"
 date: 2014-11-17
 categories:
-- simple setup
+- Setup Guide
 tags:
 - cpp
 - qt

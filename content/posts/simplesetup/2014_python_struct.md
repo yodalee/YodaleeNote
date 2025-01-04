@@ -2,7 +2,7 @@
 title: "使用python struct 實作Dex file parser "
 date: 2014-03-17
 categories:
-- simple setup
+- Setup Guide
 - python
 tags:
 - python

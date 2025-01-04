@@ -2,7 +2,7 @@
 title: "在Archlinux 安裝arduino 開發環境"
 date: 2016-09-20
 categories:
-- simple setup
+- Setup Guide
 tags:
 - archlinux
 - arduino

@@ -2,7 +2,7 @@
 title: "新Top 介紹"
 date: 2016-08-13
 categories:
-- simple setup
+- Setup Guide
 tags:
 - shell
 series: null

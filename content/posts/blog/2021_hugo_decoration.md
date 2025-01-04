@@ -2,7 +2,7 @@
 title: "hugo 網頁內容調整"
 date: 2021-03-02
 categories:
-- simple setup
+- Setup Guide
 - LifeRecord
 tags:
 - blog

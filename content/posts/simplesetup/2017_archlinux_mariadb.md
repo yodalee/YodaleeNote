@@ -2,7 +2,7 @@
 title: "在Archlinux 上安裝mariadb筆記 (Install mariadb on Archlinux)"
 date: 2017-02-14
 categories:
-- simple setup
+- Setup Guide
 tags:
 - archlinux
 series: null

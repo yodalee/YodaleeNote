@@ -2,7 +2,7 @@
 title: "使用Expect進行大量修改密碼"
 date: 2013-09-20
 categories:
-- simple setup
+- Setup Guide
 tags:
 - expect
 - bash

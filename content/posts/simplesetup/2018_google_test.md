@@ -2,7 +2,7 @@
 title: "開始使用 Google Test：基本設定"
 date: 2018-07-21
 categories:
-- simple setup
+- Setup Guide
 tags:
 - cpp
 - google test

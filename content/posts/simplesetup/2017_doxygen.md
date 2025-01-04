@@ -2,7 +2,7 @@
 title: "使用 doxygen 產生程式文件"
 date: 2017-05-27
 categories:
-- simple setup
+- Setup Guide
 tags:
 - doxygen
 - c

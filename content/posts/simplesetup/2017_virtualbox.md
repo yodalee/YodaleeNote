@@ -2,7 +2,7 @@
 title: "如何調整 virtualbox 虛擬硬碟檔案的大小"
 date: 2017-05-16
 categories:
-- simple setup
+- Setup Guide
 tags:
 - virtualbox
 series: null

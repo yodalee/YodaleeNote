@@ -2,7 +2,7 @@
 title: "blogger 搬到 hugo 全記錄"
 date: 2020-09-19
 categories:
-- simple setup
+- Setup Guide
 - LifeRecord
 tags:
 - blog

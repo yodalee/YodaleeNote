@@ -2,7 +2,7 @@
 title: "使用網路線直接連線進行資料傳輸"
 date: 2016-10-02
 categories:
-- simple setup
+- Setup Guide
 tags:
 - ssh
 series: null

@@ -4,7 +4,7 @@ date: 2023-04-07
 categories:
 - FPGA
 - hardware
-- simple setup
+- Setup Guide
 tags:
 - FPGA
 - ubuntu
