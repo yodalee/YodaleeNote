@@ -53,7 +53,7 @@ minecraft裡物品的item max durability值是恆定的，unbreaking只是在增
 
 ### drops:
 這裡我們呼叫 block.getDrops(ItemStack) 來產生drop items內容，用這個的好處是，它會自動判斷工具的等級高低，像用木鎬挖鐵礦，這個事件就會回傳空的內容。
-不過它不會處理工具有Silk touch的狀況，因些有Silk touch的時候要自己把原本的方塊傳回去。  
+不過它不會處理工具有Silk touch的狀況，因此有Silk touch的時候要自己把原本的方塊傳回去。  
 最後再利用`World.dropItemNaturally(Location, ItemStack)`產生drop items即可。  
 
 ## Demo:

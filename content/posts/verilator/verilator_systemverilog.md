@@ -54,7 +54,8 @@ input/output 各是一組 valid ready 來控制，內含極少量的 logic，比
 * square:  $REDC((m \cdot 2^{256} \bmod N) \cdot (m \cdot 2^{256} \bmod N)) = m^2 \cdot 2^{256} \bmod N $
 * multiply:  $REDC((m \cdot 2^{256} \bmod N) \cdot k) = m \cdot k \bmod N $
 
-讓 square 保持在 montgomery form，multiply 則是脫殼成非 montgomery form，跑完 square and multiply 後想要的答案。
+square 後保持在 montgomery form，multiply 則是脫殼成非 montgomery form；剛好可以用做下一輪 square and multiply 
+所需的 input，並在最後一輪，從 multiply 輸出得到答案。
 
 ## Block Diagram
 
