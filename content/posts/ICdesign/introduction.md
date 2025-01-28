@@ -35,9 +35,8 @@ series:
 * [下線流程概述]({{< relref "chipflow" >}})  
 介紹整個下線過程中要做的事，包括 verilog/simulation、synthesis、post-synthesis simulation/LEC、APR、
 Post-layout simulation、DRC/LVS verification。
-* Design Compiler  
-介紹 synopsys 公司的起家厝 [design compiler](https://www.synopsys.com/implementation-and-signoff/rtl-synthesis-test/dc-ultra.html)，
-這篇應該短期不會完成，因為我也不懂 design compiler 相關的設定代表的意義，以及那些數字怎麼來的。
+* [Design Compiler]({{< relref "designcompiler" >}})  
+介紹 synopsys 公司的起家厝 [design compiler](https://www.synopsys.com/implementation-and-signoff/rtl-synthesis-test/dc-ultra.html)，大致的設定以及他們的意思。
 * [APR：晶片的物理架構]({{< relref "chipstructure" >}})  
 介紹晶片的內的架構，如 pad、鎊線、memory、power ring、power strip 等，讓大家了解 APR 到底在幹嘛。
 * APR：Innovus 設定流程：  
