@@ -16,8 +16,8 @@ series:
 
 <!--more-->
 
-首先要了解晶片設計，首推的就是阿嬤都能懂的晶片設計，不但有線上 pdf 文件還錄了 Youtube 影片，
-真是貼心，~~他都講完了我要講什麼~~。
+首先要了解晶片設計，首推的就是阿嬤都能懂的晶片設計，不但有[線上 pdf](https://m105.nthu.edu.tw/~s105062901/ppt/RMaKnowsICDesignFlow.pdf)
+文件還錄了 Youtube 影片，真是貼心，~~他都講完了我要講什麼~~。
 
 {{< youtube kYUhk6FQwBc >}}
 
