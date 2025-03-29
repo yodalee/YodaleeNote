@@ -6,7 +6,7 @@ categories:
 tags:
 - verilog
 series:
-- 數位電路之後，Verilog 系列文
+- verilog introduction
 ---
 
 感謝鄭為中大神的提醒，要寫這篇verilog常見錯誤文，也感謝鄭為中大神對我 verilog 觀念的澄清：)  

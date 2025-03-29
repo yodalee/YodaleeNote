@@ -6,7 +6,7 @@ categories:
 tags:
 - verilog
 series:
-- 數位電路之後，Verilog 系列文
+- verilog introduction
 ---
 
 常說「寫verilog一定要有硬體的思維」，這是因為verilog，亦或VHDL的用意，最終都是要轉成硬體上的 register 和 combination circuit，

@@ -6,7 +6,7 @@ categories:
 tags:
 - verilog
 series:
-- 數位電路之後，Verilog 系列文
+- verilog introduction
 ---
 
 在上一篇裡面，我們談過了verilog 三大塊的寫法，以及常見的verilog錯誤，那現在就來看看，一個verilog module的構成，  
