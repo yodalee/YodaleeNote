@@ -104,7 +104,7 @@ Gandi 則是在 DNS 另外新建一個 cname 的項目，名稱為 www，更新�
 
 #### Latex 的解決方案
 我融合了兩個不同的步驟，分別是這篇 [katex 文章的設定方式](https://eankeen.github.io/blog/posts/render-latex-with-katex-in-hugo-blog/)，
-但 render 用的是 [MathJex 的設定](https://geoffruddock.com/math-typesetting-in-hugo/)，主要是我 katex 設定了還是跑不出來。
+但 render 用的是 [MathJax 的設定](https://geoffruddock.com/math-typesetting-in-hugo/)，主要是我 katex 設定了還是跑不出來。
 需要 latex 的文章只要在標頭的設定加上 `latex: true` 就可以使用了，幾個 render 測試：
 
 * [關於費式數列的那些事]({{< relref "2019_fibonacci.md">}})
