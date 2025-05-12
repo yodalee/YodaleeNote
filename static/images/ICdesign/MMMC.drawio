@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64; rv:134.0) Gecko/20100101 Firefox/134.0" version="24.7.7">
+  <diagram name="Page-1" id="bK_RNNVzJxB3eEB8tRRv">
+    <mxGraphModel dx="637" dy="319" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-1" value="&lt;div&gt;Capacitance Table&lt;/div&gt;&lt;div&gt;QRC data&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="250" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-3" value="Timing Library" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="560" y="320" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-7" value="&lt;div align=&quot;left&quot;&gt;Operating Condition:&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;* Voltage&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;* Temperature&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;* Derate&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="710" y="320" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="Pn_19XIBsRtdzwEMokxi-1" target="Pn_19XIBsRtdzwEMokxi-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="590" y="330" as="sourcePoint" />
+            <mxPoint x="640" y="280" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-11" value="Design Constraint" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="190" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-12" value="Delay Corner" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="190" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-15" value="Timing Condition" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="630" y="250" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-16" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.47;exitY=0.025;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;exitPerimeter=0;" edge="1" parent="1" source="Pn_19XIBsRtdzwEMokxi-3" target="Pn_19XIBsRtdzwEMokxi-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="510" y="300" as="sourcePoint" />
+            <mxPoint x="510" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-17" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.711;entryY=1.033;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Pn_19XIBsRtdzwEMokxi-7" target="Pn_19XIBsRtdzwEMokxi-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="596" y="371" as="sourcePoint" />
+            <mxPoint x="640" y="330" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-18" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="Pn_19XIBsRtdzwEMokxi-15" target="Pn_19XIBsRtdzwEMokxi-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="740" y="370" as="sourcePoint" />
+            <mxPoint x="695" y="331" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-19" value="Analysis View" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="130" width="120" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-20" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="Pn_19XIBsRtdzwEMokxi-11" target="Pn_19XIBsRtdzwEMokxi-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="670" y="300" as="sourcePoint" />
+            <mxPoint x="570" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Pn_19XIBsRtdzwEMokxi-21" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="Pn_19XIBsRtdzwEMokxi-12" target="Pn_19XIBsRtdzwEMokxi-19">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="700" y="200" as="sourcePoint" />
+            <mxPoint x="660" y="170" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
