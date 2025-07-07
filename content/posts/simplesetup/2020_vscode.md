@@ -2,7 +2,7 @@
 title: "第一次跳槽 vscode 就上手"
 date: 2020-05-16
 categories:
-- simple setup
+- Setup Guide
 tags:
 - git
 - linux

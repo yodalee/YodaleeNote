@@ -2,7 +2,7 @@
 title: "不為人知的gdb 使用方式系統-gdb pretty printer"
 date: 2016-09-14
 categories:
-- simple setup
+- Setup Guide
 tags:
 - python
 - gdb

@@ -2,7 +2,7 @@
 title: "不為人知的gdb 使用方式系統-gdb pretty printer auto load"
 date: 2016-09-16
 categories:
-- simple setup
+- Setup Guide
 tags:
 - gdb
 - rust

@@ -2,7 +2,7 @@
 title: "archlinux 上使用archlinux-java 切換不同java 版本"
 date: 2016-07-05
 categories:
-- simple setup
+- Setup Guide
 tags:
 - archlinux
 - java

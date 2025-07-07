@@ -2,7 +2,7 @@
 title: "使用gnu make編譯Qt 專案"
 date: 2013-08-08
 categories:
-- simple setup
+- Setup Guide
 tags:
 - cpp
 - qt

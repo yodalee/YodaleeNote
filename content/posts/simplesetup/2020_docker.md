@@ -2,7 +2,7 @@
 title: "用 docker container 來編譯程式"
 date: 2020-04-11
 categories:
-- simple setup
+- Setup Guide
 tags:
 - archlinux
 - docker

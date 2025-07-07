@@ -2,7 +2,7 @@
 title: "用llvm 編譯嵌入式程式"
 date: 2015-04-13
 categories:
-- simple setup
+- Setup Guide
 tags:
 - embedded system
 series: null

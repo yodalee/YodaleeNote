@@ -3,7 +3,7 @@ title: "使用webpack打包React.js 專案"
 date: 2017-01-19
 categories:
 - web
-- simple setup
+- Setup Guide
 tags:
 - javascript
 - react

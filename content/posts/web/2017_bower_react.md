@@ -3,7 +3,7 @@ title: "使用bower安裝react 前端環境"
 date: 2017-01-14
 categories:
 - web
-- simple setup
+- Setup Guide
 tags:
 - javascript
 - python

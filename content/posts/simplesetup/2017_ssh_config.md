@@ -2,7 +2,7 @@
 title: "設定 ssh config 讓人生簡單一些"
 date: 2017-07-29
 categories:
-- simple setup
+- Setup Guide
 tags:
 - ssh
 series: null

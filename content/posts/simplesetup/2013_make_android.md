@@ -2,7 +2,7 @@
 title: "用makefile來編譯安裝android apps"
 date: 2013-04-17
 categories:
-- simple setup
+- Setup Guide
 tags:
 - android
 - makefile

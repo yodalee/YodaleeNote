@@ -2,7 +2,7 @@
 title: "使用dbench 進行硬碟效能測試"
 date: 2017-02-24
 categories:
-- simple setup
+- Setup Guide
 tags:
 - linux
 series: null

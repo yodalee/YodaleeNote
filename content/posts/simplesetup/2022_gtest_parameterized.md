@@ -2,7 +2,7 @@
 title: "Google Test從入門到濫用：參數化測試"
 date: 2022-11-05
 categories:
-- simple setup
+- Setup Guide
 tags:
 - cpp
 - google test

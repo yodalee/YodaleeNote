@@ -6,7 +6,7 @@ categories:
 tags:
 - verilog
 series:
-- 數位電路之後，Verilog 系列文
+- verilog introduction
 ---
 
 testbench是verilog另一個很好用的功能，一般來說，如果設計的電路是要完成某個特定的演算法，比如我們在實驗中要實作256bits的montgomery algorithm，把電路透過quartus合成、燒進FPGA執行，透過Logic analyser分析行為實在太曠日費時（那時寫的不好，合成一次就要30分鐘= =）。  

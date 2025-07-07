@@ -2,7 +2,7 @@
 title: "整理一些增進效率的shell 工具"
 date: 2016-11-09
 categories:
-- simple setup
+- Setup Guide
 tags:
 - autojump
 - fzf
