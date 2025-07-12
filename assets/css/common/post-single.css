@@ -225,14 +225,6 @@
     word-break: break-all;
 }
 
-.post-content blockquote {
-    color: #555555;
-    background: #EDEDED;
-    padding: 1em 30px 1em 30px;
-    margin: 20px 0;
-    border-inline-start: 8px solid #78c0AB;
-}
-
 .post-content hr {
     margin: 30px 0;
     height: 2px;
@@ -424,4 +416,30 @@ h1>a>svg {
 img.in-text {
     display: inline;
     margin: auto;
+}
+
+
+.post-content blockquote {
+    color: var(--content);
+    background-color: var(--tertiary);
+    padding: 1em 1em 1em 1em;
+    border-left-style: solid;
+    border-left-width: 0.4rem;
+    border-radius: 0.2rem;
+    margin: 20px 0;
+    border-left-color: green;
+}
+
+.post-content blockquote.warning {
+  border-left-color: #ffbb00;
+}
+
+.post-content blockquote.error {
+  border-left-color: #ee0000;
+}
+
+.post-content blockquote p,
+.post-content blockquote.warning p,
+.post-content blockquote.error p {
+    margin-bottom: 0;
 }

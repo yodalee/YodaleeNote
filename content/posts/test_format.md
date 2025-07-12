@@ -13,6 +13,16 @@ draft: true
 weight: 1
 ---
 
+# Block Test
+
+> Normal quote.
+
+> This is a warning.
+{.warning}
+
+> This is dangerous.
+{.error}
+
 # Entry Table Test
 
 |Module|Description|

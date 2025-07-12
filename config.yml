@@ -68,6 +68,10 @@ params:
 markup:
   highlight:
     style: solarized-dark
+  goldmark:
+    parser:
+      attribute:
+        block: true
 
 outputs:
   home:
