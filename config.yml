@@ -5,13 +5,16 @@ title: "Yodalee Note"
 theme: "PaperMod"
 
 defaultContentLanguage: zh-tw
+defaultContentLanguageInSubdir: false
 languages:
   zh-tw:
     languageName: "繁體中文"
-    weight: 1
+    weight: 10
+    contentDir: content/zh-tw
   en:
     languageName: "English"
-    weight: 2
+    weight: 20
+    contentDir: content/en
 
 taxonomies:
   tags: "tags"
@@ -86,3 +89,6 @@ outputs:
     - HTML
     - RSS
     - JSON
+
+printI18nWarnings: true
+printPathWarnings: true
