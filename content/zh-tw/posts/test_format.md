@@ -11,7 +11,15 @@ series:
 latex: true
 draft: true
 weight: 1
+AITranslated: true
 ---
+
+# Entry Table Test
+
+|Module|Description|
+|:-|:-|
+| Pipeline | 是的這個 module 就叫 pipeline，它控制有 data 要敲一級 Pipeline 這件事，通常會用在一個 module 的最前端，上一級給資料我就先存下來 |
+<!--more-->
 
 # Block Test
 
@@ -22,13 +30,6 @@ weight: 1
 
 > This is dangerous.
 {.error}
-
-# Entry Table Test
-
-|Module|Description|
-|:-|:-|
-| Pipeline | 是的這個 module 就叫 pipeline，它控制有 data 要敲一級 Pipeline 這件事，通常會用在一個 module 的最前端，上一級給資料我就先存下來 |
-<!--more-->
 
 # Title Test H1
 ## Title Test H2

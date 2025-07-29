@@ -2,9 +2,19 @@ baseURL: "https://yodalee.me/"
 
 title: "Yodalee Note"
 
-defaultContentLanguage: zh-tw
-
 theme: "PaperMod"
+
+defaultContentLanguage: zh-tw
+defaultContentLanguageInSubdir: false
+languages:
+  zh-tw:
+    languageName: "繁體中文"
+    weight: 10
+    contentDir: content/zh-tw
+  en:
+    languageName: "English"
+    weight: 20
+    contentDir: content/en
 
 taxonomies:
   tags: "tags"
@@ -38,6 +48,7 @@ menus:
 
 hasCJKLanguage: true
 params:
+  displayFullLangName: true
   ShowWordCount: true
   ShowShareButtons: true
   ShowTOC: true
@@ -78,3 +89,6 @@ outputs:
     - HTML
     - RSS
     - JSON
+
+printI18nWarnings: true
+printPathWarnings: true
