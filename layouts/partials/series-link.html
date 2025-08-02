@@ -8,14 +8,14 @@
   {{ if $prev }}
   <span class="col">
     <i class="fas fa-arrow-left" title="Left" aria-hidden="true"></i>&nbsp;
-    <a href="{{$prev.Permalink}}">{{ $prev.Params.title }}</a>
+    <a hreflang="{{ $.Site.Language }}" href="{{$prev.Permalink}}">{{ $prev.Params.title }}</a>
   </span>
   {{ end }}
 
   {{ $next := index $same_series (sub $i 1) }}
   {{ if $next }}
   <span class="col">
-    <a href="{{$next.Permalink}}">{{ $next.Params.title }}</a>&nbsp;
+    <a hreflang="{{ $.Site.Language }}" href="{{$next.Permalink}}">{{ $next.Params.title }}</a>&nbsp;
     <i class="fas fa-arrow-right" title="Right" aria-hidden="true"></i>
   </span>
   {{ end }}

@@ -8,7 +8,7 @@
   <i class="fa fa-folder-open" title="Categories" aria-hidden="true"></i>&nbsp;
   {{ range $i, $e := .Params.categories }}
   {{ if $i }}, {{ end }}
-  <a href='/categories/{{ (replace $e "#" "%23") | urlize }}/'>{{ $e }}</a>
+  <a hreflang="{{ $.Site.Language }}" href='/{{ $.Site.Language }}/categories/{{ (replace $e "#" "%23") | urlize }}/'>{{ $e }}</a>
   {{ end }}
 
   <!-- tags -->
@@ -16,7 +16,7 @@
   <i class="fa fa-tags" title="Tags" aria-hidden="true"></i>&nbsp;
   {{ range $i, $e := .Params.tags }}
   {{ if $i }}, {{ end }}
-  <a href='/tags/{{ (replace $e "#" "%23") | urlize }}/'>{{ $e }}</a>
+  <a hreflang="{{ $.Site.Language }}" href='/{{ $.Site.Language }}/tags/{{ (replace $e "#" "%23") | urlize }}/'>{{ $e }}</a>
   {{ end }}
 
   <!-- series -->
@@ -25,7 +25,7 @@
   <i class="fa fa-book" title="Series" aria-hidden="true"></i>&nbsp;
   {{ range $i, $e := .Params.series }}
   {{ if $i }}, {{ end }}
-  <a href='/series/{{ (replace $e "#" "%23") | urlize }}/'>{{ $e }}</a>
+  <a hreflang="{{ $.Site.Language }}" href='/{{ $.Site.Language }}/series/{{ (replace $e "#" "%23") | urlize }}/'>{{ $e }}</a>
   {{ end }}<br />
   {{ end }}
 
