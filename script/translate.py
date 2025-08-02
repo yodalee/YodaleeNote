@@ -1,5 +1,10 @@
 import oyaml as yaml  # pip install pyyaml
 from pathlib import Path
+from openai import OpenAI
+import json
+from secret import OPENAIKey
+
+client = OpenAI(api_key = OPENAIKey)
 
 def parse_markdown_with_frontmatter(filepath):
     """
@@ -25,11 +30,46 @@ def dump_markdown_with_frontmatter(metadata, content):
     front = "---\n" + yaml.safe_dump(metadata, allow_unicode=True) + "---\n"
     return front + content
 
-def translate(text, target_lang="en"):
-    """
-    Dummy translation function, replace with your translation API.
-    """
-    return f"[{target_lang}] {text}"
+def translate(text, source_lang, target_lang="English"):
+    function_schema = {
+        "name": "translate_text",
+        "description": "Translate the input text to the target language.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "translated_text": {
+                    "type": "string",
+                    "description": "The translated text in the target language."
+                }
+            },
+            "required": ["translated_text"]
+        }
+    }
+
+    system_prompt = f"""
+You are a precise and faithful translator, working in software and IC design territory. 
+Translate articles from {source_lang} to {target_lang}. 
+Note that the input is in markdown format, so keep following points in mind:
+1. Don't translate the code block, latex formula $$.
+2. Keep the notation like <!--more--> and thee image path like ![image](path/to/image.png) unchanged in the same place.
+3. Translate the table content and keep the table shape.
+4. Try your best to keep the format text like strikethrough ~~~~, bold **** and italic ** to the corresponding text.
+"""
+    user_prompt = f"Translate the following text from {source_lang} to {target_lang}:\n{text}"
+
+    response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+        functions=[function_schema],
+        function_call={"name": "translate_text"}
+    )
+
+    arguments = response.choices[0].message.function_call.arguments
+    result = json.loads(arguments)
+    return result["translated_text"]
 
 def translate_post(input_path: Path, src_lang="zh-tw", target_lang="en"):
     # Parse markdown and front matter
@@ -37,14 +77,14 @@ def translate_post(input_path: Path, src_lang="zh-tw", target_lang="en"):
 
     # Translate the 'title' field if it exists
     if 'title' in metadata:
-        metadata['title'] = translate(metadata['title'], target_lang)
+        metadata['title'] = translate(metadata['title'], src_lang, target_lang)
 
     # Add the AITranslated flag
     metadata['AITranslated'] = True
     metadata['lang'] = target_lang  # optionally track the language
 
     # Translate the Markdown content body
-    content = translate(content, target_lang)
+    content = translate(content, src_lang, target_lang)
 
     # Determine output path
     relative_path = input_path.relative_to(f"content/{src_lang}")
