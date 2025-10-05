@@ -10,6 +10,8 @@ images:
 - /images/ninesols.jpg
 ---
 
+![ninesols](/images/ninesols.jpg)
+
 故事是這個樣子的，去年 Steam 的冬特，除了等待已久的 [Factorio Space Age](https://store.steampowered.com/app/645390/Factorio_Space_Age/)，
 另外一口氣就把這幾年台灣比較有名的遊戲都買齊了，包括 [九日](https://store.steampowered.com/app/1809540)、廖添丁跟活俠傳。大概從一月下旬玩到三月上旬，一般模式總遊戲時間 48h22m 破關，這篇就來寫寫相關心得。
 <!--more-->
@@ -63,14 +65,18 @@ images:
 配音是另一個值得稱讚的點，我初聽還以為是客語，但愈聽愈覺得不像，這樣自創語言卻又保留了國台客語的特色，
 與故事的山海經背景一樣，創造出那種既熟悉卻又陌生的感覺。
 
-# [音樂](https://ninesols.fandom.com/wiki/Nine_Sols_Original_Soundtrack)
+# 音樂
 
-音樂在這部的表現十分值得稱讚，在對應的場景及戰鬥曲的氣氛營造都非常成功，我個人比較有印象包括下列幾首：  
-猿人處理場 (Beneath the Surface)：初次進到九日世界，帶著玩家發現世界真相，在背景唱著詭異的人聲，更顯詭譎。  
-地下監獄 (Little rat)：第一次玩到這裡真的是怕爆，覺得這裡好黑，沒事還會跑出美國隊長拿盾牌往你臉上砸，嚇到隔天再玩。  
-桃花村之戰 (Last Man Standing)：有個留言說得不錯，當羿成為英雄的那一刻  
-截全主題曲 (Ballad of Warriors)：這首非常符合截全的風格，就是個硬碰硬的曲子  
-蚨蝶主題曲 (Smile at My Cursed Dream)：這大概不需要推薦了吧，好到連赤燭都把它拿來當廣告的曲子了。  
+
+[音樂](https://ninesols.fandom.com/wiki/Nine_Sols_Original_Soundtrack)
+在這部的表現十分值得稱讚，作曲善用各種人聲引出壯闊、陰森等不同情緒，
+在對應的場景及戰鬥曲的氣氛營造都非常成功，我個人比較有印象包括下列幾首：  
+
+* 猿人處理場 (Beneath the Surface)：初次進到九日世界，帶著玩家發現世界真相，在背景唱著詭異的人聲，更顯詭譎。  
+* 地下監獄 (Little rat)：第一次玩到這裡真的是怕爆，覺得這裡好黑，沒事還會跑出美國隊長拿盾牌往你臉上砸，嚇到隔天再玩。  
+* 桃花村之戰 (Last Man Standing)：有個留言說得不錯，當羿成為英雄的那一刻  
+* 截全主題曲 (Ballad of Warriors)：這首非常符合截全的風格，就是個硬碰硬的曲子  
+* 蚨蝶主題曲 (Smile at My Cursed Dream)：這大概不需要推薦了吧，好到連赤燭都把它拿來當廣告的曲子了。  
 
 # 遊戲性
 
