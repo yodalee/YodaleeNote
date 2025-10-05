@@ -272,7 +272,6 @@ endmodule
 ```
 
 # mmmc 檔
-
 [MMMC](https://semiengineering.com/knowledge_centers/eda-design/methodologies-and-flows/multi-corner-multi-mode-analysis/) 
 的全名是 multi-mode multi-corner 的簡稱，也有人反過來簡稱為 MCMM。  
 MMMC 的來由是這樣的，隨著製程進步與晶片的複雜化，要整體考慮的模式也愈來愈多，例如
@@ -334,6 +333,16 @@ set_analysis_view
 可以看到，其實不過是把我上面畫的階層圖改成用文字描述罷了。  
 * create_rc_corner：使用 capTable PDK 的 RC 模型與 qrctechfile 給 RC 萃取軟體使用的檔案，
 建立一個 RC 案例。
+
+> 注意在 create_rc_corner 的時候，大括號裡面不要加上空白，例如
+> ```
+> -cap_table { rcworst.captble }
+> -qrc_tech { rcworst.tch }
+> ```
+{ .warning }
+
+很莫名的，INNOVUS 會在這瞬間把前後有空白的 " rcworst.captable " 當成檔名，很自然也找不到對應的檔案。
+
 * create_library_set：打包所有相關的 library，注意有使用的 hardmacro 也要包進來一起分析。
 * create_opcond： 設定運作溫度、電壓，常見就是溫度 -40\~125℃，電壓 -10%\~+10%；
 高階製程可能會多出其他的溫度條件，例如在高溫時電晶體反而跑更快了，會需要多一個 operating conditon。
@@ -341,7 +350,6 @@ set_analysis_view
 * create_delay_corner：組合 timing condition 和對應的 RC 案例。
 * create_constraint_mode：匯入需要達成的 constraint
 * create_analysis_view：針對各 constraint 創建各種 analysis view。
-
 最後用 set_analysis_view 把各 analysis view 分類到 setup 條件或 hold 條件，就完成啦。
 
 # 結語
