@@ -95,7 +95,9 @@ history keep 2000
 ## link_library
 連結用的的元件庫，合成工具在把你的設計讀入之後，需要在 link_library 裡面找到所有元件的定義，一般會在這裡加入不需要合成的元件，包括下面幾個：
 * \* 表示從 design compiler 已經讀入的記憶體去找
-* target_library 的內容 * 用工具產生的 memory macro * IO Pad
+* target_library 的內容
+* 用工具產生的 memory macro
+* IO Pad
 * 其他各種 macro
 
 這裡特別說明一下 [target_library 跟 link_library 的不同](https://www.edaboard.com/threads/whats-the-difference-between-the-target-library-to-the-link.72856/)
