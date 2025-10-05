@@ -402,7 +402,10 @@ report_net_fanout -high_fanout
 set_max_area 0
 set_fix_multiple_port_nets -all -buffer_constants [get_designs *]
 
-compile -exact_map -map_effort $effort -area_effort $effort -power_effort $effort
+compile -exact_map -boundary_optimization \
+  -map_effort $effort \
+  -area_effort $effort \
+  -power_effort $effort
 
 # power optimization
 # set_leakage_optimization true
