@@ -12,7 +12,6 @@ latex: true
 draft: true
 weight: 1
 AITranslated: true
-lang: en
 ---
 # Entry Table Test
 
