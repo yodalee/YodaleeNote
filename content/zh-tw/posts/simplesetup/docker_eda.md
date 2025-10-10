@@ -83,12 +83,13 @@ RUN dnf update -y && \
         graphite2 bc \
         iputils telnet \
         gcc gcc-c++ \
-        glibc.i686 libstdc++.i686 elfutils-libelf.i686 \
+        glibc-devel.i686 glibc.i686 libstdc++.i686 elfutils-libelf.i686 \
         libXrandr libGL libXcomposite \
         libnsl linsl.i686 pulseaudio-libs-devl \
         libXi libXp libXp.i686 libXt libXt.i686 \
         libX11.i686 libXext.i686 libXrender.i686 libXtst.i686 && \
-    dnf install -y lsb_release && \
+    dnf update -y && \
+    dnf install -y lsb_release xclock && \
     dnf clean all
 
 # 建立 /usr/eda symlink 指向 /eda（host 目錄）

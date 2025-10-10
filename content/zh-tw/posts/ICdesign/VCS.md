@@ -1,5 +1,5 @@
 ---
-title: "數位電路使用 VCS 模擬"
+title: "數位電路：用 VCS 模擬"
 date: 2025-03-29
 categories:
 - verilog
