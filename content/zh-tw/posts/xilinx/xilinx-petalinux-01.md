@@ -49,7 +49,8 @@ apt update
 apt upgrade
 apt install gawk vim gcc xterm autoconf libtool texinfo zlib1g-dev \
     zlib1g-dev:i386 gcc-multilib build-essential libncurses5-dev \
-    net-tools python3 python_is_python3 rsync less locales cpio tmux
+    net-tools python3 python_is_python3 rsync less locales cpio tmux \
+    bc lsb-release dnsutils
 vim /etc/locale.gen
 locale-gen
 {{< /highlight >}}
