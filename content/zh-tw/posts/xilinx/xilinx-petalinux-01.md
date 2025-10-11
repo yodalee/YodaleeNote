@@ -36,7 +36,7 @@ PetaLinux 的安裝相當囉唆，主要歸功於下面幾個理由：
 cd
 mkdir PetaLinux
 docker run -u `id -u`:`id -g` --name petalinux_${USER} -e HOME=/workspace -w /workspace \
-           -v ${HOME}/PetaLinux:/workspace -it ubuntu:18.04 /bin/bash
+           -v ${HOME}/PetaLinux:/workspace -it ubuntu:22.04 /bin/bash
 {{< /highlight >}}
 
 接著按 `ctrl+d` 登出，因為沒有 root 我們不好安裝東西。在 container 中，用 root 登入安裝以下 package。
@@ -49,7 +49,7 @@ apt update
 apt upgrade
 apt install gawk vim gcc xterm autoconf libtool texinfo zlib1g-dev \
     zlib1g-dev:i386 gcc-multilib build-essential libncurses5-dev \
-    net-tools python rsync less locales cpio tmux
+    net-tools python3 python_is_python3 rsync less locales cpio tmux
 vim /etc/locale.gen
 locale-gen
 {{< /highlight >}}
