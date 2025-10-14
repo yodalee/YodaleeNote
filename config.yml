@@ -83,8 +83,6 @@ markup:
     parser:
       attribute:
         block: true
-markup:
-  goldmark:
     renderer:
       unsafe: true
 
