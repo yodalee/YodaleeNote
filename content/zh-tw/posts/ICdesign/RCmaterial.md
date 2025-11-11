@@ -155,7 +155,7 @@ grdgenxo -itf2TLUPlus -i *.itf -o *.tluplus
 
 ### 3 反轉 .itf 檔
 
-grdgenxo 有能力把轉換 nxtgrd 檔反轉回 .itf 檔~~反轉術式~~, 原因是 itf 轉
+grdgenxo 有能力把轉換 nxtgrd 檔反轉回 .itf 檔~~反轉術式~~，原因是 itf 轉
  nxtgrd 的時候會把原始的 itf 用註解的方式寫在 nxtgrd header 內：
 ```bash
 grdgenxo -nxtgrd2itf -i *.nxtgrd -o *.itf
