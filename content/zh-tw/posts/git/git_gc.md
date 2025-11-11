@@ -5,6 +5,7 @@ categories:
 - git
 tags:
 - git
+- filter-branch
 series: null
 ---
 
@@ -14,7 +15,7 @@ series: null
 與此同時，很高興6/25號晚上我又推了一位同學當使用者，使用者人數++。  
 為了方便使用者，把[下載連結](/download/ADS2Origin.zip) 放在這裡讓大家下載。
 
----
+----
 
 另外，最近我發現到一個問題，因為我的git project把windows下的執行檔都包進去，git又是每記錄一個版本就把檔案都複製一份，看一下我的git repository已經14 MB（唔…跟某些project用幾十G在算的比起來其實還是很小），
 不過恁爸保留exe的commit好像也沒啥用，就趁這個機會研究一下怎麼刪掉舊記錄裡面的執行檔。  
@@ -74,7 +75,7 @@ ec1e435 XDD
 所有的commit message都被改寫成XDD，這簡直比改歷史教科書還要簡單。  
 
 現在我們要移除掉dist資料夾，就使用--index-filter  
-```shell
+```bash
 git filter-branch --index-filter 'git rm -r --cached dist' -- b21d5c1^..
 ```
 最後這個-- b21d5c1^..，是送到git rev-list的內容  
