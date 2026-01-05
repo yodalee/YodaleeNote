@@ -346,6 +346,11 @@ set compile_preserve_subdesign_interfaces true
 # compile design (medium or high)
 set effort high
 
+# Set the clock period
+set period 2
+set waveform [list 0 [expr {$period * 0.5}]]
+set io_delay [expr {$period * 0.6}]
+
 ########################################
 # Read in Verilog Source Files         #
 ########################################
@@ -365,7 +370,7 @@ set_operating_conditions -min <ff.lib> -max <ss.lib>
 set_wire_load_model -name Tiny -library <ss.lib>
 
 # 100 MHz main clock
-create_clock -period 10 -waveform {0 5} -name clk [get_ports clk]
+create_clock -period 10 -waveform ${waveform} -name clk [get_ports clk]
 
 set_fix_hold              [get_clocks clk]
 set_dont_touch_network    [get_clocks clk]
@@ -379,13 +384,12 @@ set_clock_latency 1       [get_clocks clk]
 
 set_input_transition 0.5  [all_inputs]
 set_clock_transition 0.1  [all_clocks]
-set_drive 0.1 [all_inputs]
-set_load 20 [all_outputs]
+set_drive 0.1             [all_inputs]
+set_load 20               [all_outputs]
 
-# 6 = 10 * 0.6
-set_input_delay -clock clk -max 6 [remove_from_collection [all_inputs] [get_ports "clk"]]
+set_input_delay -clock clk -max ${io_delay} [remove_from_collection [all_inputs] [get_ports "clk"]]
 set_input_delay -clock clk -min 0 [remove_from_collection [all_inputs] [get_ports "clk"]]
-set_output_delay 4 -clock clk [get_ports "dbg_data"]
+set_output_delay ${io_delay} -clock clk [all_outputs]
 
 # set_timing_derate -late 1.10 -cell_delay [get_cells -hier *]
 

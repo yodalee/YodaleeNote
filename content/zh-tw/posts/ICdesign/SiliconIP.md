@@ -93,8 +93,8 @@ Hard Macro 已經完成 layout，從外面看就宛如黑盒子，除了 Perform
 * Synopsys VCS Only
 * Synopsys Design Compiler Only
 * Xilinx Vivado
+* Cadence Xcelium
 * Synopsys VCS
-* Cadence Incisive (NCsim)
 * Mentor Graphics Questa
 
 
@@ -185,3 +185,88 @@ vivado -mode batch -source encrypt.tcl -nolog -nojournal
 
 後面兩個選項純粹不想要 vivado 到處生 log 檔和 journal 檔，如果要除錯的話打開也是可以的。
 如此一來就能獲得一批加密的檔案了。
+
+## Cadence Xcelium
+
+Xcelium 是 Cadence 推出的第三代邏輯模擬器，取代了前一代 incisive 的 ncsim。  
+Xcelium 的指令，就是把 ncsim 裡面的 nc 換成 x 或 xm，加密指令就從本來的 ncprotect 取代為 
+xmprotect，可以用 `xmprotect -help` 看到相關的選項。
+
+幾個可能會用到的選項
+* -outdir: 指令輸出的資料夾，該資料夾如果不在就會輸出在執行位置
+* -language: vhdl 或 vlog 二選一
+* -extension: 不太有用，可以讓輸出從 source.svp，變 source.svp.pppp
+* -ifileprotect: 搭配 `pragma protect begin/end` 加密部分檔案內容
+* -level1autoprotect: 等同 vcs 的 auto2protect，把介面保留下來
+* -noprotdef: 不要加密 ifdef endif define 等區塊
+* -overwrite: 覆蓋已有的加密檔案
+
+### Xcelium 自動加密
+
+搭配選項會有下列幾種加密的方式：
+* xmprotect dut.sv: 使用 CDS_DATA_KEY 這把固定的 256 bits 的 AES key 加密 code。  
+* xmprotect -autoprotect dut.sv: 使用非對稱金鑰對 CDS_RSA_KEY_VER_2 加密對稱金鑰，輸出格式是 xcelium 而不是 ieee1735 格式。  
+
+加密檔案只能再拿來跑 xcelium 模擬，不能送去合成或其他用途；加密檔案的內容完全不會出現在波形檔上，level1autoprotect 的檔案只會看到介面。
+
+### Xcelium IEEE1735 加密 Cadence 金鑰
+
+自動加密可以使用選項
+
+* -v2_ip1735 使用 IEEE1735 第二版標準
+* -v3_ip1735 使用 IEEE1735 第三版標準
+
+這樣會用 CDS_RSA_KEY_VER_2 加密對稱金鑰，並輸出符合 IEEE1735 的格式；我建議要給別人就用第三版就好，在權限控管上用 
+HMAC 比 SHA2 還要安全一些。
+
+### Xcelium IEEE1735 加密自己的金鑰
+
+不使用 CDS_RSA_KEY_VER_2 金鑰，可以使用自己生成的非對稱金鑰，xcelium 使用的金鑰是 DER 
+格式，雖然 xcelium 也提供生成金鑰的功能，但我個人是建議使用 openssh 生成金鑰，openssh 
+至少用戶眾多，生成功能也被更多人檢視過。
+
+如果~~不怕死~~使用 xcelium 生成金鑰的話，指令如下：
+```bash
+xmprotect -over -rsakeygenerate -keylength 2048 -keyname rsakey -seed "It's MYGO!!!!!"
+```
+會生成 rsakey.pub rsakey.prv
+
+正常一點請使用 openssh 生成金鑰對：
+```bash
+ssh-keygen -m PEM -t rsa -b 2048 -f ./rsakey
+openssl rsa -in ./rsakey -out rsakey.prv -outform DER
+openssl rsa -in ./rsakey -out rsakey.pub -outform DER -pubout
+```
+
+或是用 openssl genpkey 直接生成 DER format private key
+```bash
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:2048 -outform DER -out rsakey
+cp rsakey rsakey.prv
+openssl rsa -in ./rsakey -out rsakey.pub -outform DER -pubout
+```
+
+無論是 ssh-keygen 或 openssl genpkey 都不像 xmprotect 一樣使用固定的 seed，每次執行的結果都不一樣，某種程度上來說，
+這反而是 ssh-keygen/openssl 比 xmprotect 更好的一個證明。
+
+生成金鑰之後，先寫好加密用的參數檔 enc.param，version 可以選 2/3 ，data_method 也可以選擇不同的安全強度。
+```ini
+version = 2
+encrypt_agent = "Crychip"
+encrypt_agent_info = "Test Encryption"
+
+key_keyowner = keydb
+key_method = rsa
+key_keyname = rsakey.pub
+
+data_method = "aes128-cbc"
+```
+
+加密時 xcelium 會在環境變數 XMPROTECT_KEYDB 下找設定的 key_keyowner/key_keyname，因此
+
+1. 把上面生成的 rsakey.pub rsakey.prv 放到 keydb 資料夾下面
+2. 設定環境變數 ``setenv XMPROTECT_KEYDB `pwd` ``
+3. 加密時加上 -parameter 使用我們定義的 enc.param 檔案進行加密
+```bash
+xmprotect -outdir encrypted -parameter enc.param -over -fcreate src/dut.sv
+```
+4. 在交貨的時候，連著 rsakey.prv 和加密後的檔案一起送給對方，對方一樣把 rsakey.prv 放在 keydb 資料夾下就能解密了
