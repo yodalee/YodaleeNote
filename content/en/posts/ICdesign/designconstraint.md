@@ -10,7 +10,8 @@ series:
 images:
 - /images/ICdesign/ChipAll.png
 AITranslated: true
-lang: en
+params:
+  lang: en
 ---
 After writing Verilog, we move on to a somewhat complex topic, which is discussing what circuit synthesis does. If we use software as a metaphor, what synthesis does is similar to a software compiler. Software is written in a high-level language and then converted into Assembly and machine code through the compiler. In hardware, high-level languages like VHDL/Verilog are used (yes, they are considered high-level languages), and through a synthesis tool, they are converted into gate-level designs. Unless you're researching standard libraries, not many people write their own adders and multipliers.
 

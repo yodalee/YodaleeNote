@@ -14,7 +14,8 @@ images:
 - /images/openfpga/hdmi_test_pattern.jpg
 forkme: icesugar-playground
 AITranslated: true
-lang: en
+params:
+  lang: en
 ---
 Last time, we implemented UART input and output. This time, let's take on another interface included on the board: HDMI. With this implementation, we will have video output available.
 However, HDMI is a level more difficult than UART, so this time I directly modified the [example code](https://github.com/wuxx/icesugar-pro/tree/master/src/hdmi_test_pattern) of icesugar-pro. For the TMDS part, I referred to an [encoder](https://gist.github.com/alsrgv/3cf171c17fffe25806693c26ebb276a8) available online.

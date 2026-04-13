@@ -14,7 +14,8 @@ images:
 - /images/openfpga/uart_debug.jpg
 forkme: icesugar-playground
 AITranslated: true
-lang: en
+params:
+  lang: en
 ---
 In the previous chapter, we mastered the open-source toolchain for FPGA. Next, we can test some of the interfaces of icesugar-pro. 
 First, implementing an FPGA requires input and output, otherwise, it would just be a non-interactive program. The simplest input/output interface would be UART.

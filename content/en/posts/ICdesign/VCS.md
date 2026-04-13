@@ -8,7 +8,8 @@ tags:
 - VCS
 - Synopsys
 AITranslated: true
-lang: en
+params:
+  lang: en
 ---
 Here's how the story goes: In the early days when I wrote [verilog articles]({{< ref path="/series/verilog introduction" lang="zh-tw" >}}), and until recently when I wanted to do simple simulations, I was using iverilog as an example. However, it had the following two fatal flaws:
 1. Poor performance. I heard that since it transitioned to a compiled model in recent years, it has significantly accelerated, but I believe it's still a notch slower compared to verilator and commercial software.

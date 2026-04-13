@@ -10,7 +10,8 @@ tags:
 - ubuntu
 forkme: ubuntu-icestorm-toolchain
 AITranslated: true
-lang: en
+params:
+  lang: en
 ---
 The story goes like this: about a year and a half ago, I spent a few months playing around with the FPGA I got from COSCUP. At that time, I was developing on my desktop, which runs Archlinux. Recently, for some reasons, I took out this board again, but this time, I switched to my new laptop, which is installed with Windows WSL and Ubuntu 22.04, and discovered that among the tools I listed in the [article]({{< relref "openfpga_blink">}}), including yosys, nextpnr, prjtrellis, only yosys could be installed using apt on Ubuntu, while the others had to be compiled manually, unlike on Archlinux where someone has already set up AUR for you.
 

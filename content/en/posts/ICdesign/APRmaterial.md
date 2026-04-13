@@ -10,7 +10,8 @@ series:
 images:
 - /images/ICdesign/PinPlanning.jpg
 AITranslated: true
-lang: en
+params:
+  lang: en
 ---
 In the previous article, we looked at the use of Design Compiler to synthesize our circuits into logic gates. The next steps are to either send it for LEC or do a post-synthesis simulation, after which we will proceed to the main task of using APR to draw the Layout. Before APR, let's take a single article to see what needs to be prepared before APR.
 

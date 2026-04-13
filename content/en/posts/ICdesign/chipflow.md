@@ -8,7 +8,8 @@ tags:
 series:
 - ICdesign
 AITranslated: true
-lang: en
+params:
+  lang: en
 ---
 Following up on our previous [introduction]({{< relref "introduction" >}}), today we will first look at an overview of the tape-out process. The goal of this article is to provide everyone with a basic understanding of the tape-out process, so that the subsequent articles will be easier to understand.
 Originally, the plan was to quickly publish this article after finishing the introduction, but I decided to wait until the chip taped out in November returns and I confirm that the tape-out successfully meets the initial design before continuing with the subsequent articles. This way, I can speak with more confidence... Yes, it has to be that reason, and definitely not because I've been goofing off after work every day.

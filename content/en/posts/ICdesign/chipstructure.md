@@ -10,7 +10,8 @@ series:
 images:
 - /images/ICdesign/M4.png
 AITranslated: true
-lang: en
+params:
+  lang: en
 ---
 Before talking about APR, let's first discuss the physical architecture inside a chip, such as pad, bond wire, memory, power ring, power strip, etc., so that everyone can have an understanding of the chip they commonly see, making it easier to write articles with practical software operations later.
 

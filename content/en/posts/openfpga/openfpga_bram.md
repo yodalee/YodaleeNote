@@ -13,7 +13,8 @@ images:
 - /images/openfpga/bram_image.jpg
 forkme: icesugar-playground
 AITranslated: true
-lang: en
+params:
+  lang: en
 ---
 This update took a bit longer. The story goes like this: After testing HDMI, I spent some time trying to connect other devices with physical chips present on the FPGA board, including SDRAM, Flash, and SD card. The problem is that these aren't easy to connect, especially without an LA (Logic Analyzer), which makes it like a blind person feeling their way around. You can only use Verilator to simulate waveform; even if the waveform appears correct, if it doesn’t work when put into practice, you won't know what's wrong.
 

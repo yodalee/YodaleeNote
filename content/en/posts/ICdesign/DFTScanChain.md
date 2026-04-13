@@ -10,7 +10,8 @@ series:
 images:
 - /images/ICdesign/scanchain.png
 AITranslated: true
-lang: en
+params:
+  lang: en
 ---
 In modern chip design, as chip functions become increasingly complex and the number of logic gates easily reaches billions, ensuring the chip can operate correctly post-manufacture has become a major challenging issue. Despite efforts from EDA software like Design Compiler and INNOVUS ensuring timing correctness in the design, process variations can also lead to chip defects. Therefore, we need an effective method to thoroughly test the chip’s internals before it hits the market. That's where Design for Testability (DFT) comes into play.
 

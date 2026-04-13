@@ -8,7 +8,8 @@ tags:
 series:
 - ICdesign
 AITranslated: true
-lang: en
+params:
+  lang: en
 ---
 The story goes like this: Recently, after many years, I delved back into digital circuit design and tapeout, a field I had been distant from for quite a while. On November 13th, with the pressure on, I submitted my first ever digital circuit chip. I'm writing this preface to document future related posts.
 
