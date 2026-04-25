@@ -28,7 +28,7 @@
 		{
 			"label": "Firebase",
 			"type": "shell",
-			"command": "hugo && ${HOME}/.node_modules/bin/firebase deploy",
+			"command": "hugo --cleanDestinationDir && ${HOME}/.node_modules/bin/firebase deploy",
 			"group": "build",
 			"isBackground": false,
 		}
