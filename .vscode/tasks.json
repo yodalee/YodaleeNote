@@ -26,11 +26,19 @@
 			}
 		},
 		{
+			"label": "Stop Hugo",
+			"type": "shell",
+			"command": "pkill -f 'hugo server --buildDrafts --disableFastRender' || true",
+			"problemMatcher": []
+		},
+		{
 			"label": "Firebase",
 			"type": "shell",
+			"dependsOn": ["Stop Hugo"],
+			"dependsOrder": "sequence",
 			"command": "hugo --cleanDestinationDir && ${HOME}/.node_modules/bin/firebase deploy",
 			"group": "build",
-			"isBackground": false,
+			"isBackground": false
 		}
 	]
 }
