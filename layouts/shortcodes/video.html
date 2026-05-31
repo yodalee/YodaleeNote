@@ -1,4 +1,4 @@
-<video autoplay="autoplay" loop="loop" preload="auto" width="100%">
-  <source src="{{ .Get "src" }}" type="video/mp4">
+<video autoplay loop muted playsinline controls preload="metadata" style="width: 100%; height: auto;">
+  <source src="{{ .Get "src" }}" type="video/mp4" />
   Your browser does not support the video tag.
 </video>
