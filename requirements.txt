@@ -1,3 +1,5 @@
 beautifulsoup4==4.13.4
 openai==1.97.1
 oyaml==1.0
+numpy==2.2.6
+matplotlib==3.10.0
