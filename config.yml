@@ -85,6 +85,8 @@ markup:
         block: true
     renderer:
       unsafe: true
+    extensions:
+      typographer: false
 
 outputs:
   home:
