@@ -1,6 +1,6 @@
 ---
-title: "數位電路設計系列 - 數位電路設計系列 - Signoff"
-date: 2025-11-16
+title: "數位電路設計系列 - Signoff"
+date: 2026-06-19
 categories:
 - ICdesign
 tags:
@@ -97,7 +97,7 @@ calibre -drc -hier -turbo ANTENNA.cmd
 
 DRC.rep 會有幾個區段：  
 **ORIGINAL LAYER STATISTICS**  
-統計 calibre 從你的 layout 中，擷取出多少你定義的 LAYERw，這裡可以注意一下數量，例如我的結果：
+統計 calibre 從你的 layout 中，擷取出多少你定義的 LAYER，這裡可以注意一下數量，例如我的結果：
 ```txt
 LAYER M1 …… TOTAL Original Geometry Count = 881136
 ```
