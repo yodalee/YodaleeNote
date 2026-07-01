@@ -10,8 +10,6 @@ series:
 images:
 - /images/ICdesign/ChipAll.png
 AITranslated: true
-params:
-  lang: en
 ---
 After discussing design constraint, this article introduces the leading tool for chip synthesis during tape-out - Synopsys Design Compiler.
 
