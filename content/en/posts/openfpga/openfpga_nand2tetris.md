@@ -15,8 +15,6 @@ images:
 - /images/openfpga/nand_screentest.jpg
 forkme: icesugar-playground
 AITranslated: true
-params:
-  lang: en
 ---
 I've finally reached my long-hidden ultimate goal. 
 That's right, when I got this FPGA and was thinking about what to do, the answer I reached after a day was this: [Nand2Tetris](https://www.nand2tetris.org/), 

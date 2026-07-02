@@ -13,8 +13,6 @@ images:
 - /images/openfpga/icesugar-pro.jpg
 forkme: icesugar-playground
 AITranslated: true
-params:
-  lang: en
 ---
 
 <!-- FIXME: link to COSCUP -->

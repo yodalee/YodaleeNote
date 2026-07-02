@@ -81,7 +81,6 @@ def translate_post(input_path: Path, src_lang="zh-tw", target_lang="en"):
 
     # Add the AITranslated flag
     metadata['AITranslated'] = True
-    metadata['lang'] = target_lang  # optionally track the language
 
     # Translate the Markdown content body
     content = translate(content, src_lang, target_lang)
