@@ -78,7 +78,7 @@ params:
 
 markup:
   highlight:
-    style: solarized-dark
+    style: dark
   goldmark:
     parser:
       attribute:
