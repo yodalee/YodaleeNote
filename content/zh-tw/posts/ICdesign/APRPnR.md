@@ -51,7 +51,7 @@ Route 就不要跑 Post-CTS 的 ECO，INNOVUS 會直接爛掉；請關掉 INNOVU
 
 在 placement 階段，會把 standard cell 放置到前一步畫好的 Follow Pin 上。  
 INNOVUS 有一個率先推出，事後被 Synopsys ICC2 學走的功能叫
-**early clock flow (EOF)**，它的故事是這樣子的：  
+**early clock flow (ECF)**，它的故事是這樣子的：  
 以往在 placement 的時候會把 standard cell 擺上去，在 CTS 的時候長出 clock tree。
 但問題是 placement 把可用的空間都佔滿了，Clock Tree cell 進來發現沒空間，擺遠了 Clock Tree 長不好。  
 與其這樣，不如在 placement 的時候就簡單放一下 CTS，雖然這樣 
@@ -276,7 +276,7 @@ INNOVUS 會確保（好吧至少你相信它）影響的量級不超過 slack �
 三條檢查應該都跑出沒有錯誤：
 
 * `Check` -> `Check DRC`
-* `Check` -> `Check Connectivity`，取消 `DanglingWire (Antenna)
+* `Check` -> `Check Connectivity`，取消 `DanglingWire (Antenna)`
 * `Check` -> `Check Process Antenna`
 
 ## 匯出 .sdf

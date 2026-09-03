@@ -44,7 +44,7 @@ There are several noteworthy points in this entire process:
 
 # Placement
 
-In the placement stage, standard cells are placed onto the Follow Pins drawn in the previous step. INNOVUS introduced a feature called **early clock flow (EOF)**, which was later adopted by Synopsys ICC2. Here's the story:
+In the placement stage, standard cells are placed onto the Follow Pins drawn in the previous step. INNOVUS introduced a feature called **early clock flow (ECF)**, which was later adopted by Synopsys ICC2. Here's the story:
 In the past, standard cells were placed during placement, and the clock tree grew during CTS. The problem was that placement occupied all available space, so Clock Tree cells found no space when they came in, and the clock tree didn't grow well if placed far away. Instead of this, it's better to perform some CTS during placement. Though it takes more time, it prevents Timothy issues during CTS that require ECO solutions.
 
 The implication of this is that the density after placement will spike and actually decrease after CTS, which is a point that will be questioned in reports.
