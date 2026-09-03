@@ -204,7 +204,7 @@ assign hSync = (CounterX >= 656) && (CounterX < 752);
 assign vSync = (CounterY >= 490) && (CounterY < 492);
 ```
 這邊就只是一些順著 CounterX, Y 變化的線，hSync 跟 vSync 的時序似乎是 [HDMI 標準有制定](https://projectf.io/posts/video-timings-vga-720p-1080p/)，
-才會出現 X=656~752 間和 Y=490~492 間必須進到 hSync 跟 vSync 設定。  
+才會出現 X=656 ~ 752 間和 Y=490 ~ 492 間必須進到 hSync 跟 vSync 設定。  
 因為未來其他 project 的緣故，我真的很好奇這個 hSync, vSync 的時序是不是能隨意調整？
 
 ```systemverilog
