@@ -70,20 +70,27 @@ Add Source 把你的專案的 source code 跟方才新增的兩個 AXI 相關的
 ![Add IP Source](/images/xilinx/Auto002_Addfile.png)
 
 點選 `Tool` -> `Create and Package New IP` -> `Package your current project`  
+IP location 先選用 `origin_dir/ip_repo`，因為在編輯過程中會產生許多額外的檔案，所以先放在暫時位置。  
 
-IP location 先選用 `origin_dir/ip_repo`，因為在編輯過程中會產生許多額外的檔案，所以先放在暫時位置。
-設定想要的模組資訊，按下 package IP 完成打包。
+![Package Current Project](/images/xilinx/Auto003_PackageCurrent.png)
 
-![IP detail](/images/xilinx/Auto003_Details.png)
+Vivado 會打開一個工作區，這個工作區有幾個地方跟一般的 Vivado 不一樣，我在下圖把它們標出來：  
+
+左邊多出了 `Edit Packaged IP` 的選項，點下去可以打開右邊的視窗，
+在這裡編輯 IP 的資訊、介面、參數等，最後，按下 `package IP` 完成打包。  
+按下 `package IP` 後 Vivado 會問你要不要關掉這個臨時的 project，記得選不要，
+在下面的 tcl 視窗中找到打包用的 script，如果關掉了也沒差，下面有附上通用的。  
+
+![PackageIP](/images/xilinx/Auto004_PackageIP2.png)
 
 完成之後我們要將以上的流程自動化，選擇 `File` -> `Project` -> `Write TCL`
 讓 vivado 把剛剛做的事寫入 package_ip.tcl。  
 
-> 在寫出 package_ip.tcl 的時候，請先寫到 origin_dir 內，再移動到 script 資料夾中
+> 在寫出 package_ip.tcl 的時候，請先寫到 origin_dir 內，再移動到 script 資料夾中  
 > 直接存到 script 資料夾，文件內會跑出一堆 ../ 要處理
 {.error}
 
-![Write TCL](/images/xilinx/Auto004_WriteTCL.png)
+![Write TCL](/images/xilinx/Auto005_WriteTCL.png)
 
 ## 修改 package_ip.tcl
 
@@ -92,7 +99,7 @@ vivado 剛寫出的 tcl 腳本可用，但參雜太多不相關的東西，我�
 
 1. 在 ip_repo 中，找到 component.xml，將它移動到 script 資料夾；隨後修改 package_ip.tcl
 ，把 component.xml 的路徑修改為 script。
-2. 找到 create_porject 那行，加上 `-force`，這樣跑第二次的時候，即使
+2. 找到 create_project 那行，加上 `-force`，這樣跑第二次的時候，即使
 tmp_pkg 已存在仍然能強行蓋過去。
 3. 找到 `proc checkRequiredFiles` 的定義以及呼叫的地方，整段刪除。
 留著也行，但我覺得刪了清爽，原始碼有更動也只需要改動一個地方
